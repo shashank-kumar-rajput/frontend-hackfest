@@ -1,0 +1,12 @@
+.stick-left {
+  position: sticky;
+}
+
+.Collapsible-body {
+  overflow-x: hidden;
+  background-color: var(--sidebar-color);
+}
+
+.MenuItem {
+  margin-bottom: 1rem;
+}
