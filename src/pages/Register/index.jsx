@@ -16,7 +16,6 @@ const Register = () => {
   const [data, setData] = useState({ username: '', password: '' });
   const [confirmPassword, setConfirmPassword] = useState('');
   const { password = '' } = data;
-  const URL = 'https://backend-django-innovaccer.herokuapp.com/';
 
   const onActionClick = () => {
     setPasswordVisible(!passwordVisible);
@@ -45,15 +44,23 @@ const Register = () => {
     console.log(`email: ${email}, password: ${password}`);
 
     // call to backend
-    fetch('https://backend-django-innovaccer.herokuapp.com/medicalsummary', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        username: data.username,
-        password: data.password,
-        confirmPassword,
-      }),
-    });
+    // fetch('https://backend-django-innovaccer.herokuapp.com/medicalsummary', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     username: data.username,
+    //     password: data.password,
+    //     confirmPassword,
+    //   }),
+    // })
+    //   .then((response) => response.json())
+    //   .then((response) => console.log(response))
+    //   .catch((error) => console.log(error));
+
+    fetch('https://backend-django-innovaccer.herokuapp.com/medicalsummary')
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
   };
 
   return (
