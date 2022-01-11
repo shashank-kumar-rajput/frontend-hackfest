@@ -9,6 +9,8 @@ Deployment [preview](https://inrecord.netlify.app/).
 ```
 git clone https://github.com/rohan-innovaccer/frontend-hackfest.git
 
+cd frontend-hackfest
+
 npm install
 
 npm start
