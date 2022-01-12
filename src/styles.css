@@ -23,14 +23,11 @@
 body {
   justify-content: flex-start;
   align-items: flex-start;
-<<<<<<< HEAD
   background-color: #fff;
 }
 
 iframe {
   display: none !important;
-=======
->>>>>>> cd403caa77255fd6ddf4a8f1dde639c6ce2ca9e0
 }
 
 h1,
