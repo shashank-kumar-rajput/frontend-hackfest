@@ -9,12 +9,14 @@ import './styles.css';
 import Login from './pages/Login';
 
 const App = () => {
+  const user = true;
+
   return (
     <BrowserRouter>
       <div>
         <Navigation />
         <div className='main-container'>
-          <Sidebar />
+          {user && <Sidebar />}
           <div className='content-wrapper'>
             <Routes>
               <Route path='/' exact element={<Home />} />

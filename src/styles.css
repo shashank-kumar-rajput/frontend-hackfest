@@ -6,6 +6,7 @@
   --secondary-color: #9ca3af;
   --navbar-color: #f4f4f4;
   --sidebar-color: #f9fafb;
+  --shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
 }
 
 * {
@@ -38,4 +39,14 @@ h6 {
 /* right content */
 .content-wrapper {
   flex-grow: 1;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.link:hover {
+  border-bottom: 1px solid var(--primary-color);
 }

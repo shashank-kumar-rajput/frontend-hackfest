@@ -29,3 +29,9 @@
 .list-item {
   margin-right: 1.5rem;
 }
+
+.logo-link {
+  text-decoration: none;
+  color: var(--primary-color);
+  cursor: pointer;
+}
