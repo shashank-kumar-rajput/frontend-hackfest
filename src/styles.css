@@ -6,6 +6,7 @@
   --secondary-color: #9ca3af;
   --navbar-color: #f4f4f4;
   --sidebar-color: #f9fafb;
+  --shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
 }
 
 * {
@@ -25,38 +26,6 @@ h6 {
   font-family: 'Merriweather', serif;
 }
 
-/* navigation */
-.navigation {
-  background-color: var(--navbar-color);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 1.2rem;
-  height: 75px;
-  font-weight: 700;
-  color: var(--primary-color);
-  padding: 1rem;
-}
-
-.logo {
-  margin-left: 2rem;
-}
-
-.logo span {
-  color: var(--primary-text-color);
-  font-weight: 900;
-}
-
-/* list */
-.list {
-  list-style: none;
-  display: flex;
-}
-
-.list-item {
-  margin-right: 1.5rem;
-}
-
 .header {
   height: 20px;
   padding: 2rem;
@@ -70,4 +39,14 @@ h6 {
 /* right content */
 .content-wrapper {
   flex-grow: 1;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.link:hover {
+  border-bottom: 1px solid var(--primary-color);
 }
