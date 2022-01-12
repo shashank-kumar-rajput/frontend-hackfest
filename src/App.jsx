@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles.css';
 import Login from './pages/Login';
+import Planofcare from './components/Planofcare';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
               <Route path='/' exact element={<Home />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
+              <Route path='/planofcare' element={<Planofcare />} />
             </Routes>
           </div>
         </div>
