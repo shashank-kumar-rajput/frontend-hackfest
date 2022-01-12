@@ -5,7 +5,8 @@ import Navigation from './components/Navigation';
 import Notfound from './pages/Notfound';
 import Sidebar from './components/Sidebar';
 import Medication from './components/Medication'
-import ProblemList from './components/ProblemList'
+import ProblemList from './components/ProblemList';
+import Diagnostic from './components/Diagnostic';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles.css';
 import Login from './pages/Login';
@@ -26,6 +27,7 @@ const App = () => {
               <Route path='/register' element={<Register />} />
               <Route path='/medication' element={<Medication />} />
               <Route path='/problemList' element={<ProblemList />} />
+              <Route path='/diagnostic' element={<Diagnostic />} />
               <Route path='/*' element={<Notfound />} />
             </Routes>
           </div>
