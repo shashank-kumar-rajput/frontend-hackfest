@@ -3,51 +3,25 @@ import "@innovaccer/design-system/css";
 import { PageHeader,Card, Label, Input, Button, } from '@innovaccer/design-system';
 
 import  './Planofcare.css';
+import { useState } from "react/cjs/react.development";
 
 const Planofcare = () => {
-
-  class InlineForm extends React.Component {
-
-    constructor(props = {}) {
-      super(props);
-
-      this.state = {
-        searchDisabled: true,
-        data: {},
-      };
-
-      this.onChange = this.onChange.bind(this);
-      this.onSubmit = this.onSubmit.bind(this);
-    }
-
-    onChange(value, name) {
-      const updatedData = { ...this.state.data, [name]: value };
-
-      this.setState({
-        data: updatedData,
-        searchDisabled: Object.keys(updatedData).every(key => !updatedData[key])
-      });
-    }
-
-    onSubmit(e) {
-      e.preventDefault();
-      console.log(this.state.data);
-      return false;
-    }
-
-    render() {
-     
-      const options = [];
-      for (let i = 1; i <= 10; i++) {
-        options.push({
-          label: ` ${i} times per `,
-          value: ` ${i} times per`,
-        });
-      }
-      
+    const [formData, setFormData] = useState({
+        carePlanName:'',
+        description: '',
+        reason: '',
+        typeOfDiet: '',
+        bedRest: 0
+    });
     
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(formData)
     
-      return (
+    }
+
+       return (
         <div className="d-flex flex-column bg-secondary-lightest vh-100 pb-6">
       <PageHeader
         title="Plan Of Care"
@@ -57,7 +31,7 @@ const Planofcare = () => {
          
          <Card className="px-6 py-6">
            <h1></h1>
-           <form onSubmit={this.onSubmit}>
+           <form onSubmit={handleSubmit}>
              <div className="d-flex flex-wrap">
             
                <div className="mr-12 mb-10">
@@ -68,7 +42,7 @@ const Planofcare = () => {
                    placeholder="Name of Care Plan"
                    icon="add_box"
                    autocomplete={'on'}
-                   onChange={(event) => this.onChange(event.target.value, event.target.name)}
+                   onChange={(e) => setFormData({...formData, carePlanName: e.target.value})}
                  />
                </div>
                <div className="mr-12 mb-10">
@@ -79,7 +53,7 @@ const Planofcare = () => {
                    placeholder="Description of Care Plan"
                    
                    autocomplete={'on'}
-                   onChange={(event) => this.onChange(event.target.value, event.target.name)}
+                   onChange={(e) => setFormData({...formData, description: e.target.value})}
                  />
                </div>
                <div className="mr-12 mb-10">
@@ -90,7 +64,7 @@ const Planofcare = () => {
                    placeholder="Reason of Care Plan "
                   
                    autocomplete={'off'}
-                   onChange={(event) => this.onChange(event.target.value, event.target.name)}
+                   onChange={(e) => setFormData({...formData, reason: e.target.value})}
                  />
                </div>
                <div className="mr-12 mb-10">
@@ -101,7 +75,7 @@ const Planofcare = () => {
                    placeholder="Type of Diet"
                   
                    autocomplete={'off'}
-                   onChange={(event) => this.onChange(event.target.value, event.target.name)}
+                   onChange={(e) => setFormData({...formData, typeOfDiet: e.target.value})}
                  />
                </div>
                <div className="mr-12 mb-10">
@@ -112,12 +86,11 @@ const Planofcare = () => {
                    placeholder="No of Days"
                    
                    autocomplete={'off'}
-                   onChange={(event) => this.onChange(event.target.value, event.target.name)}
+                   onChange={(e) => setFormData({...formData, bedRest: e.target.value})}
                  />
                </div>
                </div>
              <Button
-               disabled={this.state.searchDisabled}
                appearance="primary"
                type="submit"
              >
@@ -130,9 +103,6 @@ const Planofcare = () => {
   
       );
     }
-  }
 
-  return <InlineForm />
-}
 
  export default Planofcare
