@@ -1,9 +1,12 @@
 import React from 'react';
+import home from './home.svg';
+import './Home.css';
 
 const Home = () => {
   return (
-    <div>
-      <h1>Home page</h1>
+    <div className='home'>
+      <img className='home-img' src={home} alt='home' />
+      <h1 className='home-header'>Welcome to inrecord</h1>
     </div>
   );
 };
