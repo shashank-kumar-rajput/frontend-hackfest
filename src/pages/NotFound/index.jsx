@@ -1,6 +1,6 @@
 import React from 'react';
 import notfound from './notfound.svg';
-import './Notfound.css';
+import './NotFound.css';
 
 const NotFound = () => {
   return (
