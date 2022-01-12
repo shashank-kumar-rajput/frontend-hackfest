@@ -1,8 +1,8 @@
 import React from 'react';
 import notfound from './notfound.svg';
-import './Notfound.css';
+import './NotFound.css';
 
-const Notfound = () => {
+const NotFound = () => {
   return (
     <div className='page-not-found'>
       <img src={notfound} alt='page-not-found' />
@@ -11,4 +11,4 @@ const Notfound = () => {
   );
 };
 
-export default Notfound;
+export default NotFound;
