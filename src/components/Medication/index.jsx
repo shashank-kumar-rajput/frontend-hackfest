@@ -1,5 +1,5 @@
-import React from "react";
-import "@innovaccer/design-system/css";
+import React from 'react';
+import '@innovaccer/design-system/css';
 import {
   PageHeader,
   Card,
@@ -9,9 +9,9 @@ import {
   DatePicker,
   Dropdown,
   Textarea,
-} from "@innovaccer/design-system";
+} from '@innovaccer/design-system';
 
-import "./Medication.css";
+import './Medication.css';
 
 const Medication = () => {
   class InlineForm extends React.Component {
@@ -40,8 +40,15 @@ const Medication = () => {
 
     onSubmit(e) {
       e.preventDefault();
-      console.log(this.state.data);
-      return false;
+
+      fetch('https://backend-django-innovaccer.herokuapp.com/addOneRecord', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(),
+      })
+        .then((res) => res.json())
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
     }
 
     render() {
@@ -54,82 +61,81 @@ const Medication = () => {
       }
 
       return (
-        <div className="d-flex flex-column bg-secondary-lightest vh-100 pb-6">
-          <PageHeader title="Medical Details" separator={false} />
-          <div className="w-100">
-            <Card className="px-6 py-6">
+        <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
+          <PageHeader title='Medical Details' separator={false} />
+          <div className='w-100'>
+            <Card className='px-6 py-6'>
               <h1></h1>
               <form onSubmit={this.onSubmit}>
-                <div className="d-flex flex-wrap">
-                  <div className="mr-12 mb-10">
+                <div className='d-flex flex-wrap'>
+                  <div className='mr-12 mb-10'>
                     <Label withInput={true}>Medication Item</Label>
                     <Input
-                      name="Medication Item"
-                      type="text"
-                      placeholder="Name of Medicine"
-                      icon="add_box"
-                      autocomplete={"on"}
+                      name='Medication Item'
+                      type='text'
+                      placeholder='Name of Medicine'
+                      icon='add_box'
+                      autocomplete={'on'}
                       onChange={(event) =>
                         this.onChange(event.target.value, event.target.name)
                       }
                     />
                   </div>
-                  <div className="mr-12 mb-10">
+                  <div className='mr-12 mb-10'>
                     <Label withInput={true}>Form</Label>
                     <Input
-                      name="form"
-                      type="text"
-                      placeholder="type of medication i.e Tablet/cream/infusion"
-                      autocomplete={"on"}
+                      name='form'
+                      type='text'
+                      placeholder='type of medication i.e Tablet/cream/infusion'
+                      autocomplete={'on'}
                       onChange={(event) =>
                         this.onChange(event.target.value, event.target.name)
                       }
                     />
                   </div>
-                  <div className="mr-12 mb-10">
+                  <div className='mr-12 mb-10'>
                     <Label withInput={true}>Strength Concentration</Label>
                     <Input
-                      name="Concentration"
-                      type="text"
-                      placeholder="Strength of Dosage "
-                      autocomplete={"off"}
+                      name='Concentration'
+                      type='text'
+                      placeholder='Strength of Dosage '
+                      autocomplete={'off'}
                       onChange={(event) =>
                         this.onChange(event.target.value, event.target.name)
                       }
                     />
                   </div>
-                  <div className="mr-12 mb-10">
+                  <div className='mr-12 mb-10'>
                     <Label withInput={true}>Presentation</Label>
                     <Input
-                      name="Presentation"
-                      type="Number"
-                      placeholder="Strength of Dosage"
-                      autocomplete={"off"}
+                      name='Presentation'
+                      type='Number'
+                      placeholder='Strength of Dosage'
+                      autocomplete={'off'}
                       onChange={(event) =>
                         this.onChange(event.target.value, event.target.name)
                       }
                     />
                   </div>
                   <div
-                    className="mr-12 mb-10"
-                    style={{ width: "var(--spacing-9)" }}
-                  >
+                    className='mr-12 mb-10'
+                    style={{ width: 'var(--spacing-9)' }}>
                     <Label withInput={true}>Expiry Date</Label>
                     <DatePicker
                       withInput={true}
                       onDateChange={(currentDate) =>
-                        this.onChange(currentDate, "date")
+                        this.onChange(currentDate, 'date')
                       }
                       inputOptions={{
-                        placeholder: "MM/DD/YYYY",
+                        placeholder: 'MM/DD/YYYY',
 
                         mask: [
                           /\d/,
                           /\d/,
-                          "/",
+                          '/',
                           /\d/,
                           /\d/,
-                          "/",
+                          '/',
                           /\d/,
                           /\d/,
                           /\d/,
@@ -138,37 +144,37 @@ const Medication = () => {
                       }}
                     />
                   </div>
-                  <div className="mr-12 mb-10">
+                  <div className='mr-12 mb-10'>
                     <Label withInput={true}>Batch ID</Label>
                     <Input
-                      name="Batch ID"
-                      type="text"
-                      placeholder="BI0000"
-                      autocomplete={"off"}
+                      name='Batch ID'
+                      type='text'
+                      placeholder='BI0000'
+                      autocomplete={'off'}
                       onChange={(event) =>
                         this.onChange(event.target.value, event.target.name)
                       }
                     />
                   </div>
-                  <div className="mr-12 mb-10">
+                  <div className='mr-12 mb-10'>
                     <Label withInput={true}>Manufacturer</Label>
                     <Input
-                      name="Manufacturer"
-                      type="text"
-                      placeholder="Manufacturer"
-                      autocomplete={"off"}
+                      name='Manufacturer'
+                      type='text'
+                      placeholder='Manufacturer'
+                      autocomplete={'off'}
                       onChange={(event) =>
                         this.onChange(event.target.value, event.target.name)
                       }
                     />
                   </div>
-                  <div className="mr-12 mb-10">
+                  <div className='mr-12 mb-10'>
                     <Label withInput={true}>Amount</Label>
                     <Input
-                      name="Amount"
-                      type="Number"
-                      placeholder="Amount of Dosage"
-                      autocomplete={"off"}
+                      name='Amount'
+                      type='Number'
+                      placeholder='Amount of Dosage'
+                      autocomplete={'off'}
                       onChange={(event) =>
                         this.onChange(event.target.value, event.target.name)
                       }
@@ -176,80 +182,78 @@ const Medication = () => {
                   </div>
 
                   <div
-                    className="mr-12 mb-10"
-                    style={{ width: "var(--spacing-9)" }}
-                  >
+                    className='mr-12 mb-10'
+                    style={{ width: 'var(--spacing-9)' }}>
                     <Label withInput={true}>Amount Unit</Label>
                     <Dropdown
                       options={[
-                        { label: "mg", value: "mg" },
-                        { label: "ml", value: "ml" },
-                        { label: "UI", value: "UI" },
-                        { label: "Others", value: "Others" },
+                        { label: 'mg', value: 'mg' },
+                        { label: 'ml', value: 'ml' },
+                        { label: 'UI', value: 'UI' },
+                        { label: 'Others', value: 'Others' },
                       ]}
-                      searchPlaceholder="Amount Unit"
+                      searchPlaceholder='Amount Unit'
                       withSearch={true}
                     />
                   </div>
                 </div>
-                <div className="mr-12 mb-10">
+                <div className='mr-12 mb-10'>
                   <h1>Description</h1>
                 </div>
-                <div className="d-flex flex-wrap">
-                  <div className="mr-12 mb-10">
+                <div className='d-flex flex-wrap'>
+                  <div className='mr-12 mb-10'>
                     <Label withInput={true}>Description Unit</Label>
                     <Input
-                      name="Description"
-                      type="text"
-                      placeholder="Unit in mg/ml/tablet"
-                      autocomplete={"off"}
+                      name='Description'
+                      type='text'
+                      placeholder='Unit in mg/ml/tablet'
+                      autocomplete={'off'}
                       onChange={(event) =>
                         this.onChange(event.target.value, event.target.name)
                       }
                     />
                   </div>
                   <div
-                    className="mr-12 mb-10"
-                    style={{ width: "var(--spacing-9)" }}
-                  >
+                    className='mr-12 mb-10'
+                    style={{ width: 'var(--spacing-9)' }}>
                     <Label withInput={true}>Frequency of Dosage</Label>
                     <Dropdown
-                      placeholder="1 time a day"
+                      placeholder='1 time a day'
                       options={options}
-                      onChange={(option) => this.onChange(option, "pcp")}
+                      onChange={(option) => this.onChange(option, 'pcp')}
                     />
                     <Dropdown
                       options={[
-                        { label: "Day", value: "Day" },
-                        { label: "hour", value: "hour" },
-                        { label: "week", value: "week" },
+                        { label: 'Day', value: 'Day' },
+                        { label: 'hour', value: 'hour' },
+                        { label: 'week', value: 'week' },
                       ]}
-                      searchPlaceholder="Amount Unit"
+                      searchPlaceholder='Amount Unit'
                       withSearch={true}
                     />
                   </div>
-                  <div className="mr-12 mb-10">
+                  <div className='mr-12 mb-10'>
                     <Label withInput={true}>Route</Label>
                     <Input
-                      name="Route"
-                      type="text"
-                      placeholder="Method of Dosage:infusion/oral"
-                      autocomplete={"off"}
+                      name='Route'
+                      type='text'
+                      placeholder='Method of Dosage:infusion/oral'
+                      autocomplete={'off'}
                       onChange={(event) =>
                         this.onChange(event.target.value, event.target.name)
                       }
                     />
                   </div>
-                  <div className="mr-12 mb-10">
-                    <Label htmlFor="description" withInput={true}>
+                  <div className='mr-12 mb-10'>
+                    <Label htmlFor='description' withInput={true}>
                       Description Prescribed by Doctor
                     </Label>
                     <Textarea
-                      aria-labelledby="description"
-                      className="w-200"
-                      id="description"
-                      name="description"
-                      placeholder="Enter the method prescribed by doctor for medication"
+                      aria-labelledby='description'
+                      className='w-200'
+                      id='description'
+                      name='description'
+                      placeholder='Enter the method prescribed by doctor for medication'
                       onChange={(event) =>
                         this.onChange(event.target.value, event.target.name)
                       }
@@ -259,9 +263,8 @@ const Medication = () => {
 
                 <Button
                   disabled={this.state.searchDisabled}
-                  appearance="secondary"
-                  type="submit"
-                >
+                  appearance='secondary'
+                  type='submit'>
                   Submit
                 </Button>
               </form>

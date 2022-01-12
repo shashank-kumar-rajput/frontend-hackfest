@@ -1,43 +1,44 @@
 import React from 'react';
 import { Collapsible, VerticalNav } from '@innovaccer/design-system';
+import { useNavigate } from 'react-router-dom';
 import '@innovaccer/design-system/css';
 import './Sidebar.css';
 
 const Sidebar = () => {
   const data = [
     {
-      name: 'home',
+      name: '/',
       label: 'Home',
       icon: 'home',
     },
     {
-      name: 'profile',
-      label: 'Profile',
+      name: '/medication',
+      label: 'Medical Summary',
       icon: 'account_circle',
     },
     {
-      name: 'medical_records',
-      label: 'Medical Records',
+      name: '/problemList',
+      label: 'Problem List',
       icon: 'local_hospital',
     },
     {
-      name: 'formulary',
-      label: 'Formulary',
+      name: '/diagnostic',
+      label: 'Diagnostic Results',
       icon: 'list',
     },
     {
       name: 'encounters',
-      label: 'Encounters',
+      label: 'Plan of Care',
       icon: 'directions_walk',
     },
     {
-      name: 'claims',
-      label: 'Claims',
+      name: '/pastHistory',
+      label: 'Past History of illness',
       icon: 'receipt',
     },
     {
       name: 'documents',
-      label: 'Documents',
+      label: 'ePrescription',
       icon: 'assignment',
     },
   ];
@@ -46,10 +47,11 @@ const Sidebar = () => {
   const [active, setActive] = React.useState({
     name: 'medical_records.allergies',
   });
+  const navigate = useNavigate();
 
   const onClickHandler = (menu) => {
-    console.log('menu-clicked: ', menu);
     setActive(menu);
+    navigate(menu.name);
   };
 
   return (

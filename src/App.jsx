@@ -2,11 +2,12 @@ import React from 'react';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Navigation from './components/Navigation';
-import Notfound from './pages/Notfound';
+import NotFound from './pages/NotFound';
 import Sidebar from './components/Sidebar';
 import Medication from './components/Medication'
 import ProblemList from './components/ProblemList';
 import Diagnostic from './components/Diagnostic';
+import PastHistory from './pages/PastHistory';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles.css';
 import Login from './pages/Login';
@@ -28,7 +29,8 @@ const App = () => {
               <Route path='/medication' element={<Medication />} />
               <Route path='/problemList' element={<ProblemList />} />
               <Route path='/diagnostic' element={<Diagnostic />} />
-              <Route path='/*' element={<Notfound />} />
+              <Route path='/pastHistory' element={<PastHistory />} />
+              <Route path='/*' element={<NotFound />} />
             </Routes>
           </div>
         </div>
