@@ -4,6 +4,8 @@ import Register from './pages/Register';
 import Navigation from './components/Navigation';
 import Notfound from './pages/Notfound';
 import Sidebar from './components/Sidebar';
+import Medication from './components/Medication'
+import ProblemList from './components/ProblemList'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles.css';
 import Login from './pages/Login';
@@ -22,6 +24,8 @@ const App = () => {
               <Route path='/' exact element={<Home />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
+              <Route path='/medication' element={<Medication />} />
+              <Route path='/problemList' element={<ProblemList />} />
               <Route path='/*' element={<Notfound />} />
             </Routes>
           </div>
