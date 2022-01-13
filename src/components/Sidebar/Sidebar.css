@@ -4,7 +4,9 @@
 
 .Collapsible-body {
   overflow-x: hidden;
-  background-color: var(--sidebar-color);
+  background-color: white;
+  border-radius: 0.8rem;
+  flex-grow: 0;
 }
 
 .MenuItem {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Collapsible, VerticalNav } from '@innovaccer/design-system';
+import { useNavigate } from 'react-router-dom';
 import '@innovaccer/design-system/css';
 import './Sidebar.css';
 
@@ -31,8 +32,8 @@ const Sidebar = () => {
       icon: 'directions_walk',
     },
     {
-      name: 'claims',
-      label: 'Claims',
+      name: 'past-history',
+      label: 'Past History of illness',
       icon: 'receipt',
     },
     {
@@ -46,15 +47,16 @@ const Sidebar = () => {
   const [active, setActive] = React.useState({
     name: 'medical_records.allergies',
   });
+  const navigate = useNavigate();
 
   const onClickHandler = (menu) => {
-    console.log('menu-clicked: ', menu);
     setActive(menu);
+    navigate(menu.name);
   };
 
   return (
     <div
-      style={{ height: '100vh', background: 'var(--secondary-lightest)' }}
+      style={{ background: 'var(--secondary-lightest)' }}
       className='stick-left'>
       <Collapsible expanded={expanded} onToggle={setExpanded} hoverable={false}>
         <VerticalNav

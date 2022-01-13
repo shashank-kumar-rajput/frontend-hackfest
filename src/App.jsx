@@ -1,31 +1,40 @@
 import React from 'react';
 import Home from './pages/Home';
 import Register from './pages/Register';
+import Navigation from './components/Navigation';
+import NotFound from './pages/NotFound';
 import Sidebar from './components/Sidebar';
+import Medication from './pages/Medication';
+import ProblemList from './pages/ProblemList';
+import PastHistory from './pages/PastHistory';
+import PlanOfCare from './pages/PlanOfCare';
+import Login from './pages/Login';
+import Documents from './pages/Documents';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles.css';
-import Login from './pages/Login';
+
+
 
 const App = () => {
+  const user = false;
+
   return (
     <BrowserRouter>
       <div>
-        <nav className='navigation'>
-          <div className='logo'>
-            <span>in</span>record 🚀
-          </div>
-          <ul className='list'>
-            <li className='list-item'>About us</li>
-            <li className='list-item'>Login</li>
-          </ul>
-        </nav>
+        <Navigation />
         <div className='main-container'>
-          <Sidebar />
+          {user && <Sidebar />}
           <div className='content-wrapper'>
             <Routes>
               <Route path='/' exact element={<Home />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
+              <Route path='/planofcare' element={<PlanOfCare />} />
+              <Route path='/medication' element={<Medication />} />
+              <Route path='/problemList' element={<ProblemList />} />
+              <Route path='/past-history' element={<PastHistory />} />
+              <Route path='/documents' element={<Documents />} />
+              <Route path='/*' element={<NotFound />} />
             </Routes>
           </div>
         </div>

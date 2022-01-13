@@ -1,0 +1,39 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  height: 75px;
+  font-weight: 700;
+  color: var(--primary-color);
+  padding: 1rem;
+  background-color: var(--navbar-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+  margin-left: 2rem;
+}
+
+.logo span {
+  color: var(--primary-text-color);
+  font-family: 'Merriweather', serif;
+  font-weight: 900;
+  font-size: 1.3rem;
+}
+
+/* list */
+.list {
+  list-style: none;
+  display: flex;
+}
+
+.list-item {
+  margin-right: 1.5rem;
+}
+
+.logo-link {
+  text-decoration: none;
+  color: var(--primary-color);
+  cursor: pointer;
+}
