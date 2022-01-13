@@ -20,14 +20,13 @@
   width: 100%;
 }
 
+iframe {
+  display: none !important;
+}
+
 body {
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: #fff;
-}
-
-iframe {
-  display: none !important;
 }
 
 h1,
@@ -52,6 +51,7 @@ h6 {
 /* right content */
 .content-wrapper {
   flex-grow: 1;
+  margin-left: 1rem;
 }
 
 .link {
