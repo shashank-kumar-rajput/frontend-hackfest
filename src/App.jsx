@@ -4,16 +4,16 @@ import Register from './pages/Register';
 import Navigation from './components/Navigation';
 import NotFound from './pages/NotFound';
 import Sidebar from './components/Sidebar';
-import Medication from './components/Medication';
-import ProblemList from './components/ProblemList';
+import Medication from './pages/Medication';
+import ProblemList from './pages/ProblemList';
 import PastHistory from './pages/PastHistory';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles.css';
 import Login from './pages/Login';
-import Planofcare from './components/Planofcare';
+import Planofcare from './pages/Planofcare';
 
 const App = () => {
-  const user = true;
+  const user = false;
 
   return (
     <BrowserRouter>
