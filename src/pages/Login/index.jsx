@@ -71,7 +71,9 @@ const Login = ({ handleUser, removeUser }) => {
                 />
               }
             />
-            <Link to='/register'>Register</Link>
+            <Link to='/register' className='link'>
+              Not a user? register
+            </Link>
             <Button
               className='mt-5'
               appearance='primary'
