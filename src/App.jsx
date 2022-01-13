@@ -29,7 +29,6 @@ const App = () => {
               <Route path='/planofcare' element={<Planofcare />} />
               <Route path='/medication' element={<Medication />} />
               <Route path='/problemList' element={<ProblemList />} />
-              <Route path='/*' element={<Notfound />} />
               <Route path='/past-history' element={<PastHistory />} />
               <Route path='/*' element={<NotFound />} />
             </Routes>
