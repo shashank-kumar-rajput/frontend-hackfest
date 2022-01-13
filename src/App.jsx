@@ -32,7 +32,6 @@ const App = () => {
               <Route path='/*' element={<Notfound />} />
               <Route path='/past-history' element={<PastHistory />} />
               <Route path='/*' element={<NotFound />} />
-
             </Routes>
           </div>
         </div>
