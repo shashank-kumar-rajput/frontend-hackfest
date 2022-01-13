@@ -1,24 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import Login from './pages/Login';
 import Register from './pages/Register';
-import Navigation from './components/Navigation';
 import NotFound from './pages/NotFound';
-import Sidebar from './components/Sidebar';
 import Medication from './pages/Medication';
 import ProblemList from './pages/ProblemList';
 import PastHistory from './pages/PastHistory';
 import PlanOfCare from './pages/PlanOfCare';
-import Login from './pages/Login';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import Navigation from './components/Navigation';
 import './styles.css';
-// import Planofcare from './pages/Planofcare';
 
 const App = () => {
   const user = true;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [detailsList, setDetailsList] = useState([]);
-  const URL = 'https://backend-django-innovaccer.herokuapp.com/';
+  const URL = 'https://backend-django-innovaccer.herokuapp.com/medicalsummary';
 
   const handleUser = () => {
     localStorage.setItem('username', username);
@@ -29,14 +28,14 @@ const App = () => {
     localStorage.removeItem('password');
   };
 
-  useEffect(() => {
-    fetch(URL)
-      .then((response) => response.json())
-      .then((response) => setDetailsList(response))
-      .catch((error) => console.log(error));
-
-    console.log(detailsList);
-  }, []);
+  // useEffect(() => {
+  //   fetch(URL)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setDetailsList(data);
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, []);
 
   return (
     <BrowserRouter>
