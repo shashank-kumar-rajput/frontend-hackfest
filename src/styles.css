@@ -9,6 +9,7 @@
   --white-color: #fff;
   --shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
   --border-color: rgba(225, 228, 232, 1);
+  --submit-hover-color: #656865;
 }
 
 * {
@@ -62,8 +63,9 @@ iframe {
   border-bottom: 1px solid var(--primary-color);
 }
 
-.Card--shadow-default {
-  box-shadow: none;
+.Card--shadow-default,
+.bg-secondary-lightest {
+  box-shadow: none !important;
 }
 
 .PageHeader-wrapper {
@@ -80,4 +82,17 @@ iframe {
 
 .cta {
   color: var(--primary-jal);
+}
+
+.Popover[data-hide='true'] {
+  visibility: visible !important;
+  pointer-events: none;
+}
+
+.submmit-btn {
+  transition: 0.2s;
+}
+
+.submmit-btn:hover {
+  background-color: var(--submit-hover-color);
 }

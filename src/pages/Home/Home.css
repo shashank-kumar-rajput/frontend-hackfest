@@ -1,9 +1,11 @@
 .home {
   text-align: center;
   margin: 1rem 0;
+  height: 100%;
 }
 
 .home-img {
+  width: 50%;
   max-width: 500px;
 }
 

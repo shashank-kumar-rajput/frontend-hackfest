@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './PastHistory.css';
 import '@innovaccer/design-system/css';
 import {
@@ -9,201 +9,184 @@ import {
   Button,
   DatePicker,
   Dropdown,
-  Textarea,
 } from '@innovaccer/design-system';
 
 const PastHistory = () => {
-  class InlineForm extends React.Component {
-    constructor(props = {}) {
-      super(props);
+  const [currentData, setCurrentData] = useState({
+    searchDisabled: true,
+    data: {},
+  });
 
-      this.state = {
-        searchDisabled: true,
-        data: {},
-      };
+  const onChange = (value, name) => {
+    const updatedData = { ...currentData.data, [name]: value };
 
-      this.onChange = this.onChange.bind(this);
-      this.onSubmit = this.onSubmit.bind(this);
-    }
+    setCurrentData({
+      data: updatedData,
+      searchDisabled: Object.keys(updatedData).every(
+        (key) => !updatedData[key]
+      ),
+    });
+  };
 
-    onChange(value, name) {
-      const updatedData = { ...this.state.data, [name]: value };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    fetch('https://backend-django-innovaccer.herokuapp.com/addOneRecord', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(currentData),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
-      this.setState({
-        data: updatedData,
-        searchDisabled: Object.keys(updatedData).every(
-          (key) => !updatedData[key]
-        ),
-      });
-    }
+  return (
+    <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
+      <PageHeader title='Past History of illnesses' separator={false} />
+      <div className='w-100'>
+        <Card className='px-6 py-6'>
+          <form onSubmit={onSubmit}>
+            <div className='d-flex flex-wrap'>
+              <div className='mr-12 mb-10'>
+                <Label withInput={true}>Diagnosis Name</Label>
+                <Input
+                  name='Diagonsis Name'
+                  type='text'
+                  placeholder='Name of Diagnosis'
+                  icon='add_box'
+                  autocomplete={'on'}
+                  onChange={(event) =>
+                    onChange(event.target.value, event.target.name)
+                  }
+                />
+              </div>
+              <div className='mr-12 mb-10'>
+                <Label withInput={true}>Body Site</Label>
+                <Input
+                  name='Body Site'
+                  type='text'
+                  placeholder='Body Site of Diagonsis'
+                  autocomplete={'on'}
+                  onChange={(event) =>
+                    onChange(event.target.value, event.target.name)
+                  }
+                />
+              </div>
 
-    onSubmit(e) {
-      e.preventDefault();
-      fetch('https://backend-django-innovaccer.herokuapp.com/addOneRecord', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.state),
-      })
-        .then((res) => res.json())
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-    }
+              <div
+                className='mr-12 mb-10'
+                style={{ width: 'var(--spacing-9)' }}>
+                <Label withInput={true}>Date of onset</Label>
+                <DatePicker
+                  withInput={true}
+                  onDateChange={(currentDate) => onChange(currentDate, 'date')}
+                  inputOptions={{
+                    placeholder: 'MM/DD/YYYY',
 
-    render() {
-      return (
-        <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
-          <PageHeader title='Past History of illnesses' separator={false} />
-          <div className='w-100'>
-            <Card className='px-6 py-6'>
-              <h1></h1>
-              <form onSubmit={this.onSubmit}>
-                <div className='d-flex flex-wrap'>
-                  <div className='mr-12 mb-10'>
-                    <Label withInput={true}>Diagnosis Name</Label>
-                    <Input
-                      name='Diagonsis Name'
-                      type='text'
-                      placeholder='Name of Diagnosis'
-                      icon='add_box'
-                      autocomplete={'on'}
-                      onChange={(event) =>
-                        this.onChange(event.target.value, event.target.name)
-                      }
-                    />
-                  </div>
-                  <div className='mr-12 mb-10'>
-                    <Label withInput={true}>Body Site</Label>
-                    <Input
-                      name='Body Site'
-                      type='text'
-                      placeholder='Body Site of Diagonsis'
-                      autocomplete={'on'}
-                      onChange={(event) =>
-                        this.onChange(event.target.value, event.target.name)
-                      }
-                    />
-                  </div>
+                    mask: [
+                      /\d/,
+                      /\d/,
+                      '/',
+                      /\d/,
+                      /\d/,
+                      '/',
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                      /\d/,
+                    ],
+                  }}
+                />
+              </div>
 
-                  <div
-                    className='mr-12 mb-10'
-                    style={{ width: 'var(--spacing-9)' }}>
-                    <Label withInput={true}>Date of onset</Label>
-                    <DatePicker
-                      withInput={true}
-                      onDateChange={(currentDate) =>
-                        this.onChange(currentDate, 'date')
-                      }
-                      inputOptions={{
-                        placeholder: 'MM/DD/YYYY',
+              <div
+                className='mr-12 mb-10'
+                style={{ width: 'var(--spacing-9)' }}>
+                <Label withInput={true}>Severity</Label>
+                <Dropdown
+                  options={[
+                    { label: 'Mild', value: 'Mild' },
+                    { label: 'Moderate', value: 'Moderate' },
+                    { label: 'Severe', value: 'Severe' },
+                    { label: 'Others', value: 'Others' },
+                  ]}
+                  searchPlaceholder='Severity'
+                  withSearch={true}
+                />
+              </div>
+              <div
+                className='mr-12 mb-10'
+                style={{ width: 'var(--spacing-9)' }}>
+                <Label withInput={true}>Diagnostic Certainty</Label>
+                <Dropdown
+                  options={[
+                    { label: 'Suspected', value: 'Suspected' },
+                    { label: 'Probable', value: 'Probable' },
+                    { label: 'Confirmed', value: 'Confirmed' },
+                  ]}
+                  searchPlaceholder='Diagnostic Certainty'
+                  withSearch={true}
+                />
+              </div>
+            </div>
+            <div className='mr-12 mb-4'>
+              <PageHeader title='Problem Qualifier' separator={false} />
+            </div>
+            <div className='d-flex flex-wrap'>
+              <div
+                className='mr-12 mb-11'
+                style={{ width: 'var(--spacing-9)' }}>
+                <Label withInput={true}>Active/Inactive</Label>
+                <Dropdown
+                  options={[
+                    { label: 'Active', value: 'Active' },
+                    { label: 'Inactive', value: 'Inactive' },
+                  ]}
+                  searchPlaceholder='Active/Inactive'
+                  withSearch={true}
+                />
+              </div>
+              <div
+                className='mr-12 mb-11'
+                style={{ width: 'var(--spacing-9)' }}>
+                <Label withInput={true}>Resolution Phase</Label>
+                <Dropdown
+                  options={[
+                    { label: 'Resolved', value: 'Resolved' },
+                    { label: 'Relapsed', value: 'Relapsed' },
+                  ]}
+                  searchPlaceholder='Resolved/Relapsed'
+                  withSearch={true}
+                />
+              </div>
+              <div
+                className='mr-12 mb-11'
+                style={{ width: 'var(--spacing-9)' }}>
+                <Label withInput={true}>Occurance</Label>
 
-                        mask: [
-                          /\d/,
-                          /\d/,
-                          '/',
-                          /\d/,
-                          /\d/,
-                          '/',
-                          /\d/,
-                          /\d/,
-                          /\d/,
-                          /\d/,
-                        ],
-                      }}
-                    />
-                  </div>
+                <Dropdown
+                  options={[
+                    { label: 'Recurrence', value: 'Recurrence' },
+                    { label: 'Non-recurrence', value: 'Non-recurrence' },
+                  ]}
+                  searchPlaceholder='Recurrence'
+                  withSearch={true}
+                />
+              </div>
+            </div>
 
-                  <div
-                    className='mr-12 mb-10'
-                    style={{ width: 'var(--spacing-9)' }}>
-                    <Label withInput={true}>Severity</Label>
-                    <Dropdown
-                      options={[
-                        { label: 'Mild', value: 'Mild' },
-                        { label: 'Moderate', value: 'Moderate' },
-                        { label: 'Severe', value: 'Severe' },
-                        { label: 'Others', value: 'Others' },
-                      ]}
-                      searchPlaceholder='Severity'
-                      withSearch={true}
-                    />
-                  </div>
-                  <div
-                    className='mr-12 mb-10'
-                    style={{ width: 'var(--spacing-9)' }}>
-                    <Label withInput={true}>Diagnostic Certainty</Label>
-                    <Dropdown
-                      options={[
-                        { label: 'Suspected', value: 'Suspected' },
-                        { label: 'Probable', value: 'Probable' },
-                        { label: 'Confirmed', value: 'Confirmed' },
-                      ]}
-                      searchPlaceholder='Severity'
-                      withSearch={true}
-                    />
-                  </div>
-                </div>
-                <div className='mr-12 mb-10'>
-                  <h1>Problem Qualifier</h1>
-                </div>
-                <div className='d-flex flex-wrap'>
-                  <div
-                    className='mr-12 mb-10'
-                    style={{ width: 'var(--spacing-9)' }}>
-                    <Label withInput={true}>Active/Inactive</Label>
-
-                    <Dropdown
-                      options={[
-                        { label: 'Active', value: 'Active' },
-                        { label: 'Inactive', value: 'Inactive' },
-                      ]}
-                      searchPlaceholder='Active/Inactive'
-                      withSearch={true}
-                    />
-                  </div>
-                  <div
-                    className='mr-12 mb-10'
-                    style={{ width: 'var(--spacing-9)' }}>
-                    <Label withInput={true}>Resolution Phase</Label>
-                    <Dropdown
-                      options={[
-                        { label: 'Resolved', value: 'Resolved' },
-                        { label: 'Relapsed', value: 'Relapsed' },
-                      ]}
-                      searchPlaceholder='Resolved/Relapsed'
-                      withSearch={true}
-                    />
-                  </div>
-                  <div
-                    className='mr-12 mb-10'
-                    style={{ width: 'var(--spacing-9)' }}>
-                    <Label withInput={true}>Occurance</Label>
-
-                    <Dropdown
-                      options={[
-                        { label: 'Recurrence', value: 'Recurrence' },
-                        { label: 'Non-recurrence', value: 'Non-recurrence' },
-                      ]}
-                      searchPlaceholder='Recurrence'
-                      withSearch={true}
-                    />
-                  </div>
-                </div>
-
-                <Button
-                  disabled={this.state.searchDisabled}
-                  appearance='secondary'
-                  type='submit'>
-                  Submit
-                </Button>
-              </form>
-            </Card>
-          </div>
-        </div>
-      );
-    }
-  }
-
-  return <InlineForm />;
+            <Button
+              className='submmit-btn'
+              disabled={currentData.searchDisabled}
+              appearance='secondary'
+              type='submit'>
+              Submit
+            </Button>
+          </form>
+        </Card>
+      </div>
+    </div>
+  );
 };
 
 export default PastHistory;

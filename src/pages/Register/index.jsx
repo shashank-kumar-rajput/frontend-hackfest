@@ -40,24 +40,19 @@ const Register = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    const { email = '', password = '' } = data;
-    console.log(`email: ${email}, password: ${password}`);
+    const { username = '', password = '' } = data;
+    console.log(`email: ${username}, password: ${password}`);
 
     // call to backend
-    // fetch('https://backend-django-innovaccer.herokuapp.com/medicalsummary', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     username: data.username,
-    //     password: data.password,
-    //     confirmPassword,
-    //   }),
-    // })
-    //   .then((response) => response.json())
-    //   .then((response) => console.log(response))
-    //   .catch((error) => console.log(error));
-
-    fetch('https://backend-django-innovaccer.herokuapp.com/medicalsummary')
+    fetch('https://backend-django-innovaccer.herokuapp.com/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: data.username,
+        password: data.password,
+        confirmPassword: confirmPassword,
+      }),
+    })
       .then((response) => response.json())
       .then((response) => console.log(response))
       .catch((error) => console.log(error));
