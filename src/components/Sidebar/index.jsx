@@ -27,7 +27,7 @@ const Sidebar = () => {
       icon: 'list',
     },
     {
-      name: 'encounters',
+      name: '/planofcare',
       label: 'Plan of Care',
       icon: 'directions_walk',
     },
