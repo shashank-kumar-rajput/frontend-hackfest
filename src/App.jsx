@@ -28,14 +28,14 @@ const App = () => {
     localStorage.removeItem('password');
   };
 
-  useEffect(() => {
-    fetch(URL)
-      .then((response) => response.json())
-      .then((data) => {
-        setDetailsList(data);
-      })
-      .catch((error) => console.log(error));
-  }, []);
+  // useEffect(() => {
+  //   fetch(URL)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setDetailsList(data);
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, []);
 
   return (
     <BrowserRouter>

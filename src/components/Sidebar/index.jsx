@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Collapsible, VerticalNav } from '@innovaccer/design-system';
 import { useNavigate } from 'react-router-dom';
 import '@innovaccer/design-system/css';
@@ -43,8 +43,8 @@ const Sidebar = () => {
     },
   ];
 
-  const [expanded, setExpanded] = React.useState(true);
-  const [active, setActive] = React.useState({
+  const [expanded, setExpanded] = useState(false);
+  const [active, setActive] = useState({
     name: 'medical_records.allergies',
   });
   const navigate = useNavigate();

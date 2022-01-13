@@ -1,5 +1,5 @@
-import React from "react";
-import "@innovaccer/design-system/css";
+import React from 'react';
+import '@innovaccer/design-system/css';
 import {
   PageHeader,
   Card,
@@ -9,9 +9,9 @@ import {
   DatePicker,
   Dropdown,
   Textarea,
-} from "@innovaccer/design-system";
+} from '@innovaccer/design-system';
 
-import "./ProblemList.css";
+import './ProblemList.css';
 
 const Medication = () => {
   class InlineForm extends React.Component {
@@ -45,64 +45,59 @@ const Medication = () => {
     }
 
     render() {
-     
-     
-
       return (
-        <div className="d-flex flex-column bg-secondary-lightest vh-100 pb-6">
-          <PageHeader title="Problem List" separator={false} />
-          <div className="w-100">
-            <Card className="px-6 py-6">
+        <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
+          <PageHeader title='Problem List' separator={false} />
+          <div className='w-100'>
+            <Card className='px-6 py-6'>
               <h1></h1>
               <form onSubmit={this.onSubmit}>
-                <div className="d-flex flex-wrap">
-                  <div className="mr-12 mb-10">
+                <div className='d-flex flex-wrap'>
+                  <div className='mr-12 mb-10'>
                     <Label withInput={true}>Diagnosis Name</Label>
                     <Input
-                      name="Diagonsis Name"
-                      type="text"
-                      placeholder="Name of Diagnosis"
-                      icon="add_box"
-                      autocomplete={"on"}
+                      name='Diagonsis Name'
+                      type='text'
+                      placeholder='Name of Diagnosis'
+                      icon='add_box'
+                      autocomplete={'on'}
                       onChange={(event) =>
                         this.onChange(event.target.value, event.target.name)
                       }
                     />
                   </div>
-                  <div className="mr-12 mb-10">
+                  <div className='mr-12 mb-10'>
                     <Label withInput={true}>Body Site</Label>
                     <Input
-                      name="Body Site"
-                      type="text"
-                      placeholder="Body Site of Diagonsis"
-                      autocomplete={"on"}
+                      name='Body Site'
+                      type='text'
+                      placeholder='Body Site of Diagonsis'
+                      autocomplete={'on'}
                       onChange={(event) =>
                         this.onChange(event.target.value, event.target.name)
                       }
                     />
                   </div>
-                 
-                  
+
                   <div
-                    className="mr-12 mb-10"
-                    style={{ width: "var(--spacing-9)" }}
-                  >
+                    className='mr-12 mb-10'
+                    style={{ width: 'var(--spacing-9)' }}>
                     <Label withInput={true}>Date of onset</Label>
                     <DatePicker
                       withInput={true}
                       onDateChange={(currentDate) =>
-                        this.onChange(currentDate, "date")
+                        this.onChange(currentDate, 'date')
                       }
                       inputOptions={{
-                        placeholder: "MM/DD/YYYY",
+                        placeholder: 'MM/DD/YYYY',
 
                         mask: [
                           /\d/,
                           /\d/,
-                          "/",
+                          '/',
                           /\d/,
                           /\d/,
-                          "/",
+                          '/',
                           /\d/,
                           /\d/,
                           /\d/,
@@ -111,109 +106,89 @@ const Medication = () => {
                       }}
                     />
                   </div>
-                 
-                 
-                 
 
                   <div
-                    className="mr-12 mb-10"
-                    style={{ width: "var(--spacing-9)" }}
-                  >
+                    className='mr-12 mb-10'
+                    style={{ width: 'var(--spacing-9)' }}>
                     <Label withInput={true}>Severity</Label>
                     <Dropdown
                       options={[
-                        { label: "Mild", value: "Mild" },
-                        { label: "Moderate", value: "Moderate" },
-                        { label: "Severe", value: "Severe" },
-                        { label: "Others", value: "Others" },
+                        { label: 'Mild', value: 'Mild' },
+                        { label: 'Moderate', value: 'Moderate' },
+                        { label: 'Severe', value: 'Severe' },
+                        { label: 'Others', value: 'Others' },
                       ]}
-                      searchPlaceholder="Severity"
+                      searchPlaceholder='Severity'
                       withSearch={true}
                     />
                   </div>
                   <div
-                    className="mr-12 mb-10"
-                    style={{ width: "var(--spacing-9)" }}
-                  >
+                    className='mr-12 mb-10'
+                    style={{ width: 'var(--spacing-9)' }}>
                     <Label withInput={true}>Diagnostic Certainty</Label>
                     <Dropdown
                       options={[
-                        { label: "Suspected", value: "Suspected" },
-                        { label: "Probable", value: "Probable" },
-                        { label: "Confirmed", value: "Confirmed" }
+                        { label: 'Suspected', value: 'Suspected' },
+                        { label: 'Probable', value: 'Probable' },
+                        { label: 'Confirmed', value: 'Confirmed' },
                       ]}
-                      searchPlaceholder="Severity"
+                      searchPlaceholder='Severity'
                       withSearch={true}
                     />
                   </div>
-
                 </div>
-                <div className="mr-12 mb-10">
+                <div className='mr-12 mb-10'>
                   <h1>Problem Qualifier</h1>
                 </div>
-                <div className="d-flex flex-wrap">
-                  
+                <div className='d-flex flex-wrap'>
                   <div
-                    className="mr-12 mb-10"
-                    style={{ width: "var(--spacing-9)" }}
-                  >
+                    className='mr-12 mb-10'
+                    style={{ width: 'var(--spacing-9)' }}>
                     <Label withInput={true}>Active/Inactive</Label>
-                  
+
                     <Dropdown
                       options={[
-                        { label: "Active", value: "Active" },
-                        { label: "Inactive", value: "Inactive" },
-                        
+                        { label: 'Active', value: 'Active' },
+                        { label: 'Inactive', value: 'Inactive' },
                       ]}
-                      searchPlaceholder="Active/Inactive"
+                      searchPlaceholder='Active/Inactive'
                       withSearch={true}
                     />
-                    
-
                   </div>
                   <div
-                    className="mr-12 mb-10"
-                    style={{ width: "var(--spacing-9)" }}
-                  >
+                    className='mr-12 mb-10'
+                    style={{ width: 'var(--spacing-9)' }}>
                     <Label withInput={true}>Resolution Phase</Label>
                     <Dropdown
                       options={[
-                        { label: "Resolved", value: "Resolved" },
-                        { label: "Relapsed", value: "Relapsed" },
-                        
+                        { label: 'Resolved', value: 'Resolved' },
+                        { label: 'Relapsed', value: 'Relapsed' },
                       ]}
-                      searchPlaceholder="Resolved/Relapsed"
+                      searchPlaceholder='Resolved/Relapsed'
                       withSearch={true}
                     />
-                    
-
                   </div>
                   <div
-                    className="mr-12 mb-10"
-                    style={{ width: "var(--spacing-9)" }}
-                  >
+                    className='mr-12 mb-10'
+                    style={{ width: 'var(--spacing-9)' }}>
                     <Label withInput={true}>Occurance</Label>
-                    
+
                     <Dropdown
                       options={[
-                        { label: "Recurrence", value: "Recurrence" },
-                        { label: "Non-recurrence", value: "Non-recurrence" },
-                        
+                        { label: 'Recurrence', value: 'Recurrence' },
+                        { label: 'Non-recurrence', value: 'Non-recurrence' },
                       ]}
-                      searchPlaceholder="Recurrence"
+                      searchPlaceholder='Recurrence'
                       withSearch={true}
                     />
-                    
-
                   </div>
-
                 </div>
 
                 <Button
+                  className='submmit-btn'
                   disabled={this.state.searchDisabled}
-                  appearance="secondary"
-                  type="submit"
-                >
+                  appearance='secondary'
+                  type='submit'>
                   Submit
                 </Button>
               </form>

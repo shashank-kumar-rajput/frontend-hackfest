@@ -100,7 +100,7 @@ const PlanOfCare = () => {
                 />
               </div>
             </div>
-            <Button appearance='primary' type='submit'>
+            <Button appearance='primary' type='submit' className='submmit-btn'>
               Submit
             </Button>
           </form>
