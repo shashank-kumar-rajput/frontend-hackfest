@@ -55,9 +55,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div
-      style={{ background: 'var(--secondary-lightest)' }}
-      className='stick-left'>
+    <div className='stick-left'>
       <Collapsible expanded={expanded} onToggle={setExpanded} hoverable={false}>
         <VerticalNav
           menus={data}
