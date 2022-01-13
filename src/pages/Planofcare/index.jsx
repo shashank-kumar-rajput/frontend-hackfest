@@ -91,7 +91,7 @@ const Planofcare = () => {
                </div>
                </div>
              <Button
-               appearance="primary"
+               appearance="secondary"
                type="submit"
              >
                Submit

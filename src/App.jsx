@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Navigation from './components/Navigation';
 import NotFound from './pages/NotFound';
+import Diagnostic from './pages/Diagnostic';
 import Sidebar from './components/Sidebar';
 import Medication from './pages/Medication';
 import ProblemList from './pages/ProblemList';
