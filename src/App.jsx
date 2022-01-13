@@ -53,10 +53,11 @@ const App = () => {
                 }
               />
               <Route path='/register' element={<Register />} />
-              <Route path='/planofcare' element={<PlanOfCare />} />
+              <Route path='/planofcare' element={<PlanofCare />} />
               <Route path='/medication' element={<Medication />} />
               <Route path='/problemList' element={<ProblemList />} />
-              <Route path='/past-history' element={<PastHistory />} />
+              <Route path='/diagnostic' element={<Diagnostic />} />
+              <Route path='/pastHistory' element={<PastHistory />} />
               <Route path='/*' element={<NotFound />} />
             </Routes>
           </div>

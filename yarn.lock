@@ -8968,7 +8968,11 @@
     "strip-ansi" "6.0.0"
     "text-table" "0.2.0"
 
+<<<<<<< HEAD
+"react-dom@*", "react-dom@^18.0.0-rc.0-next-811634762-20220110", "react-dom@>=16.8":
+=======
 "react-dom@*", "react-dom@^18.0.0-rc.0-next-fe905f152-20220107", "react-dom@>=16.8":
+>>>>>>> 32734593eb324ed4628a800bf84600ecc4b802cb
   "integrity" "sha512-tl+6q+8h9Vj7r4iI1jYQfLp4oHLC+f7tenqlYBw9eOyJ/SXJXzZ0Mp7QG1LYkK+oapO3vlj5I7ddnbnf8bcDJQ=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.0.0-rc.0-next-fe905f152-20220107.tgz"
   "version" "18.0.0-rc.0-next-fe905f152-20220107"
@@ -9100,7 +9104,11 @@
   optionalDependencies:
     "fsevents" "2.1.2"
 
+<<<<<<< HEAD
+"react@*", "react@^16.14.0", "react@^18.0.0-rc.0-next-811634762-20220110", "react@>=0.14.0", "react@>=16.8", "react@0.14.x || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@18.0.0-rc.0-next-fe905f152-20220107":
+=======
 "react@*", "react@^16.14.0", "react@^18.0.0-rc.0-next-fe905f152-20220107", "react@>=0.14.0", "react@>=16.8", "react@0.14.x || ^15.0.0 || ^16.0.0 || ^17.0.0", "react@18.0.0-rc.0-next-fe905f152-20220107":
+>>>>>>> 32734593eb324ed4628a800bf84600ecc4b802cb
   "integrity" "sha512-eePjzo6pCiwk9iDRYG0Hn5F0p9e7dlLGIys/eeLUCxByHP90rsXg/H/842S6ggBgarcfvRtDu8cAU7kxfLC4MA=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.0.0-rc.0-next-fe905f152-20220107.tgz"
   "version" "18.0.0-rc.0-next-fe905f152-20220107"

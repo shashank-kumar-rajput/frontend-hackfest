@@ -30,6 +30,11 @@ iframe {
 body {
   justify-content: flex-start;
   align-items: flex-start;
+  background-color: #fff;
+}
+
+iframe {
+  display: none !important;
 }
 
 .header {

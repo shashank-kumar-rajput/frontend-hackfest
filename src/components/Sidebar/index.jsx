@@ -7,39 +7,39 @@ import './Sidebar.css';
 const Sidebar = () => {
   const data = [
     {
-      name: 'home',
+      name: '/',
       label: 'Home',
       icon: 'home',
     },
     {
-      name: 'profile',
-      label: 'Profile',
+      name: '/medication',
+      label: 'Medical Summary',
       icon: 'account_circle',
     },
     {
-      name: 'medical_records',
-      label: 'Medical Records',
-      icon: 'local_hospital',
-    },
-    {
-      name: 'formulary',
-      label: 'Formulary',
+      name: '/problemList',
+      label: 'Problem List',
       icon: 'list',
     },
     {
-      name: 'encounters',
-      label: 'Encounters',
-      icon: 'directions_walk',
+      name: '/diagnostic',
+      label: 'Diagnostic Results',
+      icon: 'summarize',
     },
     {
-      name: 'past-history',
+      name: '/planofcare',
+      label: 'Plan of Care',
+      icon: 'self_improvement',
+    },
+    {
+      name: '/pastHistory',
       label: 'Past History of illness',
-      icon: 'receipt',
+      icon: 'timeline',
     },
     {
       name: 'documents',
-      label: 'Documents',
-      icon: 'assignment',
+      label: 'ePrescription',
+      icon: 'speaker_notes',
     },
   ];
 
