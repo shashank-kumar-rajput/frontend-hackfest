@@ -4,16 +4,23 @@ import Register from './pages/Register';
 import Navigation from './components/Navigation';
 import NotFound from './pages/NotFound';
 import Sidebar from './components/Sidebar';
-import Medication from './components/Medication';
-import ProblemList from './components/ProblemList';
+import Medication from './pages/Medication';
+import ProblemList from './pages/ProblemList';
 import PastHistory from './pages/PastHistory';
+import PlanOfCare from './pages/PlanOfCare';
+import Login from './pages/Login';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles.css';
+<<<<<<< HEAD
+
+
+=======
 import Login from './pages/Login';
-import Planofcare from './components/Planofcare';
+import Planofcare from './pages/Planofcare';
+>>>>>>> 0a68ea156ed9370787404f4281b59196df4f5771
 
 const App = () => {
-  const user = true;
+  const user = false;
 
   return (
     <BrowserRouter>
@@ -26,7 +33,7 @@ const App = () => {
               <Route path='/' exact element={<Home />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
-              <Route path='/planofcare' element={<Planofcare />} />
+              <Route path='/planofcare' element={<PlanOfCare />} />
               <Route path='/medication' element={<Medication />} />
               <Route path='/problemList' element={<ProblemList />} />
               <Route path='/past-history' element={<PastHistory />} />
