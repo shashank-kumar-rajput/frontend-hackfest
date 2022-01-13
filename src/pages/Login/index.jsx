@@ -9,13 +9,12 @@ import {
   Icon,
   Button,
 } from '@innovaccer/design-system';
-import "./Login.css"
+import './Login.css';
 
-const Login = () => {
+const Login = ({ handleUser, removeUser }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [data, setData] = useState({ username: '', password: '' });
   const { password = '' } = data;
-  
 
   const onActionClick = () => {
     setPasswordVisible(!passwordVisible);
@@ -35,7 +34,6 @@ const Login = () => {
     event.preventDefault();
     const { email = '', password = '' } = data;
     console.log(`email: ${email}, password: ${password}`);
-
   };
 
   return (

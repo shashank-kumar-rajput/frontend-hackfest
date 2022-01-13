@@ -6,6 +6,7 @@
   --secondary-color: #9ca3af;
   --navbar-color: #f4f4f4;
   --sidebar-color: #f9fafb;
+  --white-color: #fff;
   --shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
 }
 
@@ -29,15 +30,6 @@ body {
   align-items: flex-start;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Merriweather', serif;
-}
-
 .header {
   height: 20px;
   padding: 2rem;
@@ -51,7 +43,7 @@ h6 {
 /* right content */
 .content-wrapper {
   flex-grow: 1;
-  margin-left: 1rem;
+  margin: 1rem;
 }
 
 .link {
@@ -62,4 +54,16 @@ h6 {
 
 .link:hover {
   border-bottom: 1px solid var(--primary-color);
+}
+
+.Card--shadow-default {
+  box-shadow: none;
+}
+
+.PageHeader-wrapper {
+  background-color: var(--white-color);
+}
+
+.bg-secondary-lightest {
+  box-shadow: var(--shadow);
 }
