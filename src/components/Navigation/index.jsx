@@ -13,7 +13,7 @@ const Navigation = () => {
       <ul className='list'>
         <li className='list-item '>
           <Link to='/login' className='link'>
-            About us
+            About
           </Link>
         </li>
         <li className='list-item'>

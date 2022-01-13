@@ -109,7 +109,9 @@ const Register = () => {
               autocomplete={'off'}
               onChange={onConfirmPasswordChange}
             />
-            <Link to='/login'>Already a user ?</Link>
+            <Link to='/login' className='link'>
+              Already a user ?
+            </Link>
             <Button
               className='mt-5'
               appearance='primary'

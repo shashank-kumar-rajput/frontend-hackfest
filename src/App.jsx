@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Navigation from './components/Navigation';
@@ -11,16 +11,32 @@ import PlanOfCare from './pages/PlanOfCare';
 import Login from './pages/Login';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles.css';
-<<<<<<< HEAD
-
-
-=======
-import Login from './pages/Login';
-import Planofcare from './pages/Planofcare';
->>>>>>> 0a68ea156ed9370787404f4281b59196df4f5771
+// import Planofcare from './pages/Planofcare';
 
 const App = () => {
-  const user = false;
+  const user = true;
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [detailsList, setDetailsList] = useState([]);
+  const URL = 'https://backend-django-innovaccer.herokuapp.com/';
+
+  const handleUser = () => {
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
+  };
+  const removeUser = () => {
+    localStorage.removeItem('username');
+    localStorage.removeItem('password');
+  };
+
+  useEffect(() => {
+    fetch(URL)
+      .then((response) => response.json())
+      .then((response) => setDetailsList(response))
+      .catch((error) => console.log(error));
+
+    console.log(detailsList);
+  }, []);
 
   return (
     <BrowserRouter>
@@ -31,7 +47,12 @@ const App = () => {
           <div className='content-wrapper'>
             <Routes>
               <Route path='/' exact element={<Home />} />
-              <Route path='/login' element={<Login />} />
+              <Route
+                path='/login'
+                element={
+                  <Login handleUser={handleUser} removeUser={removeUser} />
+                }
+              />
               <Route path='/register' element={<Register />} />
               <Route path='/planofcare' element={<PlanOfCare />} />
               <Route path='/medication' element={<Medication />} />

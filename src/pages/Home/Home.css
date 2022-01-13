@@ -1,13 +1,14 @@
 .home {
   text-align: center;
-  margin-top: 1rem;
+  margin: 1rem 0;
 }
 
 .home-img {
-  width: 500px;
+  max-width: 500px;
 }
 
 .home-header {
   margin-top: 1rem;
   font-size: 3rem;
+  line-height: 3.3rem;
 }

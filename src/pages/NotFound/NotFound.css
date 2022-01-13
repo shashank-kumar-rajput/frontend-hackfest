@@ -4,8 +4,13 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  margin: 1rem;
 }
 
-img {
-  width: 50%;
+.page-not-found img {
+  max-width: 500px;
+}
+
+.page-not-found p {
+  margin-top: 1.5rem;
 }
