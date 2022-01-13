@@ -10,6 +10,8 @@ import PastHistory from './pages/PastHistory';
 import PlanOfCare from './pages/PlanOfCare';
 import Sidebar from './components/Sidebar';
 import Navigation from './components/Navigation';
+import Login from './pages/Login';
+import Prescription from './pages/ePrescription';
 import './styles.css';
 
 const App = () => {
@@ -53,12 +55,14 @@ const App = () => {
                 }
               />
               <Route path='/register' element={<Register />} />
-              <Route path='/planofcare' element={<PlanofCare />} />
+              <Route path='/planofcare' element={<PlanOfCare />} />
               <Route path='/medication' element={<Medication />} />
               <Route path='/problemList' element={<ProblemList />} />
               <Route path='/diagnostic' element={<Diagnostic />} />
               <Route path='/pastHistory' element={<PastHistory />} />
+              <Route path='/ePrescription' element={<Prescription />} />
               <Route path='/*' element={<NotFound />} />
+              
             </Routes>
           </div>
         </div>
