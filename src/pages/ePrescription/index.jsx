@@ -116,7 +116,7 @@ const Prescription = () => {
                   />
                 </div>
               </div>
-
+             <div className="d-flex flex-wrap">
               <div className="mr-12 mb-10">
                 <Label withInput={true}>Route</Label>
                 <Input
@@ -157,12 +157,12 @@ const Prescription = () => {
                   }
                 />
               </div>
+            </div>
 
-              <div className="mr-12 mb-10">
-                <h1>Medication Safety</h1>
-              </div>
+            <div style={{"font-size" : "10px", "height" : "100px", "width" : "100%"}}> <h1>Medical Safety </h1></div>
 
               <div className="d-flex flex-wrap">
+              
                 <div className="mr-12 mb-10">
                   <Label withInput={true}>Max Amount</Label>
                   <Input

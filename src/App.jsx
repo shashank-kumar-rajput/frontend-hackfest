@@ -10,12 +10,12 @@ import PastHistory from './pages/PastHistory';
 import PlanOfCare from './pages/PlanOfCare';
 import Sidebar from './components/Sidebar';
 import Navigation from './components/Navigation';
-import Login from './pages/Login';
 import Prescription from './pages/ePrescription';
+import Diagnostic from './pages/Diagnostic';
 import './styles.css';
 
 const App = () => {
-  const user = false;
+  const user = true;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [detailsList, setDetailsList] = useState([]);
