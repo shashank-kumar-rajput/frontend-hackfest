@@ -5,7 +5,7 @@ import { PageHeader,Card, Label, Input, Button, } from '@innovaccer/design-syste
 import  './Planofcare.css';
 import { useState } from "react/cjs/react.development";
 
-const Planofcare = () => {
+const PlanofCare = () => {
     const [formData, setFormData] = useState({
         carePlanName:'',
         description: '',
@@ -103,6 +103,5 @@ const Planofcare = () => {
   
       );
     }
-
-
- export default Planofcare
+    
+ export default PlanofCare

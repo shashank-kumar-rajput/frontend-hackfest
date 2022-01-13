@@ -19,27 +19,27 @@ const Sidebar = () => {
     {
       name: '/problemList',
       label: 'Problem List',
-      icon: 'local_hospital',
+      icon: 'list',
     },
     {
       name: '/diagnostic',
       label: 'Diagnostic Results',
-      icon: 'list',
+      icon: 'summarize',
     },
     {
       name: '/planofcare',
       label: 'Plan of Care',
-      icon: 'directions_walk',
+      icon: 'self_improvement',
     },
     {
       name: '/pastHistory',
       label: 'Past History of illness',
-      icon: 'receipt',
+      icon: 'timeline',
     },
     {
       name: 'documents',
       label: 'ePrescription',
-      icon: 'assignment',
+      icon: 'speaker_notes',
     },
   ];
 
