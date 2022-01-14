@@ -7,7 +7,6 @@ import {
   Input,
   Button,
 } from '@innovaccer/design-system';
-
 import './Diagnostic.css';
 
 const Diagnostic = () => {

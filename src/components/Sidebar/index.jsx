@@ -37,9 +37,14 @@ const Sidebar = () => {
       icon: 'timeline',
     },
     {
-      name: 'documents',
+      name: '/eprescription',
       label: 'ePrescription',
       icon: 'speaker_notes',
+    },
+    {
+      name: '/documentation',
+      label: 'Documentation',
+      icon: 'summarize',
     },
   ];
 
@@ -66,50 +71,5 @@ const Sidebar = () => {
       </Collapsible>
     </div>
   );
-
-  // return (
-  // <aside ide class='navbar bg-light'>
-  //   <div class='container-fluid'>
-  //     <ul class='navbar-nav'>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/medication'>
-  //           Medical Summary
-  //         </Link>
-  //       </li>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/documentation'>
-  //           Medical Summary
-  //         </Link>
-  //       </li>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/patient-list'>
-  //           Medical Summary
-  //         </Link>
-  //       </li>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/register'>
-  //           Problem List
-  //         </Link>
-  //       </li>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/register'>
-  //           Diagnostic Results
-  //         </Link>
-  //       </li>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/register'>
-  //           Past History of Illness
-  //         </Link>
-  //       </li>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/register'>
-  //           Plan of Care
-  //         </Link>
-  //       </li>
-  //     </ul>
-  //   </div>
-  // </aside>
-
-  // );
 };
 export default Sidebar;
