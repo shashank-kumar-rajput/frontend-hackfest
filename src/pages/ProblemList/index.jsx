@@ -8,7 +8,6 @@ import {
   Button,
   DatePicker,
   Dropdown,
-  Textarea,
 } from '@innovaccer/design-system';
 
 import './ProblemList.css';
@@ -50,7 +49,6 @@ const Medication = () => {
           <PageHeader title='Problem List' separator={false} />
           <div className='w-100'>
             <Card className='px-6 py-6'>
-              <h1></h1>
               <form onSubmit={this.onSubmit}>
                 <div className='d-flex flex-wrap'>
                   <div className='mr-12 mb-10'>

@@ -8,6 +8,7 @@ import Medication from './pages/Medication';
 import ProblemList from './pages/ProblemList';
 import PastHistory from './pages/PastHistory';
 import PlanOfCare from './pages/PlanOfCare';
+import Diagnostic from './pages/Diagnostic';
 import Sidebar from './components/Sidebar';
 import Navigation from './components/Navigation';
 import './styles.css';
@@ -53,7 +54,7 @@ const App = () => {
                 }
               />
               <Route path='/register' element={<Register />} />
-              <Route path='/planofcare' element={<PlanofCare />} />
+              <Route path='/planofcare' element={<PlanOfCare />} />
               <Route path='/medication' element={<Medication />} />
               <Route path='/problemList' element={<ProblemList />} />
               <Route path='/diagnostic' element={<Diagnostic />} />
