@@ -9,6 +9,9 @@ import PlanofCare from './pages/PlanofCare';
 import Medication from './pages/Medication';
 import ProblemList from './pages/ProblemList';
 import PastHistory from './pages/PastHistory';
+import Diagnostic from './pages/Diagnostic';
+import Prescription from './pages/ePrescription';
+import Documents from './pages/Documents';
 import Sidebar from './components/Sidebar';
 import Navigation from './components/Navigation';
 import './styles.css';
@@ -19,15 +22,6 @@ const App = () => {
   const [password, setPassword] = useState('');
   const [detailsList, setDetailsList] = useState([]);
   const URL = 'https://backend-django-innovaccer.herokuapp.com/medicalsummary';
-
-  const handleUser = () => {
-    localStorage.setItem('username', username);
-    localStorage.setItem('password', password);
-  };
-  const removeUser = () => {
-    localStorage.removeItem('username');
-    localStorage.removeItem('password');
-  };
 
   // useEffect(() => {
   //   fetch(URL)
@@ -41,24 +35,21 @@ const App = () => {
   return (
     <BrowserRouter>
       <div>
-        <Navigation />
+        <Navigation user={user} />
         <div className='main-container'>
           {user && <Sidebar />}
           <div className='content-wrapper'>
             <Routes>
               <Route path='/' exact element={<Home />} />
-              <Route
-                path='/login'
-                element={
-                  <Login handleUser={handleUser} removeUser={removeUser} />
-                }
-              />
+              <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
-              <Route path='/planofcare' element={<PlanofCare />} />
+              <Route path='/planofcare' element={<PlanOfCare />} />
               <Route path='/medication' element={<Medication />} />
               <Route path='/problemList' element={<ProblemList />} />
               <Route path='/diagnostic' element={<Diagnostic />} />
               <Route path='/pastHistory' element={<PastHistory />} />
+              <Route path='/documentation' element={<Documents />} />
+              <Route path='/eprescription' element={<Prescription />} />
               <Route path='/*' element={<NotFound />} />
             </Routes>
           </div>

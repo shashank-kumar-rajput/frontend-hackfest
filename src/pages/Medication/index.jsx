@@ -184,7 +184,6 @@ const Medication = () => {
             </div>
             <div className='mr-12 mb-4'>
               <PageHeader title='Description' separator={false} />
-              <h4></h4>
             </div>
             <div className='d-flex flex-wrap'>
               <div className='mr-12 mb-10'>
