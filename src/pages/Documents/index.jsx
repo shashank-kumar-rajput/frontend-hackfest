@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '@innovaccer/design-system/css';
 import './Documents.css';
 import {
@@ -7,18 +7,10 @@ import {
   Card,
   CardBody,
   Heading,
-  Button,
   Divider,
 } from '@innovaccer/design-system';
 
 const Documents = () => {
-  const [medicalSummaryDoc, setMedicalSummaryDoc] = useState(true);
-  const [problemListDoc, setProblemListDoc] = useState(true);
-  const [dignosticsResultsDoc, setDignosticsResultsDoc] = useState(true);
-  const [pastHistoryDoc, setPastHistoryDoc] = useState(true);
-  const [planOfCareDoc, setPlanOfCareDoc] = useState(true);
-  const [prescriptionDoc, setPrescriptionDoc] = useState(true);
-
   const MedicalSummaryDoc = () => {
     return (
       <div>
@@ -196,7 +188,7 @@ const Documents = () => {
             </Column>
           </Row>
         </div>
-        </div>
+      </div>
     );
   };
 
@@ -724,12 +716,12 @@ const Documents = () => {
 
   return (
     <div>
-       <MedicalSummaryDoc />
-       <ProblemListDoc /> 
-       <DignosticsResultsDoc /> 
-       <PastHistoryDoc /> 
-       <PlanOfCareDoc /> 
-       <PrescriptionDoc /> 
+      <MedicalSummaryDoc />
+      <ProblemListDoc />
+      <DignosticsResultsDoc />
+      <PastHistoryDoc />
+      <PlanOfCareDoc />
+      <PrescriptionDoc />
     </div>
   );
 };

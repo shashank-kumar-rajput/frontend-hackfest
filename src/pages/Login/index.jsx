@@ -11,7 +11,7 @@ import {
 } from '@innovaccer/design-system';
 import './Login.css';
 
-const Login = ({ setToken, setUser }) => {
+const Login = ({ setToken, setUser, handle }) => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [data, setData] = useState({ username: '', password: '' });
@@ -33,7 +33,6 @@ const Login = ({ setToken, setUser }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    const { email = '', password = '' } = data;
     fetch('https://backend-django-innovaccer.herokuapp.com/api-token-auth/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -41,8 +40,9 @@ const Login = ({ setToken, setUser }) => {
     })
       .then((res) => res.json())
       .then((token) => {
-        localStorage.setItem('token', JSON.stringify(token));
+        handle(JSON.stringify(token));
         setToken(token);
+        setUser(token);
         navigate('/');
       })
       .catch((err) => console.log(err));

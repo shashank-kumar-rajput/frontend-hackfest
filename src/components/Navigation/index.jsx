@@ -1,10 +1,8 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Navigation.css';
 
 const Navigation = ({ user, remove }) => {
-  const navigate = useNavigate();
-
   const handleLinkClick = () => {
     console.log('here');
     if (user) {

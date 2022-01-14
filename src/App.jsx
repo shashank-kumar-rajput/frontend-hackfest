@@ -28,21 +28,28 @@ const App = () => {
     localStorage.removeItem('token');
   };
 
+  // console.log(JSON.parse(localStorage.getItem('token')).token);
   useEffect(() => {
-    fetch(URL, {
-      method: 'GET',
-      headers: {
-        Authorization: token,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setDetailsList(data);
+    const getDeatails = () => {
+      fetch(URL, {
+        method: 'GET',
+        headers: {
+          Authorization: `Token ${
+            JSON.parse(localStorage.getItem('token')).token
+          }`,
+        },
       })
-      .catch((error) => console.log(error));
+        .then((response) => response.json())
+        .then((response) => {
+          setDetailsList(response);
+          console.log(detailsList);
+        })
+        .catch((error) => console.log(error, token));
 
-    setUser(localStorage.getItem('token'));
+      setUser(localStorage.getItem('token'));
+    };
+
+    getDeatails();
   }, [token]);
 
   return (
@@ -56,7 +63,13 @@ const App = () => {
               <Route path='/' exact element={<Home />} />
               <Route
                 path='/login'
-                element={<Login setToken={setToken} setUser={setUser} />}
+                element={
+                  <Login
+                    setToken={setToken}
+                    setUser={setUser}
+                    handle={handle}
+                  />
+                }
               />
               <Route path='/register' element={<Register />} />
               <Route path='/planofcare' element={<PlanOfCare />} />
