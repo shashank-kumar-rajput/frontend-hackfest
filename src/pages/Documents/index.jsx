@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '@innovaccer/design-system/css';
 import './Documents.css';
 import {
@@ -7,23 +7,20 @@ import {
   Card,
   CardBody,
   Heading,
-  Button,
   Divider,
 } from '@innovaccer/design-system';
 
 const Documents = () => {
-  const [medicalSummaryDoc, setMedicalSummaryDoc] = useState(true);
-  const [problemListDoc, setProblemListDoc] = useState(true);
-  const [dignosticsResultsDoc, setDignosticsResultsDoc] = useState(true);
-  const [pastHistoryDoc, setPastHistoryDoc] = useState(true);
-  const [planOfCareDoc, setPlanOfCareDoc] = useState(true);
-  const [prescriptionDoc, setPrescriptionDoc] = useState(true);
-
   const MedicalSummaryDoc = () => {
     return (
+<<<<<<< HEAD
       <>
       
         {/* <h1>Fetaures</h1> */}
+=======
+      <div>
+        <h1 className='documentation-header'>Features</h1>
+>>>>>>> 0f927a3c41c99b7cd6882d8fd6de40fec2340f48
         <div className=''>
           <Row>
             <Column size='10'>
@@ -197,7 +194,11 @@ const Documents = () => {
             </Column>
           </Row>
         </div>
+<<<<<<< HEAD
       </> 
+=======
+      </div>
+>>>>>>> 0f927a3c41c99b7cd6882d8fd6de40fec2340f48
     );
   };
 
@@ -725,12 +726,12 @@ const Documents = () => {
 
   return (
     <div>
-       <MedicalSummaryDoc />
-       <ProblemListDoc /> 
-       <DignosticsResultsDoc /> 
-       <PastHistoryDoc /> 
-       <PlanOfCareDoc /> 
-       <PrescriptionDoc /> 
+      <MedicalSummaryDoc />
+      <ProblemListDoc />
+      <DignosticsResultsDoc />
+      <PastHistoryDoc />
+      <PlanOfCareDoc />
+      <PrescriptionDoc />
     </div>
   );
 };

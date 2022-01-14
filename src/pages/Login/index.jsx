@@ -33,6 +33,7 @@ const Login = ({ setToken, setUser }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
+<<<<<<< HEAD
     // fetch('https://backend-django-innovaccer.herokuapp.com/signin', {
     //    method: 'POST',
     //    headers: { 'Content-Type': 'application/json' },
@@ -42,6 +43,8 @@ const Login = ({ setToken, setUser }) => {
     //    .then((res) => console.log(res))
     //    .catch((err) => console.log(err));
     const { email = '', password = '' } = data;
+=======
+>>>>>>> 0f927a3c41c99b7cd6882d8fd6de40fec2340f48
     fetch('https://backend-django-innovaccer.herokuapp.com/api-token-auth/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -51,6 +54,7 @@ const Login = ({ setToken, setUser }) => {
       .then((token) => {
         localStorage.setItem('token', JSON.stringify(token));
         setToken(token);
+        // setUser(true);
         navigate('/');
       })
       .catch((err) => console.log(err));
@@ -96,13 +100,6 @@ const Login = ({ setToken, setUser }) => {
               }
             />
             <Link to='/register'>Not a user? register</Link>
-            <Button
-              className='mt-5'
-              appearance='primary'
-              expanded={true}
-              type='submit'>
-              Try dummy credentials
-            </Button>
 
             <Button
               className='mt-5'

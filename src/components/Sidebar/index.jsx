@@ -50,7 +50,7 @@ const Sidebar = () => {
 
   const [expanded, setExpanded] = useState(false);
   const [active, setActive] = useState({
-    name: 'medical_records.allergies',
+    name: '/',
   });
   const navigate = useNavigate();
 
