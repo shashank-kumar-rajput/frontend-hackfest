@@ -32,6 +32,14 @@ const Login = ({ handleUser, removeUser }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
+    // fetch('https://backend-django-innovaccer.herokuapp.com/signin', {
+    //    method: 'POST',
+    //    headers: { 'Content-Type': 'application/json' },
+    //    body: JSON.stringify(data),
+    //  })
+    //    .then((res) => res.json())
+    //    .then((res) => console.log(res))
+    //    .catch((err) => console.log(err));
     const { email = '', password = '' } = data;
     console.log(`email: ${email}, password: ${password}`);
   };
