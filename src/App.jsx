@@ -11,42 +11,41 @@ import PlanOfCare from './pages/PlanOfCare';
 import Diagnostic from './pages/Diagnostic';
 import Prescription from './pages/ePrescription';
 import Documents from './pages/Documents';
-import Sidebar from './components/Sidebar';
-import Navigation from './components/Navigation';
 import PatientInfo from './pages/PatientInfo';
+import PatientForm from './pages/PatientForm';
+import Navigation from './components/Navigation';
+import Sidebar from './components/Sidebar';
 import './styles.css';
 
 const App = () => {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const [detailsList, setDetailsList] = useState([]);
-  const URL = 'https://backend-django-innovaccer.herokuapp.com/medicalSummary';
+  const [patientInfo, setPatientInfo] = useState([]);
+  const URL = 'https://backend-django-innovaccer.herokuapp.com/patientInfo';
 
-  console.log(token);
-  // console.log(JSON.parse(localStorage.getItem('token')).token);
-  useEffect(() => {
-    const getDeatails = () => {
-      fetch(URL, {
-        method: 'GET',
-        headers: {
-          Authorization: `Token ${JSON.parse(
-            localStorage.getItem('token').token
-          )}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          setDetailsList(response);
-          console.log(detailsList);
-        })
-        .catch((error) => console.log(error));
-    };
+  const getToken = () => JSON.parse(localStorage.getItem('token')).token;
 
-    setUser(localStorage.getItem('token'));
-    if (user) {
-      getDeatails();
-    }
-  }, [token]);
+  console.log(getToken());
+  // useEffect(() => {
+  //   const getDeatails = () => {
+  //     fetch(URL, {
+  //       method: 'GET',
+  //       headers: {
+  //         Authorization: `Token ${getToken()}`,
+  //       },
+  //     })
+  //       .then((response) => response.json())
+  //       .then((response) => {
+  //         setPatientInfo(response);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   };
+
+  //   setUser(getToken());
+  //   if (user) {
+  //     getDeatails();
+  //   }
+  // }, [token]);
 
   return (
     <BrowserRouter>
@@ -62,38 +61,18 @@ const App = () => {
                 element={<Login setToken={setToken} setUser={setUser} />}
               />
               <Route path='/register' element={<Register />} />
-              <Route
-                path='/planofcare'
-                element={user ? <PlanOfCare /> : <Navigate to='/Login' />}
-              />
-              <Route
-                path='/medication'
-                element={user ? <Medication /> : <Navigate to='/Login' />}
-              />
-              <Route
-                path='/problemList'
-                element={user ? <ProblemList /> : <Navigate to='/Login' />}
-              />
-              <Route
-                path='/diagnostic'
-                element={user ? <Diagnostic /> : <Navigate to='/Login' />}
-              />
-              <Route
-                path='/pastHistory'
-                element={user ? <PastHistory /> : <Navigate to='/Login' />}
-              />
-              <Route
-                path='/documentation'
-                element={user ? <Documents /> : <Navigate to='/Login' />}
-              />
-              <Route
-                path='/eprescription'
-                element={user ? <Prescription /> : <Navigate to='/Login' />}
-              />
+              <Route path='/planofcare' element={<PlanOfCare />} />
+              <Route path='/medication' element={<Medication />} />
+              <Route path='/problemList' element={<ProblemList />} />
+              <Route path='/diagnostic' element={<Diagnostic />} />
+              <Route path='/pastHistory' element={<PastHistory />} />
+              <Route path='/documentation' element={<Documents />} />
+              <Route path='/eprescription' element={<Prescription />} />
               <Route
                 path='/patientInfo'
-                element={<PatientInfo /> }
+                element={<PatientInfo getToken={getToken} />}
               />
+              <Route path='/patientform' element={<PatientForm />} />
               <Route path='/*' element={<NotFound />} />
             </Routes>
           </div>
