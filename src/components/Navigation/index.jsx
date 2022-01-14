@@ -13,7 +13,7 @@ const Navigation = ({ user, setToken }) => {
     <nav className='navigation'>
       <div className='logo'>
         <Link to='/' className='logo-link'>
-          <span>In</span>Record 🚀
+          <span className='invert lg'>In</span>Record 🚀
         </Link>
       </div>
       <ul className='list'>
