@@ -11,7 +11,7 @@ import {
 } from '@innovaccer/design-system';
 import './Login.css';
 
-const Login = ({ setToken, setUser, handle }) => {
+const Login = ({ setToken, setUser }) => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [data, setData] = useState({ username: '', password: '' });
@@ -40,9 +40,9 @@ const Login = ({ setToken, setUser, handle }) => {
     })
       .then((res) => res.json())
       .then((token) => {
-        handle(JSON.stringify(token));
+        localStorage.setItem('token', JSON.stringify(token));
         setToken(token);
-        setUser(token);
+        // setUser(true);
         navigate('/');
       })
       .catch((err) => console.log(err));
@@ -88,13 +88,6 @@ const Login = ({ setToken, setUser, handle }) => {
               }
             />
             <Link to='/register'>Not a user? register</Link>
-            <Button
-              className='mt-5'
-              appearance='primary'
-              expanded={true}
-              type='submit'>
-              Try dummy credentials
-            </Button>
 
             <Button
               className='mt-5'

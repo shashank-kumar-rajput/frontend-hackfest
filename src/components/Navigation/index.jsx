@@ -2,11 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
 
-const Navigation = ({ user, remove }) => {
+const Navigation = ({ user, setToken }) => {
   const handleLinkClick = () => {
-    console.log('here');
     if (user) {
-      remove('token');
+      localStorage.removeItem('token');
     }
   };
 
@@ -14,19 +13,19 @@ const Navigation = ({ user, remove }) => {
     <nav className='navigation'>
       <div className='logo'>
         <Link to='/' className='logo-link'>
-          <span>in</span>record 🚀
+          <span>In</span>Record 🚀
         </Link>
       </div>
       <ul className='list'>
         <li className='list-item'>
-          {!user ? (
+          {user ? (
+            <a href='/' className='link' onClick={handleLinkClick}>
+              Logout
+            </a>
+          ) : (
             <Link to='/login' className='link'>
               Login
             </Link>
-          ) : (
-            <a href='/login' className='link' onClick={handleLinkClick}>
-              Logout
-            </a>
           )}
         </li>
       </ul>
