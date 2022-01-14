@@ -33,7 +33,6 @@ const Login = ({ setToken, setUser }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    const { email = '', password = '' } = data;
     fetch('https://backend-django-innovaccer.herokuapp.com/api-token-auth/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -43,6 +42,7 @@ const Login = ({ setToken, setUser }) => {
       .then((token) => {
         localStorage.setItem('token', JSON.stringify(token));
         setToken(token);
+        // setUser(true);
         navigate('/');
       })
       .catch((err) => console.log(err));
@@ -88,13 +88,6 @@ const Login = ({ setToken, setUser }) => {
               }
             />
             <Link to='/register'>Not a user? register</Link>
-            <Button
-              className='mt-5'
-              appearance='primary'
-              expanded={true}
-              type='submit'>
-              Try dummy credentials
-            </Button>
 
             <Button
               className='mt-5'

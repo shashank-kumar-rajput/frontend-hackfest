@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -21,34 +21,36 @@ const App = () => {
   const [detailsList, setDetailsList] = useState([]);
   const URL = 'https://backend-django-innovaccer.herokuapp.com/medicalSummary';
 
-  const handle = () => {
-    localStorage.setItem('token', JSON.stringify(token));
-  };
-  const remove = () => {
-    localStorage.removeItem('token');
-  };
-
+  console.log(token);
+  // console.log(JSON.parse(localStorage.getItem('token')).token);
   useEffect(() => {
-    fetch(URL, {
-      method: 'GET',
-      headers: {
-        Authorization: token,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setDetailsList(data);
+    const getDeatails = () => {
+      fetch(URL, {
+        method: 'GET',
+        headers: {
+          Authorization: `Token ${JSON.parse(
+            localStorage.getItem('token').token
+          )}`,
+        },
       })
-      .catch((error) => console.log(error));
+        .then((response) => response.json())
+        .then((response) => {
+          setDetailsList(response);
+          console.log(detailsList);
+        })
+        .catch((error) => console.log(error));
+    };
 
     setUser(localStorage.getItem('token'));
+    if (user) {
+      getDeatails();
+    }
   }, [token]);
 
   return (
     <BrowserRouter>
       <div>
-        <Navigation user={user} remove={remove} />
+        <Navigation user={user} setToken={setToken} />
         <div className='main-container'>
           {user && <Sidebar />}
           <div className='content-wrapper'>
@@ -59,13 +61,34 @@ const App = () => {
                 element={<Login setToken={setToken} setUser={setUser} />}
               />
               <Route path='/register' element={<Register />} />
-              <Route path='/planofcare' element={<PlanOfCare />} />
-              <Route path='/medication' element={<Medication />} />
-              <Route path='/problemList' element={<ProblemList />} />
-              <Route path='/diagnostic' element={<Diagnostic />} />
-              <Route path='/pastHistory' element={<PastHistory />} />
-              <Route path='/documentation' element={<Documents />} />
-              <Route path='/eprescription' element={<Prescription />} />
+              <Route
+                path='/planofcare'
+                element={user ? <PlanOfCare /> : <Navigate to='/Login' />}
+              />
+              <Route
+                path='/medication'
+                element={user ? <Medication /> : <Navigate to='/Login' />}
+              />
+              <Route
+                path='/problemList'
+                element={user ? <ProblemList /> : <Navigate to='/Login' />}
+              />
+              <Route
+                path='/diagnostic'
+                element={user ? <Diagnostic /> : <Navigate to='/Login' />}
+              />
+              <Route
+                path='/pastHistory'
+                element={user ? <PastHistory /> : <Navigate to='/Login' />}
+              />
+              <Route
+                path='/documentation'
+                element={user ? <Documents /> : <Navigate to='/Login' />}
+              />
+              <Route
+                path='/eprescription'
+                element={user ? <Prescription /> : <Navigate to='/Login' />}
+              />
               <Route path='/*' element={<NotFound />} />
             </Routes>
           </div>
