@@ -14,7 +14,7 @@ const Documents = () => {
   const MedicalSummaryDoc = () => {
     return (
       <div>
-        <h1>Fetaures</h1>
+        <h1 className='documentation-header'>Features</h1>
         <div className=''>
           <Row>
             <Column size='10'>
