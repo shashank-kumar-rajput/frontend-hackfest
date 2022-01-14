@@ -16,31 +16,48 @@ import Navigation from './components/Navigation';
 import './styles.css';
 
 const App = () => {
-  const user = true;
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
   const [detailsList, setDetailsList] = useState([]);
-  const URL = 'https://backend-django-innovaccer.herokuapp.com/medicalsummary';
+  const URL = 'https://backend-django-innovaccer.herokuapp.com/medicalSummary';
 
-  // useEffect(() => {
-  //   fetch(URL)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setDetailsList(data);
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, []);
+  const handle = () => {
+    localStorage.setItem('token', JSON.stringify(token));
+  };
+  const remove = () => {
+    localStorage.removeItem('token');
+  };
+
+  useEffect(() => {
+    fetch(URL, {
+      method: 'GET',
+      headers: {
+        Authorization: token,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setDetailsList(data);
+      })
+      .catch((error) => console.log(error));
+
+    setUser(localStorage.getItem('token'));
+  }, [token]);
 
   return (
     <BrowserRouter>
       <div>
-        <Navigation user={user} />
+        <Navigation user={user} remove={remove} />
         <div className='main-container'>
           {user && <Sidebar />}
           <div className='content-wrapper'>
             <Routes>
               <Route path='/' exact element={<Home />} />
-              <Route path='/login' element={<Login />} />
+              <Route
+                path='/login'
+                element={<Login setToken={setToken} setUser={setUser} />}
+              />
               <Route path='/register' element={<Register />} />
               <Route path='/planofcare' element={<PlanofCare />} />
               <Route path='/medication' element={<Medication />} />
