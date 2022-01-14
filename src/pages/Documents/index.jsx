@@ -721,66 +721,12 @@ const Documents = () => {
 
   return (
     <div>
-      <Button
-        className="mt-5"
-        appearance="primary"
-        onClick={() => {
-          setMedicalSummaryDoc(!medicalSummaryDoc);
-        }}
-      >
-        Medical Summary
-      </Button>
-      {medicalSummaryDoc ? <MedicalSummaryDoc /> : null}
-      <Button
-        className="mt-5"
-        appearance="primary"
-        onClick={() => {
-          setProblemListDoc(!problemListDoc);
-        }}
-      >
-        Problem List
-      </Button>
-      {problemListDoc ? <ProblemListDoc /> : null}
-      <Button
-        className="mt-5"
-        appearance="primary"
-        onClick={() => {
-          setDignosticsResultsDoc(!dignosticsResultsDoc);
-        }}
-      >
-        Dignostics Results
-      </Button>
-      {dignosticsResultsDoc ? <DignosticsResultsDoc /> : null}
-      <Button
-        className="mt-5"
-        appearance="primary"
-        onClick={() => {
-          setPastHistoryDoc(!pastHistoryDoc);
-        }}
-      >
-        Past History
-      </Button>
-      {pastHistoryDoc ? <PastHistoryDoc /> : null}
-      <Button
-        className="mt-5"
-        appearance="primary"
-        onClick={() => {
-          setPlanOfCareDoc(!planOfCareDoc);
-        }}
-      >
-        Plan Of Care
-      </Button>
-      {planOfCareDoc ? <PlanOfCareDoc /> : null}
-      <Button
-        className="mt-5"
-        appearance="primary"
-        onClick={() => {
-          setPrescriptionDoc(!prescriptionDoc);
-        }}
-      >
-        Prescription
-      </Button>
-      {prescriptionDoc ? <PrescriptionDoc /> : null}
+       <MedicalSummaryDoc />
+       <ProblemListDoc /> 
+       <DignosticsResultsDoc /> 
+       <PastHistoryDoc /> 
+       <PlanOfCareDoc /> 
+       <PrescriptionDoc /> 
     </div>
   );
 };
