@@ -34,7 +34,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <div>
-        <Navigation />
+        <Navigation user={user} />
         <div className='main-container'>
           {user && <Sidebar />}
           <div className='content-wrapper'>
