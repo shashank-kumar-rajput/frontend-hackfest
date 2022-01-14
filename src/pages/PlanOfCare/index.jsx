@@ -20,14 +20,15 @@ const PlanOfCare = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('https://backend-django-innovaccer.herokuapp.com/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ key: e.target.value }),
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    // fetch('https://backend-django-innovaccer.herokuapp.com/', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({ ...formData }),
+    // })
+    //   .then((res) => res.json())
+    //   .then((res) => console.log(res))
+    //   .catch((err) => console.log(err));
+    console.log(formData);
   };
 
   return (

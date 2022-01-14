@@ -10,6 +10,8 @@
   --shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
   --border-color: rgba(225, 228, 232, 1);
   --submit-hover-color: #656865;
+  --start-color: #7928ca;
+  --end-color: #ff0080;
 }
 
 * {
@@ -95,4 +97,14 @@ iframe {
 
 .submmit-btn:hover {
   background-color: var(--submit-hover-color);
+}
+
+.invert {
+  color: var(--primary-text-color);
+  font-family: 'Merriweather', serif;
+}
+
+.lg {
+  font-weight: 900;
+  font-size: 1.2rem;
 }
