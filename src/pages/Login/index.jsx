@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '@innovaccer/design-system/css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Card,
   Heading,
@@ -11,7 +11,8 @@ import {
 } from '@innovaccer/design-system';
 import './Login.css';
 
-const Login = ({ handleUser, removeUser }) => {
+const Login = ({ setToken, setUser }) => {
+  const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [data, setData] = useState({ username: '', password: '' });
   const { password = '' } = data;
@@ -33,8 +34,23 @@ const Login = ({ handleUser, removeUser }) => {
   const onSubmit = (event) => {
     event.preventDefault();
     const { email = '', password = '' } = data;
-    console.log(`email: ${email}, password: ${password}`);
+    fetch('https://backend-django-innovaccer.herokuapp.com/api-token-auth/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...data }),
+    })
+      .then((res) => res.json())
+      .then((token) => {
+        localStorage.setItem('token', JSON.stringify(token));
+        setToken(token);
+        navigate('/');
+      })
+      .catch((err) => console.log(err));
   };
+
+  // const handleClick = () => {
+  //   setData({ ...data, username: 'Himanch', password: 'Hello@123' });
+  // };
 
   return (
     <div className='center-container'>
@@ -71,15 +87,21 @@ const Login = ({ handleUser, removeUser }) => {
                 />
               }
             />
-            <Link to='/register' className='link'>
-              Not a user? register
-            </Link>
+            <Link to='/register'>Not a user? register</Link>
             <Button
               className='mt-5'
               appearance='primary'
               expanded={true}
               type='submit'>
-              Sign In
+              Try dummy credentials
+            </Button>
+
+            <Button
+              className='mt-5'
+              appearance='primary'
+              expanded={true}
+              type='submit'>
+              Login
             </Button>
           </form>
         </Card>
