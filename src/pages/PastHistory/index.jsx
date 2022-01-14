@@ -12,21 +12,16 @@ import {
 } from '@innovaccer/design-system';
 
 const PastHistory = () => {
-  const [currentData, setCurrentData] = useState({
-    searchDisabled: true,
-    data: {},
+  const [formData, setFormData] = useState({
+    diagnosisName: '',
+    bodySite: '',
+    dateOfOnSet: new Date(),
+    severity: '',
+    diagnosticCertainty: 0,
+    active: '',
+    resolutionPhase: '',
+    occurance: '',
   });
-
-  const onChange = (value, name) => {
-    const updatedData = { ...currentData.data, [name]: value };
-
-    setCurrentData({
-      data: updatedData,
-      searchDisabled: Object.keys(updatedData).every(
-        (key) => !updatedData[key]
-      ),
-    });
-  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -60,8 +55,8 @@ const PastHistory = () => {
                   placeholder='Name of Diagnosis'
                   icon='add_box'
                   autocomplete={'on'}
-                  onChange={(event) =>
-                    onChange(event.target.value, event.target.name)
+                  onChange={(e) =>
+                    setFormData({ ...formData, diagnosisName: e.target.value })
                   }
                 />
               </div>
@@ -72,8 +67,8 @@ const PastHistory = () => {
                   type='text'
                   placeholder='Body Site of Diagonsis'
                   autocomplete={'on'}
-                  onChange={(event) =>
-                    onChange(event.target.value, event.target.name)
+                  onChange={(e) =>
+                    setFormData({ ...formData, bodySite: e.target.value })
                   }
                 />
               </div>
@@ -84,7 +79,9 @@ const PastHistory = () => {
                 <Label withInput={true}>Date of onset</Label>
                 <DatePicker
                   withInput={true}
-                  onDateChange={(currentDate) => onChange(currentDate, 'date')}
+                  onChange={(e) =>
+                    setFormData({ ...formData, date: e.target.value })
+                  }
                   inputOptions={{
                     placeholder: 'MM/DD/YYYY',
 
@@ -115,6 +112,9 @@ const PastHistory = () => {
                     { label: 'Severe', value: 'Severe' },
                     { label: 'Others', value: 'Others' },
                   ]}
+                  onChange={(option) =>
+                    setFormData({ ...formData, severity: option })
+                  }
                   searchPlaceholder='Severity'
                   withSearch={true}
                 />
@@ -129,6 +129,9 @@ const PastHistory = () => {
                     { label: 'Probable', value: 'Probable' },
                     { label: 'Confirmed', value: 'Confirmed' },
                   ]}
+                  onChange={(option) =>
+                    setFormData({ ...formData, diagnosticCertainty: option })
+                  }
                   searchPlaceholder='Diagnostic Certainty'
                   withSearch={true}
                 />
@@ -147,6 +150,9 @@ const PastHistory = () => {
                     { label: 'Active', value: 'Active' },
                     { label: 'Inactive', value: 'Inactive' },
                   ]}
+                  onChange={(option) =>
+                    setFormData({ ...formData, active: option })
+                  }
                   searchPlaceholder='Active/Inactive'
                   withSearch={true}
                 />
@@ -160,6 +166,9 @@ const PastHistory = () => {
                     { label: 'Resolved', value: 'Resolved' },
                     { label: 'Relapsed', value: 'Relapsed' },
                   ]}
+                  onChange={(option) =>
+                    setFormData({ ...formData, resolutionPhase: option })
+                  }
                   searchPlaceholder='Resolved/Relapsed'
                   withSearch={true}
                 />
@@ -174,6 +183,9 @@ const PastHistory = () => {
                     { label: 'Recurrence', value: 'Recurrence' },
                     { label: 'Non-recurrence', value: 'Non-recurrence' },
                   ]}
+                  onChange={(option) =>
+                    setFormData({ ...formData, occurance: option })
+                  }
                   searchPlaceholder='Recurrence'
                   withSearch={true}
                 />
@@ -182,7 +194,7 @@ const PastHistory = () => {
 
             <Button
               className='submmit-btn'
-              disabled={currentData.searchDisabled}
+              disabled={formData.searchDisabled}
               appearance='secondary'
               type='submit'>
               Submit
