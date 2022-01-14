@@ -12,7 +12,8 @@ import {
 
 import './ProblemList.css';
 
-const Medication = () => {
+const ProblemList = () => {
+ 
   class InlineForm extends React.Component {
     constructor(props = {}) {
       super(props);
@@ -39,8 +40,20 @@ const Medication = () => {
 
     onSubmit(e) {
       e.preventDefault();
-      console.log(this.state.data);
-      return false;
+    fetch('https://backend-django-innovaccer.herokuapp.com/addOneProblemList', {
+      method: 'POST',
+      headers: { 
+      'Content-Type': 'application/json',
+      Authorization: `Token ${
+        JSON.parse(localStorage.getItem('token')).token
+      }`,
+     },
+      body: JSON.stringify({...this.state}),
+    })
+    .then(()=> console.log(this.state))
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
     }
 
     render() {
@@ -200,4 +213,4 @@ const Medication = () => {
   return <InlineForm />;
 };
 
-export default Medication;
+export default ProblemList;

@@ -33,7 +33,7 @@ const Prescription = () => {
     fetch("https://backend-django-innovaccer.herokuapp.com/addOneRecord", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ key: e.target.value }),
+      body: JSON.stringify({...formData}),
     })
       .then((res) => res.json())
       .then((res) => console.log(res))

@@ -28,14 +28,16 @@ const Diagnostic = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    fetch(
-      'https://backend-django-innovaccer.herokuapp.com/addOneDignosticResult',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ key: e.target.value }),
-      }
-    )
+    fetch('https://backend-django-innovaccer.herokuapp.com/addOneDignosticResult', {
+      method: 'POST',
+      headers: { 
+      'Content-Type': 'application/json',
+      Authorization: `Token ${
+        JSON.parse(localStorage.getItem('token')).token
+      }`,
+     },
+      body: JSON.stringify({ ...currentData }),
+    })
       .then((res) => res.json())
       .then((res) => console.log(res))
       .catch((err) => console.log(err));

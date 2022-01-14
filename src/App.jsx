@@ -63,7 +63,7 @@ const App = () => {
               <Route path='/register' element={<Register />} />
               <Route
                 path='/planofcare'
-                element={user ? <PlanOfCare /> : <Navigate to='/Login' />}
+                element={user ? <PlanofCare /> : <Navigate to='/Login' />}
               />
               <Route
                 path='/medication'

@@ -33,18 +33,6 @@ const Login = ({ setToken, setUser }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-<<<<<<< HEAD
-    // fetch('https://backend-django-innovaccer.herokuapp.com/signin', {
-    //    method: 'POST',
-    //    headers: { 'Content-Type': 'application/json' },
-    //    body: JSON.stringify(data),
-    //  })
-    //    .then((res) => res.json())
-    //    .then((res) => console.log(res))
-    //    .catch((err) => console.log(err));
-    const { email = '', password = '' } = data;
-=======
->>>>>>> 0f927a3c41c99b7cd6882d8fd6de40fec2340f48
     fetch('https://backend-django-innovaccer.herokuapp.com/api-token-auth/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
