@@ -1,27 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
+import Login from './pages/Login';
 import Register from './pages/Register';
-import Navigation from './components/Navigation';
 import NotFound from './pages/NotFound';
-import Sidebar from './components/Sidebar';
 import Medication from './pages/Medication';
 import ProblemList from './pages/ProblemList';
 import PastHistory from './pages/PastHistory';
 import PlanOfCare from './pages/PlanOfCare';
-import Login from './pages/Login';
+import Diagnostic from './pages/Diagnostic';
+import Prescription from './pages/ePrescription';
 import Documents from './pages/Documents';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import Navigation from './components/Navigation';
 import './styles.css';
 
-
-
 const App = () => {
-  const user = false;
+  const user = true;
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [detailsList, setDetailsList] = useState([]);
+  const URL = 'https://backend-django-innovaccer.herokuapp.com/medicalsummary';
+
+  // useEffect(() => {
+  //   fetch(URL)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setDetailsList(data);
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, []);
 
   return (
     <BrowserRouter>
       <div>
-        <Navigation />
+        <Navigation user={user} />
         <div className='main-container'>
           {user && <Sidebar />}
           <div className='content-wrapper'>
@@ -32,8 +45,10 @@ const App = () => {
               <Route path='/planofcare' element={<PlanOfCare />} />
               <Route path='/medication' element={<Medication />} />
               <Route path='/problemList' element={<ProblemList />} />
-              <Route path='/past-history' element={<PastHistory />} />
-              <Route path='/documents' element={<Documents />} />
+              <Route path='/diagnostic' element={<Diagnostic />} />
+              <Route path='/pastHistory' element={<PastHistory />} />
+              <Route path='/documentation' element={<Documents />} />
+              <Route path='/eprescription' element={<Prescription />} />
               <Route path='/*' element={<NotFound />} />
             </Routes>
           </div>

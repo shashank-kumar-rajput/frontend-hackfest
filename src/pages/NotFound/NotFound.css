@@ -8,7 +8,9 @@
 }
 
 .page-not-found img {
+  width: 50%;
   max-width: 500px;
+  object-fit: cover;
 }
 
 .page-not-found p {

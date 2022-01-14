@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import "@innovaccer/design-system/css";
-import "./Documents.css";
+import React, { useState } from 'react';
+import '@innovaccer/design-system/css';
+import './Documents.css';
 import {
   Row,
   Column,
@@ -9,209 +9,212 @@ import {
   Heading,
   Button,
   Divider,
-} from "@innovaccer/design-system";
+} from '@innovaccer/design-system';
 
 const Documents = () => {
-  const [medicalSummaryDoc, setMedicalSummaryDoc] = useState(false);
-  const [problemListDoc, setProblemListDoc] = useState(false);
-  const [dignosticsResultsDoc, setDignosticsResultsDoc] = useState(false);
-  const [pastHistoryDoc, setPastHistoryDoc] = useState(false);
-  const [planOfCareDoc, setPlanOfCareDoc] = useState(false);
-  const [prescriptionDoc, setPrescriptionDoc] = useState(false);
+  const [medicalSummaryDoc, setMedicalSummaryDoc] = useState(true);
+  const [problemListDoc, setProblemListDoc] = useState(true);
+  const [dignosticsResultsDoc, setDignosticsResultsDoc] = useState(true);
+  const [pastHistoryDoc, setPastHistoryDoc] = useState(true);
+  const [planOfCareDoc, setPlanOfCareDoc] = useState(true);
+  const [prescriptionDoc, setPrescriptionDoc] = useState(true);
 
   const MedicalSummaryDoc = () => {
     return (
-      <div>
-        <Row>
-          <Column size="10">
-            <Card className="pb-6" shadow="none">
-              <div className="p-8">
-                <CardBody className="p-0">
-                  <Row className="p-4">
-                    <Heading size="s">Medical Summary</Heading>
-                  </Row>
-                  <Divider appearance="header" />
-                  <div className="px-4 pt-4">
-                    <Heading size="s">1. Medication Item</Heading>
-                    <br />
-                    <Column className="px-4">
-                      <p>
-                        Title: Name of the medication, vaccine or other
-                        therapeutic/prescribable item which was the focus of the
-                        activity.{" "}
-                      </p>
+      <>
+        <h1>Fetaures</h1>
+        <div className=''>
+          <Row>
+            <Column size='10'>
+              <Card className='pb-6' shadow='none'>
+                <div className='p-8'>
+                  <CardBody className='p-0'>
+                    <Row className='p-4'>
+                      <Heading size='s'>Medical Summary</Heading>
+                    </Row>
+                    <Divider appearance='header' />
+                    <div className='px-4 pt-4'>
+                      <Heading size='s'>1. Medication Item</Heading>
                       <br />
-                      <p>
-                        example: 'Atenolol 100mg' or 'Tenormin tablets 100mg'.{" "}
-                      </p>
+                      <Column className='px-4'>
+                        <p>
+                          Title: Name of the medication, vaccine or other
+                          therapeutic/prescribable item which was the focus of
+                          the activity.{' '}
+                        </p>
+                        <br />
+                        <p>
+                          example: 'Atenolol 100mg' or 'Tenormin tablets 100mg'.{' '}
+                        </p>
+                        <br />
+                      </Column>
+                    </div>
+                    <Divider appearance='header' />
+                    <div className='px-4 pt-4'>
+                      <Heading size='s'>2. Form</Heading>
                       <br />
-                    </Column>
-                  </div>
-                  <Divider appearance="header" />
-                  <div className="px-4 pt-4">
-                    <Heading size="s">2. Form</Heading>
-                    <br />
-                    <Column className="px-4">
-                      <p>
-                        Title: The formulation or presentation of the medication
-                        or medication component.{" "}
-                      </p>
+                      <Column className='px-4'>
+                        <p>
+                          Title: The formulation or presentation of the
+                          medication or medication component.
+                        </p>
+                        <br />
+                        <p>
+                          example: 'tablet', 'capsule', 'cream', 'infusion
+                          fluid' or 'inhalation powder'.{' '}
+                        </p>
+                        <br />
+                      </Column>
+                    </div>
+                    <Divider appearance='header' />
+                    <div className='px-4 pt-4'>
+                      <Heading size='s'>3. Strength Concentration</Heading>
                       <br />
-                      <p>
-                        example: 'tablet', 'capsule', 'cream', 'infusion fluid'
-                        or 'inhalation powder'.{" "}
-                      </p>
+                      <Column className='px-4'>
+                        <p>
+                          Title: The strength of the medication or medication
+                          component, as a concentration.
+                        </p>
+                        <br />
+                        <p>
+                          Comment: This element is used for liquid or semisolid
+                          medications, or medications intended to be diluted in
+                          a liquid before administration. For example: '10
+                          mg/ml', '20 mg/g', '5 %', '10,000 SQ-U/ml'.{' '}
+                        </p>
+                        <br />
+                      </Column>
+                    </div>
+                    <Divider appearance='header' />
+                    <div className='px-4 pt-4'>
+                      <Heading size='s'>4. Presentation (Unit)</Heading>
                       <br />
-                    </Column>
-                  </div>
-                  <Divider appearance="header" />
-                  <div className="px-4 pt-4">
-                    <Heading size="s">3. Strength Concentration</Heading>
-                    <br />
-                    <Column className="px-4">
-                      <p>
-                        Title: The strength of the medication or medication
-                        component, as a concentration.
-                      </p>
+                      <Column className='px-4'>
+                        <p>
+                          Title: The unit of presentation for a single dose of
+                          the medication, for use with the 'Strength denominator
+                          unit' element.
+                        </p>
+                        <br />
+                        <p>
+                          Comment: For example: 'tablet', 'capsule', 'puff',
+                          'inhalation'. In most cases, like for tablets and
+                          capsules, the unit of presentation is identical to the
+                          Form. For some presentations such as inhalers, the
+                          Form may be 'inhalation powder', 'inhalation aerosol'
+                          or 'inhaler' while the unit of presentation is
+                          'inhalation', 'puff', or 'dose'.
+                        </p>
+                        <br />
+                      </Column>
+                    </div>
+                    <Divider appearance='header' />
+                    <div className='px-4 pt-4'>
+                      <Heading size='s'>5. Manufacture</Heading>
                       <br />
-                      <p>
-                        Comment: This element is used for liquid or semisolid
-                        medications, or medications intended to be diluted in a
-                        liquid before administration. For example: '10 mg/ml',
-                        '20 mg/g', '5 %', '10,000 SQ-U/ml'.{" "}
-                      </p>
+                      <Column className='px-4'>
+                        <p>
+                          Title: The manufacturer of the medication or
+                          medication component.
+                        </p>
+                        <br />
+                        <p>example: 'Abbott'. </p>
+                        <br />
+                      </Column>
+                    </div>
+                    <Divider appearance='header' />
+                    <div className='px-4 pt-4'>
+                      <Heading size='s'>6. Expire</Heading>
                       <br />
-                    </Column>
-                  </div>
-                  <Divider appearance="header" />
-                  <div className="px-4 pt-4">
-                    <Heading size="s">4. Presentation (Unit)</Heading>
-                    <br />
-                    <Column className="px-4">
-                      <p>
-                        Title: The unit of presentation for a single dose of the
-                        medication, for use with the 'Strength denominator unit'
-                        element.
-                      </p>
+                      <Column className='px-4'>
+                        <p>
+                          Title: The expiry date and/or time of the medication
+                          or medication component, as given by the manufacturer
+                          or individual preparing the mixture.
+                        </p>
+                        <br />
+                        <p>example: '2022-05-23'.</p>
+                        <br />
+                      </Column>
+                    </div>
+                    <Divider appearance='header' />
+                    <div className='px-4 pt-4'>
+                      <Heading size='s'>7. Batch id Timing</Heading>
                       <br />
-                      <p>
-                        Comment: For example: 'tablet', 'capsule', 'puff',
-                        'inhalation'. In most cases, like for tablets and
-                        capsules, the unit of presentation is identical to the
-                        Form. For some presentations such as inhalers, the Form
-                        may be 'inhalation powder', 'inhalation aerosol' or
-                        'inhaler' while the unit of presentation is
-                        'inhalation', 'puff', or 'dose'.
-                      </p>
+                      <Column className='px-4'>
+                        <p>
+                          The identifier assigned to the production batch by the
+                          manufacturer during production.{' '}
+                        </p>
+                        <br />
+                      </Column>
+                    </div>
+                    <Divider appearance='header' />
+                    <div className='px-4 pt-4'>
+                      <Heading size='s'>8. Amount</Heading>
                       <br />
-                    </Column>
-                  </div>
-                  <Divider appearance="header" />
-                  <div className="px-4 pt-4">
-                    <Heading size="s">5. Manufacture</Heading>
-                    <br />
-                    <Column className="px-4">
-                      <p>
-                        Title: The manufacturer of the medication or medication
-                        component.
-                      </p>
+                      <Column className='px-4'>
+                        <p>
+                          Title: The value of the amount of medication or
+                          medication component.
+                        </p>
+                        <br />
+                        <p>example: '1', '1.5', '1000'.</p>
+                        <br />
+                      </Column>
+                    </div>
+                    <Divider appearance='header' />
+                    <div className='px-4 pt-4'>
+                      <Heading size='s'>9. Amount Unit</Heading>
                       <br />
-                      <p>example: 'Abbott'. </p>
+                      <Column className='px-4'>
+                        <p>
+                          Title: The unit of the amount of medication or
+                          medication component.
+                        </p>
+                        <br />
+                        <p>example: 'mg', 'ml', 'IU'.</p>
+                        <br />
+                      </Column>
+                    </div>
+                    <Divider appearance='header' />
+                    <div className='px-4 pt-4'>
+                      <Heading size='s'>10. Description</Heading>
                       <br />
-                    </Column>
-                  </div>
-                  <Divider appearance="header" />
-                  <div className="px-4 pt-4">
-                    <Heading size="s">6. Expire</Heading>
-                    <br />
-                    <Column className="px-4">
-                      <p>
-                        Title: The expiry date and/or time of the medication or
-                        medication component, as given by the manufacturer or
-                        individual preparing the mixture.
-                      </p>
-                      <br />
-                      <p>example: '2022-05-23'.</p>
-                      <br />
-                    </Column>
-                  </div>
-                  <Divider appearance="header" />
-                  <div className="px-4 pt-4">
-                    <Heading size="s">7. Batch id Timing</Heading>
-                    <br />
-                    <Column className="px-4">
-                      <p>
-                        The identifier assigned to the production batch by the
-                        manufacturer during production.{" "}
-                      </p>
-                      <br />
-                    </Column>
-                  </div>
-                  <Divider appearance="header" />
-                  <div className="px-4 pt-4">
-                    <Heading size="s">8. Amount</Heading>
-                    <br />
-                    <Column className="px-4">
-                      <p>
-                        Title: The value of the amount of medication or
-                        medication component.
-                      </p>
-                      <br />
-                      <p>example: '1', '1.5', '1000'.</p>
-                      <br />
-                    </Column>
-                  </div>
-                  <Divider appearance="header" />
-                  <div className="px-4 pt-4">
-                    <Heading size="s">9. Amount Unit</Heading>
-                    <br />
-                    <Column className="px-4">
-                      <p>
-                        Title: The unit of the amount of medication or
-                        medication component.
-                      </p>
-                      <br />
-                      <p>example: 'mg', 'ml', 'IU'.</p>
-                      <br />
-                    </Column>
-                  </div>
-                  <Divider appearance="header" />
-                  <div className="px-4 pt-4">
-                    <Heading size="s">10. Description</Heading>
-                    <br />
-                    <Column className="px-4">
-                      <p>
-                        Title: Narrative description of the medication or
-                        medication component where it is not possible to
-                        describe this fully using structured elements.
-                      </p>
-                      <br />
-                    </Column>
-                  </div>
-                </CardBody>
-              </div>
-            </Card>
-          </Column>
-        </Row>
-      </div>
+                      <Column className='px-4'>
+                        <p>
+                          Title: Narrative description of the medication or
+                          medication component where it is not possible to
+                          describe this fully using structured elements.
+                        </p>
+                        <br />
+                      </Column>
+                    </div>
+                  </CardBody>
+                </div>
+              </Card>
+            </Column>
+          </Row>
+        </div>
+      </>
     );
   };
 
   const ProblemListDoc = () => {
     return (
       <Row>
-        <Column size="10">
-          <Card className="pb-6" shadow="none">
-            <div className="p-8">
-              <CardBody className="p-0">
-                <Row className="p-4">
-                  <Heading size="s">Problem List</Heading>
+        <Column size='10'>
+          <Card className='pb-6' shadow='none'>
+            <div className='p-8'>
+              <CardBody className='p-0'>
+                <Row className='p-4'>
+                  <Heading size='s'>Problem List</Heading>
                 </Row>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">1. Diagnosis Name</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>1. Diagnosis Name</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: Identification of the problem or diagnosis, by
                       name.
@@ -224,11 +227,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">2. Body Site</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>2. Body Site</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: Identification of a simple body site for the
                       location of the problem or diagnosis.
@@ -241,11 +244,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">3. Date Of Onset</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>3. Date Of Onset</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: Estimated or actual date/time that signs or
                       symptoms of the problem/diagnosis were first observed.
@@ -258,11 +261,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">4. Severity</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>4. Severity</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: An assessment of the overall severity of the
                       problem or diagnosis.
@@ -277,11 +280,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">5. Diagnostic Certainity</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>5. Diagnostic Certainity</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: The level of confidence in the identification of
                       the diagnosis.
@@ -300,18 +303,18 @@ const Documents = () => {
   const DignosticsResultsDoc = () => {
     return (
       <Row>
-        <Column size="10">
-          <Card className="pb-6" shadow="none">
-            <div className="p-8">
-              <CardBody className="p-0">
-                <Row className="p-4">
-                  <Heading size="s">Dignostics Results</Heading>
+        <Column size='10'>
+          <Card className='pb-6' shadow='none'>
+            <div className='p-8'>
+              <CardBody className='p-0'>
+                <Row className='p-4'>
+                  <Heading size='s'>Dignostics Results</Heading>
                 </Row>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">1. Test Name</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>1. Test Name</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: Name of the laboratory investigation performed on
                       the specimen(s).
@@ -331,11 +334,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">2. Description</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>2. Description</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: Narrative description about the observed clinical
                       finding.
@@ -343,11 +346,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">3. Test Result</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>3. Test Result</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: The result, including findings and the laboratory's
                       interpretation, of an investigation performed on specimens
@@ -368,18 +371,18 @@ const Documents = () => {
   const PastHistoryDoc = () => {
     return (
       <Row>
-        <Column size="10">
-          <Card className="pb-6" shadow="none">
-            <div className="p-8">
-              <CardBody className="p-0">
-                <Row className="p-4">
-                  <Heading size="s">Past History</Heading>
+        <Column size='10'>
+          <Card className='pb-6' shadow='none'>
+            <div className='p-8'>
+              <CardBody className='p-0'>
+                <Row className='p-4'>
+                  <Heading size='s'>Past History</Heading>
                 </Row>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">1. Problem/Diagnosis Name</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>1. Problem/Diagnosis Name</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: Identification of the problem or diagnosis, by
                       name.
@@ -392,11 +395,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">2. Body Site</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>2. Body Site</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: Identification of a simple body site for the
                       location of the problem or diagnosis.
@@ -409,11 +412,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">3. Date Of Onsite</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>3. Date Of Onsite</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: Estimated or actual date/time that signs or
                       symptoms of the problem/diagnosis were first observed.
@@ -426,11 +429,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">4. Severity</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>4. Severity</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: An assessment of the overall severity of the
                       problem or diagnosis.
@@ -445,11 +448,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">5. Problem Qualifier</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>5. Problem Qualifier</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: Contextual or temporal qualifier for a specified
                       problem or diagnosis.
@@ -457,11 +460,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">5. Diagnostic Certainty</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>5. Diagnostic Certainty</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: The level of confidence in the identification of
                       the diagnosis.
@@ -480,27 +483,27 @@ const Documents = () => {
   const PlanOfCareDoc = () => {
     return (
       <Row>
-        <Column size="10">
-          <Card className="pb-6" shadow="none">
-            <div className="p-8">
-              <CardBody className="p-0">
-                <Row className="p-4">
-                  <Heading size="s">Plan Of Care</Heading>
+        <Column size='10'>
+          <Card className='pb-6' shadow='none'>
+            <div className='p-8'>
+              <CardBody className='p-0'>
+                <Row className='p-4'>
+                  <Heading size='s'>Plan Of Care</Heading>
                 </Row>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">1. Care Plan Name</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>1. Care Plan Name</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>Title: Name of care plan.</p>
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">2. Description</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>2. Description</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: Description of activity performed/enacted against
                       the plan.
@@ -508,11 +511,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">3. Reason</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>3. Reason</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Reason for activity being performed /enacted against the
                       plan.
@@ -531,18 +534,18 @@ const Documents = () => {
   const PrescriptionDoc = () => {
     return (
       <Row>
-        <Column size="10">
-          <Card className="pb-6" shadow="none">
-            <div className="p-8">
-              <CardBody className="p-0">
-                <Row className="p-4">
-                  <Heading size="s">Prescription</Heading>
+        <Column size='10'>
+          <Card className='pb-6' shadow='none'>
+            <div className='p-8'>
+              <CardBody className='p-0'>
+                <Row className='p-4'>
+                  <Heading size='s'>Prescription</Heading>
                 </Row>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">1. Medication Item</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>1. Medication Item</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: Name of the medication, vaccine or other
                       therapeutic/prescribable item which was the focus of the
@@ -555,11 +558,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">2. Substance Name</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>2. Substance Name</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: Identification of a simple body site for the
                       location of the problem or diagnosis.
@@ -569,11 +572,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">3. Form</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>3. Form</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: The formulation or presentation of the medication
                       or medication component.
@@ -590,11 +593,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">4. Strength</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>4. Strength</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: The strength of the medication or medication
                       component, expressed as a ratio.
@@ -618,11 +621,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">5. Strength Unit</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>5. Strength Unit</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: The unit of the numerator/denominator of the
                       strength fraction.
@@ -632,11 +635,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">6. Route</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>6. Route</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: The route by which the ordered item was, or is to
                       be, administered into the subject's body.
@@ -650,11 +653,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">7. Dosage Instructions</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>7. Dosage Instructions</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>Title: Text description of the dose.</p>
                     <br />
                     <p>
@@ -664,11 +667,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">8. Duration</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>8. Duration</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: The frequency as number of times per time period
                       that the activity is to take place.
@@ -680,11 +683,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">9. Max Amount</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>9. Max Amount</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: The value of the amount of medication administered
                       at one time, as a real number, or range of real numbers,
@@ -695,11 +698,11 @@ const Documents = () => {
                     <br />
                   </Column>
                 </div>
-                <Divider appearance="header" />
-                <div className="px-4 pt-4">
-                  <Heading size="s">10. Max Amount Dose Unit</Heading>
+                <Divider appearance='header' />
+                <div className='px-4 pt-4'>
+                  <Heading size='s'>10. Max Amount Dose Unit</Heading>
                   <br />
-                  <Column className="px-4">
+                  <Column className='px-4'>
                     <p>
                       Title: The unit which is associated with the Dose amount.
                     </p>
@@ -721,12 +724,69 @@ const Documents = () => {
 
   return (
     <div>
+<<<<<<< HEAD
        <MedicalSummaryDoc />
        <ProblemListDoc /> 
        <DignosticsResultsDoc /> 
        <PastHistoryDoc /> 
        <PlanOfCareDoc /> 
        <PrescriptionDoc /> 
+=======
+      <Button
+        className='mt-5'
+        appearance='primary'
+        onClick={() => {
+          setMedicalSummaryDoc(!medicalSummaryDoc);
+        }}>
+        Medical Summary
+      </Button>
+      {medicalSummaryDoc ? <MedicalSummaryDoc /> : null}
+      <Button
+        className='mt-5'
+        appearance='primary'
+        onClick={() => {
+          setProblemListDoc(!problemListDoc);
+        }}>
+        Problem List
+      </Button>
+      {problemListDoc ? <ProblemListDoc /> : null}
+      <Button
+        className='mt-5'
+        appearance='primary'
+        onClick={() => {
+          setDignosticsResultsDoc(!dignosticsResultsDoc);
+        }}>
+        Dignostics Results
+      </Button>
+      {dignosticsResultsDoc ? <DignosticsResultsDoc /> : null}
+      <Button
+        className='mt-5'
+        appearance='primary'
+        onClick={() => {
+          setPastHistoryDoc(!pastHistoryDoc);
+        }}>
+        Past History
+      </Button>
+      {pastHistoryDoc ? <PastHistoryDoc /> : null}
+      <Button
+        className='mt-5'
+        appearance='primary'
+        onClick={() => {
+          setPlanOfCareDoc(!planOfCareDoc);
+        }}>
+        Plan Of Care
+      </Button>
+      {planOfCareDoc ? <PlanOfCareDoc /> : null}
+      <Button
+        className='mt-5'
+        appearance='primary'
+        onClick={() => {
+          setPrescriptionDoc(!prescriptionDoc);
+        }}>
+        Prescription
+      </Button>
+      {prescriptionDoc ? <PrescriptionDoc /> : null}
+>>>>>>> 97870d16f25ea1cba13a3f71c39612ee7fd96f60
     </div>
   );
 };
