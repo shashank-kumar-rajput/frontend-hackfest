@@ -9,7 +9,6 @@ import PlanofCare from './pages/PlanofCare';
 import Medication from './pages/Medication';
 import ProblemList from './pages/ProblemList';
 import PastHistory from './pages/PastHistory';
-import Diagnostic from './pages/Diagnostic';
 import Prescription from './pages/ePrescription';
 import Documents from './pages/Documents';
 import Sidebar from './components/Sidebar';
@@ -43,7 +42,7 @@ const App = () => {
               <Route path='/' exact element={<Home />} />
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
-              <Route path='/planofcare' element={<PlanOfCare />} />
+              <Route path='/planofcare' element={<PlanofCare />} />
               <Route path='/medication' element={<Medication />} />
               <Route path='/problemList' element={<ProblemList />} />
               <Route path='/diagnostic' element={<Diagnostic />} />

@@ -7,15 +7,9 @@ import {
   Input,
   Button,
 } from '@innovaccer/design-system';
-<<<<<<< HEAD:src/pages/PlanofCare/index.jsx
 import './PlanofCare.css';
 
 const PlanofCare = () => {
-=======
-import './PlanOfCare.css';
-
-const PlanOfCare = () => {
->>>>>>> 97870d16f25ea1cba13a3f71c39612ee7fd96f60:src/pages/PlanOfCare/index.jsx
   const [formData, setFormData] = useState({
     carePlanName: '',
     description: '',
@@ -115,8 +109,4 @@ const PlanOfCare = () => {
   );
 };
 
-<<<<<<< HEAD:src/pages/PlanofCare/index.jsx
 export default PlanofCare;
-=======
-export default PlanOfCare;
->>>>>>> 97870d16f25ea1cba13a3f71c39612ee7fd96f60:src/pages/PlanOfCare/index.jsx

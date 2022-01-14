@@ -22,7 +22,7 @@ const Documents = () => {
   const MedicalSummaryDoc = () => {
     return (
       <>
-        <h1>Fetaures</h1>
+        {/* <h1>Fetaures</h1> */}
         <div className=''>
           <Row>
             <Column size='10'>
