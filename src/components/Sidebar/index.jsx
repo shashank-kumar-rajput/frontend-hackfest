@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Collapsible, VerticalNav } from '@innovaccer/design-system';
 import { useNavigate } from 'react-router-dom';
 import '@innovaccer/design-system/css';
@@ -7,44 +7,49 @@ import './Sidebar.css';
 const Sidebar = () => {
   const data = [
     {
-      name: 'home',
+      name: '/',
       label: 'Home',
       icon: 'home',
     },
     {
-      name: 'profile',
-      label: 'Profile',
+      name: '/medication',
+      label: 'Medical Summary',
       icon: 'account_circle',
     },
     {
-      name: 'medical_records',
-      label: 'Medical Records',
-      icon: 'local_hospital',
-    },
-    {
-      name: 'formulary',
-      label: 'Formulary',
+      name: '/problemList',
+      label: 'Problem List',
       icon: 'list',
     },
     {
-      name: 'encounters',
-      label: 'Encounters',
-      icon: 'directions_walk',
+      name: '/diagnostic',
+      label: 'Diagnostic Results',
+      icon: 'summarize',
     },
     {
-      name: 'past-history',
+      name: '/planofcare',
+      label: 'Plan of Care',
+      icon: 'self_improvement',
+    },
+    {
+      name: '/pastHistory',
       label: 'Past History of illness',
-      icon: 'receipt',
+      icon: 'timeline',
     },
     {
-      name: 'documents',
-      label: 'Documents',
-      icon: 'assignment',
+      name: '/eprescription',
+      label: 'ePrescription',
+      icon: 'speaker_notes',
+    },
+    {
+      name: '/documentation',
+      label: 'Documentation',
+      icon: 'summarize',
     },
   ];
 
-  const [expanded, setExpanded] = React.useState(true);
-  const [active, setActive] = React.useState({
+  const [expanded, setExpanded] = useState(false);
+  const [active, setActive] = useState({
     name: 'medical_records.allergies',
   });
   const navigate = useNavigate();
@@ -55,9 +60,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div
-      style={{ background: 'var(--secondary-lightest)' }}
-      className='stick-left'>
+    <div className='stick-left'>
       <Collapsible expanded={expanded} onToggle={setExpanded} hoverable={false}>
         <VerticalNav
           menus={data}
@@ -68,50 +71,5 @@ const Sidebar = () => {
       </Collapsible>
     </div>
   );
-
-  // return (
-  // <aside ide class='navbar bg-light'>
-  //   <div class='container-fluid'>
-  //     <ul class='navbar-nav'>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/medication'>
-  //           Medical Summary
-  //         </Link>
-  //       </li>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/documentation'>
-  //           Medical Summary
-  //         </Link>
-  //       </li>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/patient-list'>
-  //           Medical Summary
-  //         </Link>
-  //       </li>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/register'>
-  //           Problem List
-  //         </Link>
-  //       </li>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/register'>
-  //           Diagnostic Results
-  //         </Link>
-  //       </li>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/register'>
-  //           Past History of Illness
-  //         </Link>
-  //       </li>
-  //       <li class='nav-item'>
-  //         <Link class='nav-link' to='/register'>
-  //           Plan of Care
-  //         </Link>
-  //       </li>
-  //     </ul>
-  //   </div>
-  // </aside>
-
-  // );
 };
 export default Sidebar;

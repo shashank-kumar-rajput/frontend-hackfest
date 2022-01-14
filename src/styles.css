@@ -9,6 +9,7 @@
   --white-color: #fff;
   --shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
   --border-color: rgba(225, 228, 232, 1);
+  --submit-hover-color: #656865;
 }
 
 * {
@@ -29,6 +30,11 @@ iframe {
 body {
   justify-content: flex-start;
   align-items: flex-start;
+  background-color: #fff;
+}
+
+iframe {
+  display: none !important;
 }
 
 .header {
@@ -57,8 +63,9 @@ body {
   border-bottom: 1px solid var(--primary-color);
 }
 
-.Card--shadow-default {
-  box-shadow: none;
+.Card--shadow-default,
+.bg-secondary-lightest {
+  box-shadow: none !important;
 }
 
 .PageHeader-wrapper {
@@ -75,4 +82,17 @@ body {
 
 .cta {
   color: var(--primary-jal);
+}
+
+.Popover[data-hide='true'] {
+  visibility: visible !important;
+  pointer-events: none;
+}
+
+.submmit-btn {
+  transition: 0.2s;
+}
+
+.submmit-btn:hover {
+  background-color: var(--submit-hover-color);
 }

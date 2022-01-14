@@ -1,5 +1,6 @@
 .stick-left {
   position: sticky;
+  margin: 1rem 0;
 }
 
 .Collapsible-body {
@@ -11,4 +12,6 @@
 
 .MenuItem {
   margin-bottom: 1rem;
+}
+@media only screen and (max-width: 600px) {
 }
