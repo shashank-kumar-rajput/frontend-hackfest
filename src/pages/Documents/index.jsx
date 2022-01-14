@@ -21,7 +21,7 @@ const Documents = () => {
 
   const MedicalSummaryDoc = () => {
     return (
-      <>
+      <div>
         <h1>Fetaures</h1>
         <div className=''>
           <Row>
@@ -196,7 +196,7 @@ const Documents = () => {
             </Column>
           </Row>
         </div>
-      </>
+        </div>
     );
   };
 
@@ -724,69 +724,12 @@ const Documents = () => {
 
   return (
     <div>
-<<<<<<< HEAD
        <MedicalSummaryDoc />
        <ProblemListDoc /> 
        <DignosticsResultsDoc /> 
        <PastHistoryDoc /> 
        <PlanOfCareDoc /> 
        <PrescriptionDoc /> 
-=======
-      <Button
-        className='mt-5'
-        appearance='primary'
-        onClick={() => {
-          setMedicalSummaryDoc(!medicalSummaryDoc);
-        }}>
-        Medical Summary
-      </Button>
-      {medicalSummaryDoc ? <MedicalSummaryDoc /> : null}
-      <Button
-        className='mt-5'
-        appearance='primary'
-        onClick={() => {
-          setProblemListDoc(!problemListDoc);
-        }}>
-        Problem List
-      </Button>
-      {problemListDoc ? <ProblemListDoc /> : null}
-      <Button
-        className='mt-5'
-        appearance='primary'
-        onClick={() => {
-          setDignosticsResultsDoc(!dignosticsResultsDoc);
-        }}>
-        Dignostics Results
-      </Button>
-      {dignosticsResultsDoc ? <DignosticsResultsDoc /> : null}
-      <Button
-        className='mt-5'
-        appearance='primary'
-        onClick={() => {
-          setPastHistoryDoc(!pastHistoryDoc);
-        }}>
-        Past History
-      </Button>
-      {pastHistoryDoc ? <PastHistoryDoc /> : null}
-      <Button
-        className='mt-5'
-        appearance='primary'
-        onClick={() => {
-          setPlanOfCareDoc(!planOfCareDoc);
-        }}>
-        Plan Of Care
-      </Button>
-      {planOfCareDoc ? <PlanOfCareDoc /> : null}
-      <Button
-        className='mt-5'
-        appearance='primary'
-        onClick={() => {
-          setPrescriptionDoc(!prescriptionDoc);
-        }}>
-        Prescription
-      </Button>
-      {prescriptionDoc ? <PrescriptionDoc /> : null}
->>>>>>> 97870d16f25ea1cba13a3f71c39612ee7fd96f60
     </div>
   );
 };
