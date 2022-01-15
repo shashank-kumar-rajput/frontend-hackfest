@@ -2,11 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
 
-const Navigation = ({ user, setToken }) => {
+const Navigation = ({ user, getToken }) => {
   const handleLinkClick = () => {
-    if (user) {
-      localStorage.removeItem('token');
-    }
+    localStorage.removeItem('token');
   };
 
   return (
@@ -18,7 +16,7 @@ const Navigation = ({ user, setToken }) => {
       </div>
       <ul className='list'>
         <li className='list-item'>
-          {user ? (
+          {getToken() ? (
             <a href='/' className='link' onClick={handleLinkClick}>
               Logout
             </a>
