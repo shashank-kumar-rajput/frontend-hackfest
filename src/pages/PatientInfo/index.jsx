@@ -53,32 +53,32 @@ const PatientInfo = ({ getToken }) => {
       displayName: 'ID',
       width: '10%',
       cellType: 'WITH_META_LIST',
-      sorting: false,
+      sorting: true,
     },
     {
       name: 'name',
       displayName: 'Name',
       width: '30%',
       cellType: 'WITH_META_LIST',
-      sorting: false,
+      sorting: true,
     },
     {
       name: 'age',
       displayName: 'Age',
       width: '20%',
-      sorting: false,
+      sorting:true,
     },
     {
       name: 'gender',
       displayName: 'Gender',
-      sorting: false,
+      sorting: true,
       width: '20%',
     },
     {
       name: 'view',
       displayName: 'View Details',
       width: '20%',
-      sorting: false,
+      sorting: true,
       cellRenderer: () => {
         return <Button appearance='transparent'>View</Button>;
       },
@@ -130,9 +130,11 @@ const PatientInfo = ({ getToken }) => {
           <h1 style={{ padding: '12px' }}>Patient Details Info</h1>
           <Card>
             <Table
-              showMenu={false}
+             data={dataList}
+              showMenu={true}
               type='resource'
-              data={dataList}
+              
+             
               schema={schema}
               withHeader={true}
               filterPosition='HEADER'
