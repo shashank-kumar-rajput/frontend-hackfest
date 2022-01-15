@@ -10,7 +10,6 @@ import {
 } from '@innovaccer/design-system';
 
 import './ePrescription.css';
-
 const Prescription = () => {
   const [formData, setFormData] = useState({
     medicationItem: '',
