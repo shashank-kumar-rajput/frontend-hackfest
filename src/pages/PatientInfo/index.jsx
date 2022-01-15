@@ -22,14 +22,13 @@ const PatientInfo = ({ getToken }) => {
     getDetails();
   }, []);
 
-  // {
-  //   name: 'id',
-  //   displayName: 'ID',
-  //   width: '20%',
-  //   sorting: true,
-  // },
-
   const schema = [
+    {
+      name: 'id',
+      displayName: 'ID',
+      width: '20%',
+      sorting: true,
+    },
     {
       name: 'name',
       displayName: 'Name',
@@ -61,11 +60,7 @@ const PatientInfo = ({ getToken }) => {
               showMenu={false}
               separator={false}
               schema={schema}
-              data={dataList.map(({ id, name, age, gender }) => ({
-                name,
-                age,
-                gender,
-              }))}
+              data={dataList}
               withHeader={true}
               headerOptions={{
                 withSearch: true,

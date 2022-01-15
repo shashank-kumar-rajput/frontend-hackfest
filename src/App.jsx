@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -18,14 +18,12 @@ import Sidebar from './components/Sidebar';
 import './styles.css';
 
 const App = () => {
+  const getToken = () => JSON.parse(localStorage.getItem('token'));
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const [patientInfo, setPatientInfo] = useState([]);
   const URL = 'https://backend-django-innovaccer.herokuapp.com/patientInfo';
 
-  const getToken = () => JSON.parse(localStorage.getItem('token')).token;
-
-  console.log(getToken());
+  // console.log(getToken());
   // useEffect(() => {
   //   const getDeatails = () => {
   //     fetch(URL, {
@@ -50,15 +48,21 @@ const App = () => {
   return (
     <BrowserRouter>
       <div>
-        <Navigation user={user} setToken={setToken} />
+        <Navigation user={user} getToken={getToken} />
         <div className='main-container'>
-          {user && <Sidebar />}
+          {getToken() && <Sidebar />}
           <div className='content-wrapper'>
             <Routes>
               <Route path='/' exact element={<Home />} />
               <Route
                 path='/login'
-                element={<Login setToken={setToken} setUser={setUser} />}
+                element={
+                  <Login
+                    setToken={setToken}
+                    setUser={setUser}
+                    getToken={getToken}
+                  />
+                }
               />
               <Route path='/register' element={<Register />} />
               <Route path='/planofcare' element={<PlanofCare />} />

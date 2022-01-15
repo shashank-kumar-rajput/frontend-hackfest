@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '@innovaccer/design-system/css';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   Card,
@@ -11,7 +10,7 @@ import {
 } from '@innovaccer/design-system';
 import './Login.css';
 
-const Login = ({ setToken, setUser }) => {
+const Login = ({ setToken, setUser, getToken }) => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [data, setData] = useState({ username: '', password: '' });
@@ -41,8 +40,8 @@ const Login = ({ setToken, setUser }) => {
       .then((res) => res.json())
       .then((token) => {
         localStorage.setItem('token', JSON.stringify(token));
-        setToken(token);
-        setUser(token);
+        setToken(JSON.parse(localStorage.getItem('token')));
+        setUser(JSON.parse(localStorage.getItem('token')));
         navigate('/');
       })
       .catch((err) => console.log(err));

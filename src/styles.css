@@ -108,3 +108,7 @@ iframe {
   font-weight: 900;
   font-size: 1.2rem;
 }
+
+.bg-secondary-lightest {
+  background: none !important;
+}
