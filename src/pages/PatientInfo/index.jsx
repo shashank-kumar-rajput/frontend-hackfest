@@ -6,10 +6,10 @@ const PatientInfo = ({ getToken }) => {
 
   useEffect(() => {
     const getDetails = () => {
-      fetch('https://backend-django-innovaccer.herokuapp.com/patientInfo  ', {
+      fetch('https://backend-django-innovaccer.herokuapp.com/patientInfo', {
         method: 'GET',
         headers: {
-          Authorization: `Token ${getToken()}`,
+          Authorization: `Token ${getToken().token}`,
         },
       })
         .then((response) => response.json())
@@ -19,7 +19,9 @@ const PatientInfo = ({ getToken }) => {
         .catch((error) => console.log(error));
     };
 
-    getDetails();
+    if (getToken().token) {
+      getDetails();
+    }
   }, []);
 
   const schema = [
@@ -27,7 +29,7 @@ const PatientInfo = ({ getToken }) => {
       name: 'id',
       displayName: 'ID',
       width: '20%',
-      sorting: true,
+      sorting: false,
     },
     {
       name: 'name',
