@@ -1834,6 +1834,13 @@
   "resolved" "https://registry.npmjs.org/@types/range-parser/-/range-parser-1.2.4.tgz"
   "version" "1.2.4"
 
+"@types/react-table@^6.8.5":
+  "integrity" "sha512-fVQXjy/EYDbgraScgjDONA291McKqGrw0R0NeK639fx2bS4T19TnXMjg3FjOPlkI3qYTQtFTPADlRYysaQIMpA=="
+  "resolved" "https://registry.npmjs.org/@types/react-table/-/react-table-6.8.9.tgz"
+  "version" "6.8.9"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-text-mask@^5.4.3":
   "integrity" "sha512-DIJ3/dS4jd7NK3lEgsOwcgpp+ZlVrNJEiUDRayZRE/PNMbV/nLWmOKGdL0BUS29hnx0CDgITgPudKx0BgbF5fA=="
   "resolved" "https://registry.npmjs.org/@types/react-text-mask/-/react-text-mask-5.4.11.tgz"
@@ -2481,6 +2488,13 @@
   "integrity" "sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA=="
   "resolved" "https://registry.npmjs.org/axe-core/-/axe-core-4.3.5.tgz"
   "version" "4.3.5"
+
+"axios@^0.24.0":
+  "integrity" "sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.24.0.tgz"
+  "version" "0.24.0"
+  dependencies:
+    "follow-redirects" "^1.14.4"
 
 "axobject-query@^2.2.0":
   "integrity" "sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA=="
@@ -4515,7 +4529,7 @@
     "tabbable" "^3.1.2"
     "xtend" "^4.0.1"
 
-"follow-redirects@^1.0.0":
+"follow-redirects@^1.0.0", "follow-redirects@^1.14.4":
   "integrity" "sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ=="
   "resolved" "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.7.tgz"
   "version" "1.14.7"
@@ -7843,6 +7857,15 @@
   dependencies:
     "lodash.throttle" "^4.1.1"
     "prop-types" "^15.5.8"
+
+"react-table@^6.11.5":
+  "integrity" "sha512-LM+AS9v//7Y7lAlgTWW/cW6Sn5VOb3EsSkKQfQTzOW8FngB1FUskLLNEVkAYsTX9LjOWR3QlGjykJqCE6eXT/g=="
+  "resolved" "https://registry.npmjs.org/react-table/-/react-table-6.11.5.tgz"
+  "version" "6.11.5"
+  dependencies:
+    "@types/react-table" "^6.8.5"
+    "classnames" "^2.2.5"
+    "react-is" "^16.8.1"
 
 "react-text-mask@^5.4.3":
   "integrity" "sha1-mR77QpnjDC5sLEbRP2FxaUY+DS0="

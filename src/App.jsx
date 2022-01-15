@@ -15,6 +15,7 @@ import PatientInfo from './pages/PatientInfo';
 import PatientForm from './pages/PatientForm';
 import Navigation from './components/Navigation';
 import Sidebar from './components/Sidebar';
+
 import './styles.css';
 
 const App = () => {
@@ -115,6 +116,7 @@ const App = () => {
                   getToken() ? <PatientForm /> : <Navigate to='/login' />
                 }
               />
+                
               <Route path='/*' element={<NotFound />} />
             </Routes>
           </div>
