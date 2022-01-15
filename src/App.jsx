@@ -13,6 +13,7 @@ import Prescription from './pages/ePrescription';
 import Documents from './pages/Documents';
 import Sidebar from './components/Sidebar';
 import Navigation from './components/Navigation';
+import PatientInfo from './pages/PatientInfo';
 import './styles.css';
 
 const App = () => {
@@ -88,6 +89,10 @@ const App = () => {
               <Route
                 path='/eprescription'
                 element={user ? <Prescription /> : <Navigate to='/Login' />}
+              />
+              <Route
+                path='/patientInfo'
+                element={<PatientInfo /> }
               />
               <Route path='/*' element={<NotFound />} />
             </Routes>
