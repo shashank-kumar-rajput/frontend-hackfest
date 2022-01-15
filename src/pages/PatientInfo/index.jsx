@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react'
+import ReactTable from "react-table"; 
+import 'react-table/react-table.css'
+import  { useState, useEffect } from 'react';
 import {
   Button,
   Card,
@@ -7,7 +10,7 @@ import {
   Text,
 } from '@innovaccer/design-system';
 
-const PatientInfo = ({ getToken }) => {
+ const PatientDetails =({getToken})=> {
   const [dataList, setDataList] = useState([]);
 
   useEffect(() => {
@@ -29,7 +32,31 @@ const PatientInfo = ({ getToken }) => {
       getDetails();
     }
   }, []);
-
+    const columns = [{  
+      Header: 'ID',  
+      accessor: 'id',
+      
+     }
+     ,{  
+      Header: 'Name',  
+      accessor: 'name' ,
+      }
+     
+     ,{  
+     Header: 'Gender',  
+     accessor: 'gender' ,
+     }
+     ,{  
+     Header: 'Age',  
+     accessor: 'age',
+     },
+     {  
+      Header: 'Details',  
+      accessor: 'details',
+      Cell: props => <button className="btn1" onClick={({ id, ...rest }) => handleRowClick(id)}>Details</button>,
+      }
+     
+  ]
   const handleRowClick = (id) => {
     fetch(
       `https://backend-django-innovaccer.herokuapp.com/medicalSummary/${id}`,
@@ -46,46 +73,6 @@ const PatientInfo = ({ getToken }) => {
       })
       .catch((error) => console.log(error));
   };
-
-  const schema = [
-    {
-      name: 'id',
-      displayName: 'ID',
-      width: '10%',
-      cellType: 'WITH_META_LIST',
-      sorting: true,
-    },
-    {
-      name: 'name',
-      displayName: 'Name',
-      width: '30%',
-      cellType: 'WITH_META_LIST',
-      sorting: true,
-    },
-    {
-      name: 'age',
-      displayName: 'Age',
-      width: '20%',
-      sorting:true,
-    },
-    {
-      name: 'gender',
-      displayName: 'Gender',
-      sorting: true,
-      width: '20%',
-    },
-    {
-      name: 'view',
-      displayName: 'View Details',
-      width: '20%',
-      sorting: true,
-      cellRenderer: () => {
-        return <Button appearance='transparent'>View</Button>;
-      },
-    },
-  ];
-  console.log(dataList);
-
   const nestedRowRenderer = (props) => {
     const { data, rowIndex } = props;
 
@@ -122,25 +109,14 @@ const PatientInfo = ({ getToken }) => {
       </CardSubdued>
     );
   };
-
-  return (
-    <>
-      {dataList != [] ? (
-        <>
-          <h1 style={{ padding: '12px' }}>Patient Details Info</h1>
-          <Card>
-            <Table
-             data={dataList}
-              showMenu={true}
-              type='resource'
-              
-             
-              schema={schema}
-              withHeader={true}
+    return (
+     
+     
+      <ReactTable  
+      showMenu={false}
+      withHeader={true}
               filterPosition='HEADER'
-              nestedRows={true}
-              nestedRowRenderer={nestedRowRenderer}
-              onRowClick={({ id, ...rest }) => handleRowClick(id)}
+             
               headerOptions={{
                 withSearch: true,
               }}
@@ -150,14 +126,14 @@ const PatientInfo = ({ getToken }) => {
               onPageChange={(newPage) =>
                 console.log(`on-page-change:- ${newPage}`)
               }
-            />
-          </Card>
-        </>
-      ) : (
-        'Loading...'
-      )}
-    </>
-  );
-};
-
-export default PatientInfo;
+             
+      data={dataList}  
+      
+      columns={columns}  
+     
+   />
+   
+    )
+  
+}
+export default PatientDetails

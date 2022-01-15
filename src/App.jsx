@@ -4,103 +4,120 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
+import Diagnostic from './pages/Diagnostic';
+import PlanofCare from './pages/PlanofCare';
 import Medication from './pages/Medication';
 import ProblemList from './pages/ProblemList';
 import PastHistory from './pages/PastHistory';
-import PlanOfCare from './pages/PlanofCare';
-import Diagnostic from './pages/Diagnostic';
 import Prescription from './pages/ePrescription';
 import Documents from './pages/Documents';
-import Sidebar from './components/Sidebar';
-import Navigation from './components/Navigation';
 import PatientInfo from './pages/PatientInfo';
-import PatientDetails from './pages/PatientInfo1.1';
+import PatientForm from './pages/PatientForm';
+import Navigation from './components/Navigation';
+import Sidebar from './components/Sidebar';
+
 import './styles.css';
 
 const App = () => {
+  const getToken = () => JSON.parse(localStorage.getItem('token'));
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const [detailsList, setDetailsList] = useState([]);
-  const URL = 'https://backend-django-innovaccer.herokuapp.com/medicalSummary';
+  const URL = 'https://backend-django-innovaccer.herokuapp.com/patientInfo';
 
-  console.log(token);
-  // console.log(JSON.parse(localStorage.getItem('token')).token);
-  useEffect(() => {
-    const getDeatails = () => {
-      fetch(URL, {
-        method: 'GET',
-        headers: {
-          Authorization: `Token ${JSON.parse(
-            localStorage.getItem('token').token
-          )}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          setDetailsList(response);
-          console.log(detailsList);
-        })
-        .catch((error) => console.log(error));
-    };
+  // console.log(getToken());
+  // useEffect(() => {
+  //   const getDeatails = () => {
+  //     fetch(URL, {
+  //       method: 'GET',
+  //       headers: {
+  //         Authorization: `Token ${getToken()}`,
+  //       },
+  //     })
+  //       .then((response) => response.json())
+  //       .then((response) => {
+  //         setPatientInfo(response);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   };
 
-    setUser(localStorage.getItem('token'));
-    if (user) {
-      getDeatails();
-    }
-  }, [token]);
+  //   setUser(getToken());
+  //   if (user) {
+  //     getDeatails();
+  //   }
+  // }, [token]);
 
   return (
     <BrowserRouter>
       <div>
-        <Navigation user={user} setToken={setToken} />
+        <Navigation user={user} getToken={getToken} />
         <div className='main-container'>
-          {user && <Sidebar />}
+          {getToken() && <Sidebar />}
           <div className='content-wrapper'>
             <Routes>
               <Route path='/' exact element={<Home />} />
               <Route
                 path='/login'
-                element={<Login setToken={setToken} setUser={setUser} />}
+                element={
+                  <Login
+                    setToken={setToken}
+                    setUser={setUser}
+                    getToken={getToken}
+                  />
+                }
               />
               <Route path='/register' element={<Register />} />
               <Route
                 path='/planofcare'
-                element={user ? <PlanOfCare /> : <Navigate to='/Login' />}
+                element={getToken() ? <PlanofCare /> : <Navigate to='/login' />}
               />
               <Route
                 path='/medication'
-                element={user ? <Medication /> : <Navigate to='/Login' />}
+                element={getToken() ? <Medication /> : <Navigate to='/login' />}
               />
               <Route
                 path='/problemList'
-                element={user ? <ProblemList /> : <Navigate to='/Login' />}
+                element={
+                  getToken() ? <ProblemList /> : <Navigate to='/login' />
+                }
               />
               <Route
                 path='/diagnostic'
-                element={user ? <Diagnostic /> : <Navigate to='/Login' />}
+                element={getToken() ? <Diagnostic /> : <Navigate to='/login' />}
               />
               <Route
                 path='/pastHistory'
-                element={user ? <PastHistory /> : <Navigate to='/Login' />}
+                element={
+                  getToken() ? <PastHistory /> : <Navigate to='/login' />
+                }
               />
               <Route
                 path='/documentation'
-                element={user ? <Documents /> : <Navigate to='/Login' />}
+                element={getToken() ? <Documents /> : <Navigate to='/login' />}
               />
               <Route
                 path='/eprescription'
-                element={user ? <Prescription /> : <Navigate to='/Login' />}
+                element={
+                  getToken() ? <Prescription /> : <Navigate to='/login' />
+                }
               />
               <Route
                 path='/patientInfo'
-                element={user ? <PatientInfo /> : <Navigate to='/Login' />}
+                element={
+                  getToken() ? (
+                    <PatientInfo getToken={getToken} />
+                  ) : (
+                    <Navigate to='/login' />
+                  )
+                }
               />
               <Route
-                path='/patientDetails'
-                element={user ? <PatientDetails /> : <Navigate to='/Login' />}
+                path='/patientform'
+                element={
+                  getToken() ? <PatientForm /> : <Navigate to='/login' />
+                }
               />
+                
               <Route path='/*' element={<NotFound />} />
-              
             </Routes>
           </div>
         </div>
