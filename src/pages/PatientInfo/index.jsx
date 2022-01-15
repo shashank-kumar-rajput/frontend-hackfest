@@ -126,28 +126,31 @@ const PatientInfo = ({ getToken }) => {
   return (
     <>
       {dataList != [] ? (
-        <Card>
-          <Table
-            showMenu={false}
-            type='resource'
-            data={dataList}
-            schema={schema}
-            withHeader={true}
-            filterPosition='HEADER'
-            nestedRows={true}
-            nestedRowRenderer={nestedRowRenderer}
-            onRowClick={({ id, ...rest }) => handleRowClick(id)}
-            headerOptions={{
-              withSearch: true,
-            }}
-            withPagination={true}
-            paginationType='basic'
-            pageSize={4}
-            onPageChange={(newPage) =>
-              console.log(`on-page-change:- ${newPage}`)
-            }
-          />
-        </Card>
+        <>
+          <h1 style={{ padding: '12px' }}>Patient Details Info</h1>
+          <Card>
+            <Table
+              showMenu={false}
+              type='resource'
+              data={dataList}
+              schema={schema}
+              withHeader={true}
+              filterPosition='HEADER'
+              nestedRows={true}
+              nestedRowRenderer={nestedRowRenderer}
+              onRowClick={({ id, ...rest }) => handleRowClick(id)}
+              headerOptions={{
+                withSearch: true,
+              }}
+              withPagination={true}
+              paginationType='basic'
+              pageSize={4}
+              onPageChange={(newPage) =>
+                console.log(`on-page-change:- ${newPage}`)
+              }
+            />
+          </Card>
+        </>
       ) : (
         'Loading...'
       )}
