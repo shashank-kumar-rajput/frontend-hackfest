@@ -42,7 +42,7 @@ const Medication = () => {
       body: JSON.stringify({ ...formData }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => console.log(res), alert("Submitted Successfully"))
       .catch((err) => console.log(err));
   };
 

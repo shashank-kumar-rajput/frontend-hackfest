@@ -6,6 +6,7 @@ import {
   Label,
   Input,
   Button,
+  Toast,
 } from '@innovaccer/design-system';
 import './Diagnostic.css';
 
@@ -39,7 +40,7 @@ const Diagnostic = () => {
       body: JSON.stringify({ ...currentData }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res))
+      .then((res) => console.log(res), alert("Submitted Successfully"))
       .catch((err) => console.log(err));
   };
 
