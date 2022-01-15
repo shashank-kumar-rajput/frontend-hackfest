@@ -29,14 +29,14 @@ const Prescription = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // fetch('https://backend-django-innovaccer.herokuapp.com/addOneRecord', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ key: e.target.value }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
+    fetch('https://backend-django-innovaccer.herokuapp.com/addOnePrescription/2', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key: e.target.value }),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
     console.log(formData);
   };
 

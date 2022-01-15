@@ -21,7 +21,7 @@ const PlanofCare = () => {
   const handleSubmit = (e) => {
     
     e.preventDefault();
-    fetch('https://backend-django-innovaccer.herokuapp.com/addOneRecord', {
+    fetch('https://backend-django-innovaccer.herokuapp.com/addOnePlanCare/5', {
       method: 'POST',
       headers: { 
       'Content-Type': 'application/json',

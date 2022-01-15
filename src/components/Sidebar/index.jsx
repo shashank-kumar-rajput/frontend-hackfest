@@ -12,6 +12,16 @@ const Sidebar = () => {
       icon: 'home',
     },
     {
+      name: '/patientform',
+      label: 'Patient Form',
+      icon: 'summarize',
+    },
+    {
+      name: '/patientInfo',
+      label: 'Patient Info',
+      icon: 'summarize',
+    },
+    {
       name: '/medication',
       label: 'Medical Summary',
       icon: 'account_circle',

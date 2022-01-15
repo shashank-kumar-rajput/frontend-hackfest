@@ -14,15 +14,15 @@ import './Medication.css';
 
 const Medication = () => {
   const [formData, setFormData] = useState({
-    medicationItem: '',
+    medication_item: '',
     form: '',
-    strength: '',
+    strength_concentration: '',
     presentation: '',
-    expiry: 'random',
-    batchId: '',
     manufacturer: '',
+    expire: '',
+    batch_id_timing: '',
     amount: '',
-    amountUnit: '',
+    amount_unit: '',
     descriptionUnit: '',
     frequency: '',
     route: '',
