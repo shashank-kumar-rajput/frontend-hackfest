@@ -28,7 +28,7 @@ const Diagnostic = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    fetch('https://backend-django-innovaccer.herokuapp.com/addOneDignosticResult', {
+    fetch('https://backend-django-innovaccer.herokuapp.com/addOneDignosticResult/4', {
       method: 'POST',
       headers: { 
       'Content-Type': 'application/json',

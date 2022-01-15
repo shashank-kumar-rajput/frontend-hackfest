@@ -61,7 +61,7 @@ const App = () => {
                 element={<Login setToken={setToken} setUser={setUser} />}
               />
               <Route path='/register' element={<Register />} />
-              <Route path='/planofcare' element={<PlanOfCare />} />
+              <Route path='/planofcare' element={<PlanofCare />} />
               <Route path='/medication' element={<Medication />} />
               <Route path='/problemList' element={<ProblemList />} />
               <Route path='/diagnostic' element={<Diagnostic />} />
