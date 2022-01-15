@@ -42,7 +42,7 @@ const Login = ({ setToken, setUser }) => {
       .then((token) => {
         localStorage.setItem('token', JSON.stringify(token));
         setToken(token);
-        // setUser(true);
+        setUser(token);
         navigate('/');
       })
       .catch((err) => console.log(err));
