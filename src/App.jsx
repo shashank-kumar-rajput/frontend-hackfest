@@ -18,14 +18,12 @@ import Sidebar from './components/Sidebar';
 import './styles.css';
 
 const App = () => {
+  const getToken = () => JSON.parse(localStorage.getItem('token'));
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const [patientInfo, setPatientInfo] = useState([]);
   const URL = 'https://backend-django-innovaccer.herokuapp.com/patientInfo';
 
-  const getToken = () => JSON.parse(localStorage.getItem('token')).token;
-
-  console.log(getToken());
+  // console.log(getToken());
   // useEffect(() => {
   //   const getDeatails = () => {
   //     fetch(URL, {
@@ -50,29 +48,73 @@ const App = () => {
   return (
     <BrowserRouter>
       <div>
-        <Navigation user={user} setToken={setToken} />
+        <Navigation user={user} getToken={getToken} />
         <div className='main-container'>
-          {user && <Sidebar />}
+          {getToken() && <Sidebar />}
           <div className='content-wrapper'>
             <Routes>
               <Route path='/' exact element={<Home />} />
               <Route
                 path='/login'
-                element={<Login setToken={setToken} setUser={setUser} />}
+                element={
+                  <Login
+                    setToken={setToken}
+                    setUser={setUser}
+                    getToken={getToken}
+                  />
+                }
               />
               <Route path='/register' element={<Register />} />
-              <Route path='/planofcare' element={<PlanofCare />} />
-              <Route path='/medication' element={<Medication />} />
-              <Route path='/problemList' element={<ProblemList />} />
-              <Route path='/diagnostic' element={<Diagnostic />} />
-              <Route path='/pastHistory' element={<PastHistory />} />
-              <Route path='/documentation' element={<Documents />} />
-              <Route path='/eprescription' element={<Prescription />} />
+              <Route
+                path='/planofcare'
+                element={getToken() ? <PlanofCare /> : <Navigate to='/login' />}
+              />
+              <Route
+                path='/medication'
+                element={getToken() ? <Medication /> : <Navigate to='/login' />}
+              />
+              <Route
+                path='/problemList'
+                element={
+                  getToken() ? <ProblemList /> : <Navigate to='/login' />
+                }
+              />
+              <Route
+                path='/diagnostic'
+                element={getToken() ? <Diagnostic /> : <Navigate to='/login' />}
+              />
+              <Route
+                path='/pastHistory'
+                element={
+                  getToken() ? <PastHistory /> : <Navigate to='/login' />
+                }
+              />
+              <Route
+                path='/documentation'
+                element={getToken() ? <Documents /> : <Navigate to='/login' />}
+              />
+              <Route
+                path='/eprescription'
+                element={
+                  getToken() ? <Prescription /> : <Navigate to='/login' />
+                }
+              />
               <Route
                 path='/patientInfo'
-                element={<PatientInfo getToken={getToken} />}
+                element={
+                  getToken() ? (
+                    <PatientInfo getToken={getToken} />
+                  ) : (
+                    <Navigate to='/login' />
+                  )
+                }
               />
-              <Route path='/patientform' element={<PatientForm />} />
+              <Route
+                path='/patientform'
+                element={
+                  getToken() ? <PatientForm /> : <Navigate to='/login' />
+                }
+              />
               <Route path='/*' element={<NotFound />} />
             </Routes>
           </div>
