@@ -36,8 +36,9 @@ const Diagnostic = () => {
         JSON.parse(localStorage.getItem('token')).token
       }`,
      },
-      body: JSON.stringify({ ...currentData }),
+      body: JSON.stringify({ ...currentData.data}),
     })
+      .then(()=> console.log(currentData))
       .then((res) => res.json())
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
