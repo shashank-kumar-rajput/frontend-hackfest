@@ -33,12 +33,12 @@ const Medication = () => {
     e.preventDefault();
     fetch('https://backend-django-innovaccer.herokuapp.com/addOneRecord', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Token ${
-          JSON.parse(localStorage.getItem('token')).token
-        }`,
-      },
+      headers: { 
+      'Content-Type': 'application/json',
+      Authorization: `Token ${
+        JSON.parse(localStorage.getItem('token')).token
+      }`,
+     },
       body: JSON.stringify({ ...formData }),
     })
       .then((res) => res.json())

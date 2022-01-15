@@ -7,9 +7,9 @@ import {
   Input,
   Button,
 } from '@innovaccer/design-system';
-import './PlanOfCare.css';
+import './PlanofCare.css';
 
-const PlanOfCare = () => {
+const PlanofCare = () => {
   const [formData, setFormData] = useState({
     carePlanName: '',
     description: '',
@@ -19,16 +19,21 @@ const PlanOfCare = () => {
   });
 
   const handleSubmit = (e) => {
+    
     e.preventDefault();
-    // fetch('https://backend-django-innovaccer.herokuapp.com/', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ ...formData }),
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => console.log(res))
-    //   .catch((err) => console.log(err));
-    console.log(formData);
+    fetch('https://backend-django-innovaccer.herokuapp.com/addOnePlanCare/5', {
+      method: 'POST',
+      headers: { 
+      'Content-Type': 'application/json',
+      Authorization: `Token ${
+        JSON.parse(localStorage.getItem('token')).token
+      }`,
+     },
+      body: JSON.stringify({ ...formData }),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -100,7 +105,7 @@ const PlanOfCare = () => {
                 />
               </div>
             </div>
-            <Button appearance='primary' type='submit' className='submmit-btn'>
+            <Button appearance='secondary' type='submit' className='submmit-btn'>
               Submit
             </Button>
           </form>
@@ -110,4 +115,4 @@ const PlanOfCare = () => {
   );
 };
 
-export default PlanOfCare;
+export default PlanofCare;

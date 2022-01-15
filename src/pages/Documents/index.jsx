@@ -13,8 +13,9 @@ import {
 const Documents = () => {
   const MedicalSummaryDoc = () => {
     return (
-      <div>
-        <h1 className='documentation-header'>Features</h1>
+      <>
+      
+        {/* <h1>Fetaures</h1> */}
         <div className=''>
           <Row>
             <Column size='10'>
@@ -188,7 +189,7 @@ const Documents = () => {
             </Column>
           </Row>
         </div>
-      </div>
+      </>
     );
   };
 

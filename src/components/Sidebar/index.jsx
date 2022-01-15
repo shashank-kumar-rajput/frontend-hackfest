@@ -14,12 +14,12 @@ const Sidebar = () => {
     {
       name: '/patientform',
       label: 'Patient Form',
-      icon: 'summarize',
+      icon: 'assignment_ind',
     },
     {
       name: '/patientInfo',
       label: 'Patient Info',
-      icon: 'summarize',
+      icon: 'info',
     },
     {
       name: '/medication',
@@ -54,7 +54,7 @@ const Sidebar = () => {
     {
       name: '/documentation',
       label: 'Documentation',
-      icon: 'summarize',
+      icon: 'assignment',
     },
   ];
 

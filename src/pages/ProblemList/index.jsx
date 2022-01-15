@@ -25,8 +25,22 @@ const ProblemList = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log({ ...formData });
-    return false;
+    fetch('https://backend-django-innovaccer.herokuapp.com/addOneProblemList', {
+      method: 'POST',
+      headers: { 
+      'Content-Type': 'application/json',
+      Authorization: `Token ${
+        JSON.parse(localStorage.getItem('token')).token
+      }`,
+     },
+      body: JSON.stringify({ ...formData }),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    // e.preventDefault();
+    // console.log({ ...formData });
+    // return false;
   };
 
   return (
