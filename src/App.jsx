@@ -68,7 +68,7 @@ const App = () => {
               <Route path='/register' element={<Register />} />
               <Route
                 path='/planofcare'
-                element={getToken() ? <PlanofCare /> : <Navigate to='/login' />}
+                element={getToken() ? <PlanofCare id={id} getToken={getToken} /> : <Navigate to='/login' />}
               />
               <Route
                 path='/medication'
