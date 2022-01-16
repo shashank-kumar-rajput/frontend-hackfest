@@ -72,7 +72,7 @@ const App = () => {
               />
               <Route
                 path='/medication'
-                element={getToken() ? <Medication /> : <Navigate to='/login' />}
+                element={getToken() ? <Medication id={id} getToken={getToken}/> : <Navigate to='/login' />}
               />
               <Route
                 path='/problemList'

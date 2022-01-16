@@ -95,6 +95,24 @@ const PatientInfo = ({ getToken ,setId}) => {
        
       ),
     },
+    {
+      Header: "Update Medication",
+      accessor: "id",
+      
+      Cell: (v) => (
+        
+        <Link
+        className="btn btn-primary"
+        onClick={()=>setId(v.value)}
+        to={{
+          pathname: "/medication",
+        }}
+      >
+        Medical Details Update
+      </Link>
+       
+      ),
+    }
   ];
   
   /*Schema 2 Holding data like : 
