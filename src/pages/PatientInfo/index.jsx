@@ -53,8 +53,17 @@ import {
      {  
       Header: 'Details',  
       accessor: 'details',
-      Cell: props => <button className="btn1" onClick={({ id, ...rest }) => handleRowClick(id)}>Details</button>,
-      }
+      Cell: (cell) => (
+        <button
+          // add on click to your custom cell
+          onClick={() => console.log(cell.value)}
+        >
+          {" "}
+          {cell.value}{" "}
+        </button>
+      )
+    },
+      
      
   ]
   const handleRowClick = (id) => {
