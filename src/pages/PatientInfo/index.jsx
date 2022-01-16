@@ -45,24 +45,29 @@ const PatientInfo = ({ getToken ,setId}) => {
     {
       Header: "ID",
       accessor: "id",
+      Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>
     },
     {
       Header: "Name",
       accessor: "name",
+      Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>
     },
 
     {
       Header: "Gender",
       accessor: "gender",
+      Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>
     },
     {
       Header: "Age",
       accessor: "age",
+      Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>
     },
     {
       Header: "Details",
       accessor: "id",
       Cell: (v) => (
+        
         <Button
           appearance="primary"
           aria-label="Submit your response"
@@ -94,6 +99,7 @@ const PatientInfo = ({ getToken ,setId}) => {
       </Link>
        
       ),
+      
     },
   ];
   
