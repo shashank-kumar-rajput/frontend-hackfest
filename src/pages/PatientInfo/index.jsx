@@ -1,12 +1,12 @@
 import React from "react";
-import ReactTable from "react-table";
-import "react-table/react-table.css";
+import ReactTable from "react-table-6";
+import "react-table-6/react-table.css";
 import { useState, useEffect } from "react";
-import Prescription from "../ePrescription";
-import { Button, PageHeader } from "@innovaccer/design-system";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-const PatientInfo = ({ getToken }) => {
+import { Button, PageHeader } from "@innovaccer/design-system";
+import { BrowserRouter, Routes, Route, Navigate,Redirect,Link } from "react-router-dom";
+
+const PatientInfo = ({ getToken ,setId}) => {
   //for storing 2 API data we have used dataList: to store patientInfo and dataList2 : to store medical summary of particular patient.
   const [dataList, setDataList] = useState([]);
   const [dataList2, setDataList2] = useState([]);
@@ -76,15 +76,23 @@ const PatientInfo = ({ getToken }) => {
     {
       Header: "Prescription",
       accessor: "id",
+      
       Cell: (v) => (
-        <Button
-          appearance="primary"
-          aria-label="Submit your response"
-          size="regular"
-          onClick={() => handlePrescriptionClick(v.value)}//Linking to eprescription
-        >
-          Prescription
-        </Button>
+        
+        <Link
+        className="btn btn-primary"
+        onClick={()=>setId(v.value)}
+
+        to={{
+          pathname: "/eprescription",
+         
+          
+        }}
+      >
+        
+        Prescription
+      </Link>
+       
       ),
     },
   ];
@@ -141,6 +149,7 @@ const PatientInfo = ({ getToken }) => {
     
     
     */
+    console.log("Redirect")
   };
 /*
 Getting API data from MedicalSummary for each ID number

@@ -21,8 +21,9 @@ const App = () => {
   const getToken = () => JSON.parse(localStorage.getItem('token'));
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
+  const [id,setId] =useState(0);
   const URL = 'https://backend-django-innovaccer.herokuapp.com/patientInfo';
-
+  
   // console.log(getToken());
   // useEffect(() => {
   //   const getDeatails = () => {
@@ -96,14 +97,14 @@ const App = () => {
               <Route
                 path='/eprescription'
                 element={
-                  getToken() ? <Prescription /> : <Navigate to='/login' />
+                  getToken() ? <Prescription id={id} getToken={getToken}/> : <Navigate to='/login' />
                 }
               />
               <Route
                 path='/patientInfo'
                 element={
                   getToken() ? (
-                    <PatientInfo getToken={getToken} />
+                    <PatientInfo setId={setId} getToken={getToken} />
                   ) : (
                     <Navigate to='/login' />
                   )
