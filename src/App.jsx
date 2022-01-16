@@ -68,21 +68,21 @@ const App = () => {
               <Route path='/register' element={<Register />} />
               <Route
                 path='/planofcare'
-                element={getToken() ? <PlanofCare /> : <Navigate to='/login' />}
+                element={getToken() ? <PlanofCare id={id} getToken={getToken} /> : <Navigate to='/login' />}
               />
               <Route
                 path='/medication'
-                element={getToken() ? <Medication /> : <Navigate to='/login' />}
+                element={getToken() ? <Medication id={id} getToken={getToken}/> : <Navigate to='/login' />}
               />
               <Route
                 path='/problemList'
                 element={
-                  getToken() ? <ProblemList /> : <Navigate to='/login' />
+                  getToken() ? <ProblemList id={id} getToken={getToken} /> : <Navigate to='/login' />
                 }
               />
               <Route
                 path='/diagnostic'
-                element={getToken() ? <Diagnostic /> : <Navigate to='/login' />}
+                element={getToken() ? <Diagnostic id={id} getToken={getToken} /> : <Navigate to='/login' />}
               />
               <Route
                 path='/pastHistory'

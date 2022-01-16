@@ -11,27 +11,24 @@ import {
 } from '@innovaccer/design-system';
 import './ProblemList.css';
 
-const ProblemList = () => {
+const ProblemList = ({getToken,id}) => {
   const [formData, setFormData] = useState({
     diagnosisName: '',
     bodySite: '',
-    date: new Date(),
+    dateOfOnset:'',
     severity: '',
-    diagnosticCertainty: '',
-    active: '',
-    resolutionPhase: '',
-    occurance: '',
+    diagnosticCertainity: '',
+    patient_id:'',
   });
+  formData.patient_id={id}
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('https://backend-django-innovaccer.herokuapp.com/addOneProblemList', {
+    fetch(`https://backend-django-innovaccer.herokuapp.com/addOneProblemList/${id}`, {
       method: 'POST',
       headers: { 
       'Content-Type': 'application/json',
-      Authorization: `Token ${
-        JSON.parse(localStorage.getItem('token')).token
-      }`,
+      Authorization: `Token ${getToken().token}`,
      },
       body: JSON.stringify({ ...formData }),
     })
@@ -42,13 +39,13 @@ const ProblemList = () => {
     // console.log({ ...formData });
     // return false;
   };
-
+  console.log("id===",id);
   return (
     <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
       <PageHeader title='Problem List' separator={false} />
       <div className='w-100'>
         <Card className='px-6 py-6'>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className='d-flex flex-wrap'>
               <div className='mr-12 mb-10'>
                 <Label withInput={true}>Diagnosis Name</Label>
@@ -82,9 +79,10 @@ const ProblemList = () => {
                 <Label withInput={true}>Date of onset</Label>
                 <DatePicker
                   withInput={true}
-                  onChange={(e) =>
-                    setFormData({ ...formData, date: e.target.value })
-                  }
+                  onDateChange={(currentDate) => {
+                    console.log(currentDate);
+                    setFormData({ ...formData, dateOfOnset: currentDate });
+                  }}
                   inputOptions={{
                     placeholder: 'MM/DD/YYYY',
 
@@ -133,68 +131,14 @@ const ProblemList = () => {
                     { label: 'Confirmed', value: 'Confirmed' },
                   ]}
                   onChange={(option) =>
-                    setFormData({ ...formData, diagnosticCertainty: option })
+                    setFormData({ ...formData, diagnosticCertainity: option })
                   }
                   searchPlaceholder='Diagnostic Certainty'
                   withSearch={true}
                 />
               </div>
             </div>
-            <div className='mr-12 mb-10'>
-              <h1>Problem Qualifier</h1>
-            </div>
-            <div className='d-flex flex-wrap'>
-              <div
-                className='mr-12 mb-10'
-                style={{ width: 'var(--spacing-9)' }}>
-                <Label withInput={true}>Active/Inactive</Label>
-
-                <Dropdown
-                  options={[
-                    { label: 'Active', value: 'Active' },
-                    { label: 'Inactive', value: 'Inactive' },
-                  ]}
-                  onChange={(option) =>
-                    setFormData({ ...formData, active: option })
-                  }
-                  searchPlaceholder='Active/Inactive'
-                  withSearch={true}
-                />
-              </div>
-              <div
-                className='mr-12 mb-10'
-                style={{ width: 'var(--spacing-9)' }}>
-                <Label withInput={true}>Resolution Phase</Label>
-                <Dropdown
-                  options={[
-                    { label: 'Resolved', value: 'Resolved' },
-                    { label: 'Relapsed', value: 'Relapsed' },
-                  ]}
-                  onChange={(option) =>
-                    setFormData({ ...formData, resolutionPhase: option })
-                  }
-                  searchPlaceholder='Resolved/Relapsed'
-                  withSearch={true}
-                />
-              </div>
-              <div
-                className='mr-12 mb-10'
-                style={{ width: 'var(--spacing-9)' }}>
-                <Label withInput={true}>Occurance</Label>
-
-                <Dropdown
-                  options={[
-                    { label: 'Recurrence', value: 'Recurrence' },
-                    { label: 'Non-recurrence', value: 'Non-recurrence' },
-                  ]}
-                  onChange={(option) =>
-                    setFormData({ ...formData, occurance: option })
-                  }
-                  searchPlaceholder='Recurrence'
-                  withSearch={true}
-                />
-              </div>
-            </div>
+          
 
             <Button
               className='submmit-btn'
