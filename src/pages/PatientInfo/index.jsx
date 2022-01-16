@@ -43,23 +43,33 @@ const PatientInfo = ({ getToken ,setId}) => {
 //Schema 1 for Patient Info: ID, Name, Gender, Age, Details, Prescription link
   const columns = [
     {
+      width:50,
+
       Header: "ID",
       accessor: "id",
     },
     {
+      width:140,
+
       Header: "Name",
       accessor: "name",
     },
 
     {
+      width:60,
+
       Header: "Gender",
       accessor: "gender",
     },
     {
+      width:50,
+
       Header: "Age",
       accessor: "age",
     },
     {
+      width:80,
+
       Header: "Details",
       accessor: "id",
       Cell: (v) => (
@@ -74,6 +84,8 @@ const PatientInfo = ({ getToken ,setId}) => {
       ),
     },
     {
+      width:120,
+
       Header: "Prescription",
       accessor: "id",
       
@@ -96,6 +108,8 @@ const PatientInfo = ({ getToken ,setId}) => {
       ),
     },
     {
+      width:170,
+
       Header: "Update Medication",
       accessor: "id",
       
@@ -109,6 +123,66 @@ const PatientInfo = ({ getToken ,setId}) => {
         }}
       >
         Medical Details Update
+      </Link>
+       
+      ),
+    },
+    {
+      width:140,
+
+      Header: "Problem List ",
+      accessor: "id",
+      
+      Cell: (v) => (
+        
+        <Link
+        className="btn btn-primary"
+        onClick={()=>setId(v.value)}
+        to={{
+          pathname: "/problemList",
+        }}
+      >
+       Problem Update
+      </Link>
+       
+      ),
+    },
+    {
+      width:180,
+
+      Header: "Diagnostic Update ",
+      accessor: "id",
+      
+      Cell: (v) => (
+        
+        <Link
+        className="btn btn-primary"
+        onClick={()=>setId(v.value)}
+        to={{
+          pathname: "/diagnostic",
+        }}
+      >
+      Diagnostic Update
+      </Link>
+       
+      ),
+    },
+    {
+      width:180,
+
+      Header: "Plan Of Care ",
+      accessor: "id",
+      
+      Cell: (v) => (
+        
+        <Link
+        className="btn btn-primary"
+        onClick={()=>setId(v.value)}
+        to={{
+          pathname: "/planofcare",
+        }}
+      >
+      Care Plan Update
       </Link>
        
       ),
