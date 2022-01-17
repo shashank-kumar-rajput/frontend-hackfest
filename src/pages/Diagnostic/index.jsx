@@ -31,7 +31,7 @@ const Diagnostic = ({getToken,id}) => {
      },
      body: JSON.stringify({ ...formData }),
     })
-      .then(()=> console.log(currentData))
+      .then(()=> console.log(formData))
       .then((res) => res.json())
       .then((res) => console.log(res), alert("Submitted Successfully"))
       .catch((err) => console.log(err));
