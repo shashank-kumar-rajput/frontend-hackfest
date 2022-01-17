@@ -10,34 +10,26 @@ import {
 } from '@innovaccer/design-system';
 import './Diagnostic.css';
 
-const Diagnostic = () => {
-  const [currentData, setCurrentData] = useState({
-    searchDisabled: true,
-    data: {},
+const Diagnostic = ({getToken,id}) => {
+  const [formData, setFormData] = useState({
+    test_name: '',
+    type: '',
+    method_of_diagnosis: '',
+    body_site: '',
+    test_result: '',
+    patient_id: '',
   });
 
-  const onChange = (value, name) => {
-    const updatedData = { ...currentData.data, [name]: value };
-
-    setCurrentData({
-      data: updatedData,
-      searchDisabled: Object.keys(updatedData).every(
-        (key) => !updatedData[key]
-      ),
-    });
-  };
-
-  const onSubmit = (e) => {
+  formData.patient_id={id}
+  const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('https://backend-django-innovaccer.herokuapp.com/addOneDignosticResult/4', {
+    fetch(`https://backend-django-innovaccer.herokuapp.com/addOneDignosticResult/${id}`, {
       method: 'POST',
       headers: { 
       'Content-Type': 'application/json',
-      Authorization: `Token ${
-        JSON.parse(localStorage.getItem('token')).token
-      }`,
+      Authorization: `Token ${getToken().token}`,
      },
-      body: JSON.stringify({ ...currentData.data}),
+     body: JSON.stringify({ ...formData }),
     })
       .then(()=> console.log(currentData))
       .then((res) => res.json())
@@ -50,7 +42,7 @@ const Diagnostic = () => {
       <PageHeader title='Diagnostic Results' separator={false} />
       <div className='w-100'>
         <Card className='px-6 py-6'>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={handleSubmit}>
             <div className='d-flex flex-wrap'>
               <div className='mr-12 mb-10'>
                 <Label withInput={true}>Test Name</Label>
@@ -60,8 +52,8 @@ const Diagnostic = () => {
                   placeholder='Name of Test'
                   icon='add_box'
                   autocomplete={'on'}
-                  onChange={(event) =>
-                    onChange(event.target.value, event.target.name)
+                  onChange={(e) =>
+                    setFormData({ ...formData, test_name: e.target.value })
                   }
                 />
               </div>
@@ -78,8 +70,8 @@ const Diagnostic = () => {
                   placeholder='Type of Diagnosis'
                   icon='add_box'
                   autocomplete={'on'}
-                  onChange={(event) =>
-                    onChange(event.target.value, event.target.name)
+                  onChange={(e) =>
+                    setFormData({ ...formData, type: e.target.value })
                   }
                 />
               </div>
@@ -91,8 +83,8 @@ const Diagnostic = () => {
                   placeholder='Method of Diagnosis'
                   icon='add_box'
                   autocomplete={'on'}
-                  onChange={(event) =>
-                    onChange(event.target.value, event.target.name)
+                  onChange={(e) =>
+                    setFormData({ ...formData, method_of_diagnosis: e.target.value })
                   }
                 />
               </div>
@@ -104,8 +96,8 @@ const Diagnostic = () => {
                   placeholder='Site in the body'
                   icon='add_box'
                   autocomplete={'on'}
-                  onChange={(event) =>
-                    onChange(event.target.value, event.target.name)
+                  onChange={(e) =>
+                    setFormData({ ...formData, body_site: e.target.value })
                   }
                 />
               </div>
@@ -120,8 +112,8 @@ const Diagnostic = () => {
                   placeholder='Result of Diagnosis'
                   icon='add_box'
                   autocomplete={'on'}
-                  onChange={(event) =>
-                    onChange(event.target.value, event.target.name)
+                  onChange={(e) =>
+                    setFormData({ ...formData, test_result: e.target.value })
                   }
                 />
               </div>
@@ -129,7 +121,7 @@ const Diagnostic = () => {
 
             <Button
               className='submmit-btn'
-              disabled={currentData.searchDisabled}
+              disabled={formData.searchDisabled}
               appearance='secondary'
               type='submit'>
               Submit

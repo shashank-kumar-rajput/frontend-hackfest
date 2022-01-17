@@ -12,7 +12,7 @@ import {
 } from '@innovaccer/design-system';
 import './Medication.css';
 
-const Medication = () => {
+const Medication = ({getToken,id}) => {
   const [formData, setFormData] = useState({
     medication_item: '',
     form: '',
@@ -31,13 +31,11 @@ const Medication = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('https://backend-django-innovaccer.herokuapp.com/addOneRecord', {
+    fetch(`https://backend-django-innovaccer.herokuapp.com/addOneRecord/${id}`, {
       method: 'POST',
       headers: { 
       'Content-Type': 'application/json',
-      Authorization: `Token ${
-        JSON.parse(localStorage.getItem('token')).token
-      }`,
+      Authorization: `Token ${getToken().token}`,
      },
       body: JSON.stringify({ ...formData }),
     })
@@ -63,7 +61,7 @@ const Medication = () => {
                   icon='add_box'
                   autoComplete={'on'}
                   onChange={(e) =>
-                    setFormData({ ...formData, medicationItem: e.target.value })
+                    setFormData({ ...formData, medication_item: e.target.value })
                   }
                 />
               </div>
@@ -87,7 +85,7 @@ const Medication = () => {
                   placeholder='Strength of Dosage '
                   autoComplete={'off'}
                   onChange={(e) =>
-                    setFormData({ ...formData, strength: e.target.value })
+                    setFormData({ ...formData, strength_concentration: e.target.value })
                   }
                 />
               </div>
@@ -111,7 +109,7 @@ const Medication = () => {
                   withInput={true}
                   onDateChange={(currentDate) => {
                     console.log(currentDate);
-                    setFormData({ ...formData, expiry: currentDate });
+                    setFormData({ ...formData, expire: currentDate });
                   }}
                   inputOptions={{
                     placeholder: 'MM/DD/YYYY',
@@ -139,7 +137,7 @@ const Medication = () => {
                   placeholder='BI0000'
                   autoComplete={'off'}
                   onChange={(e) =>
-                    setFormData({ ...formData, batchId: e.target.value })
+                    setFormData({ ...formData, batch_id_timing: e.target.value })
                   }
                 />
               </div>
@@ -180,7 +178,7 @@ const Medication = () => {
                     { label: 'Others', value: 'Others' },
                   ]}
                   onChange={(option) =>
-                    setFormData({ ...formData, amountUnit: option })
+                    setFormData({ ...formData, amount_unit: option })
                   }
                   searchPlaceholder='Amount Unit'
                   withSearch={true}

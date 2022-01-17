@@ -9,25 +9,24 @@ import {
 } from '@innovaccer/design-system';
 import './PlanofCare.css';
 
-const PlanofCare = () => {
+const PlanofCare = ({getToken,id}) => {
   const [formData, setFormData] = useState({
     carePlanName: '',
     description: '',
     reason: '',
-    typeOfDiet: '',
-    bedRest: 0,
+    type_of_diet: '',
+    bedrest: '',
+    patient_id:''
   });
-
+  formData.patient_id={id}
   const handleSubmit = (e) => {
     
     e.preventDefault();
-    fetch('https://backend-django-innovaccer.herokuapp.com/addOnePlanCare/5', {
+    fetch(`https://backend-django-innovaccer.herokuapp.com/addOnePlanCare/${id}`, {
       method: 'POST',
       headers: { 
       'Content-Type': 'application/json',
-      Authorization: `Token ${
-        JSON.parse(localStorage.getItem('token')).token
-      }`,
+      Authorization: `Token ${getToken().token}`,
      },
       body: JSON.stringify({ ...formData }),
     })
@@ -88,7 +87,7 @@ const PlanofCare = () => {
                   placeholder='Type of Diet'
                   autocomplete={'off'}
                   onChange={(e) =>
-                    setFormData({ ...formData, typeOfDiet: e.target.value })
+                    setFormData({ ...formData, type_of_diet: e.target.value })
                   }
                 />
               </div>
@@ -100,7 +99,7 @@ const PlanofCare = () => {
                   placeholder='No of Days'
                   autocomplete={'off'}
                   onChange={(e) =>
-                    setFormData({ ...formData, bedRest: e.target.value })
+                    setFormData({ ...formData, bedrest: e.target.value })
                   }
                 />
               </div>
