@@ -12,6 +12,7 @@ const PatientInfo = ({ getToken, setId }) => {
   //Storing Data for plan of care to show to doctors about next plan of care for a Patient
   const [dataList3, setDataList3] = useState([]);
   const [dataList4, setDataList4] = useState([]);
+
   useEffect(() => {
     const getDetails = () => {
       fetch('https://backend-django-innovaccer.herokuapp.com/patientInfo', {
@@ -33,13 +34,6 @@ const PatientInfo = ({ getToken, setId }) => {
       getDetails();
     }
   }, []);
-  //Check Run
-  // var b = dataList2.map((item) => {
-  //   console.log("data2===", item.patient_id);
-  //   return item.patient_id;
-  // });
-  // var c = b[0];
-  // console.log("c===", c);
 
   //Schema 1 for Patient Info: ID, Name, Gender, Age, Details, Prescription link
   const columns = [
@@ -78,7 +72,9 @@ const PatientInfo = ({ getToken, setId }) => {
           appearance='primary'
           aria-label='Submit your response'
           size='regular'
-          onClick={() => handleDetailClick(v.value)} //getting medical summary based on id of patient
+          onClick={() => {
+            handleDetailClick(v.value);
+          }} //getting medical summary based on id of patient
         >
           Details
         </Button>
@@ -114,7 +110,7 @@ const PatientInfo = ({ getToken, setId }) => {
           to={{
             pathname: '/medication',
           }}>
-          Medical Details Add
+          Add Medical Details
         </Link>
       ),
     },
@@ -148,7 +144,7 @@ const PatientInfo = ({ getToken, setId }) => {
           to={{
             pathname: '/diagnostic',
           }}>
-          Diagnostic Add
+          Add Diagnostic
         </Link>
       ),
     },
@@ -165,7 +161,7 @@ const PatientInfo = ({ getToken, setId }) => {
           to={{
             pathname: '/planofcare',
           }}>
-          Care Plan Add
+          Add Plan of Care
         </Link>
       ),
     },
@@ -286,7 +282,6 @@ Storing the response in DataList2
 
 */
   const handleDetailClick = (id) => {
-    console.log('id===', id);
     Promise.all([
       fetch(
         `https://backend-django-innovaccer.herokuapp.com/medicalSummary/${id}`,
@@ -338,7 +333,6 @@ Storing the response in DataList2
     */
     <>
       <PageHeader title='Patient Information' separator={false} />
-      <h1></h1>
       <ReactTable
         showMenu={true}
         withHeader={true}
