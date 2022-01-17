@@ -112,3 +112,8 @@ iframe {
 .bg-secondary-lightest {
   background: none !important;
 }
+
+.rt-td {
+  display: flex !important;
+  justify-content: center !important;
+}
