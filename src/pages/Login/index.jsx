@@ -47,10 +47,6 @@ const Login = ({ setToken, setUser, getToken }) => {
       .catch((err) => console.log(err));
   };
 
-  // const handleClick = () => {
-  //   setData({ ...data, username: 'Himanch', password: 'Hello@123' });
-  // };
-
   return (
     <div className='center-container'>
       <div style={{ width: '350px' }}>
@@ -86,7 +82,7 @@ const Login = ({ setToken, setUser, getToken }) => {
                 />
               }
             />
-            <Link to='/register'>Not a user? register</Link>
+            {/* <Link to='/register'>Not a user? register</Link> */}
 
             <Button
               className='mt-5'
