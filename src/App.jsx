@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -19,40 +19,18 @@ import Sidebar from './components/Sidebar';
 import './styles.css';
 
 const App = () => {
-  const getToken = () => JSON.parse(localStorage.getItem('token'));
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(null);
-  const [id,setId] =useState(0);
+  const [id, setId] = useState(null);
+  const getToken = () => JSON.parse(localStorage.getItem('token'));
   const URL = 'https://backend-django-innovaccer.herokuapp.com/patientInfo';
-  
-  // console.log(getToken());
-  // useEffect(() => {
-  //   const getDeatails = () => {
-  //     fetch(URL, {
-  //       method: 'GET',
-  //       headers: {
-  //         Authorization: `Token ${getToken()}`,
-  //       },
-  //     })
-  //       .then((response) => response.json())
-  //       .then((response) => {
-  //         setPatientInfo(response);
-  //       })
-  //       .catch((error) => console.log(error));
-  //   };
-
-  //   setUser(getToken());
-  //   if (user) {
-  //     getDeatails();
-  //   }
-  // }, [token]);
 
   return (
     <BrowserRouter>
       <div>
         <Navigation user={user} getToken={getToken} />
         <div className='main-container'>
-          {getToken() && <Sidebar />}
+          {getToken() && <Sidebar id={id} />}
           <div className='content-wrapper'>
             <Routes>
               <Route path='/' exact element={<Home />} />
@@ -69,22 +47,45 @@ const App = () => {
               <Route path='/register' element={<Register />} />
               <Route
                 path='/planofcare'
-                element={getToken() ? <PlanofCare id={id} getToken={getToken} /> : <Navigate to='/login' />}
+                element={
+                  getToken() && id ? (
+                    <PlanofCare id={id} getToken={getToken} />
+                  ) : (
+                    <Navigate to='/patientInfo' />
+                  )
+                }
               />
               <Route
                 path='/medication'
-                element={getToken() ? <Medication id={id} getToken={getToken}/> : <Navigate to='/login' />}
+                element={
+                  getToken() && id ? (
+                    <Medication id={id} getToken={getToken} />
+                  ) : (
+                    <Navigate to='/patientInfo' />
+                  )
+                }
               />
               <Route
                 path='/problemList'
                 element={
-                  getToken() ? <ProblemList id={id} getToken={getToken} /> : <Navigate to='/login' />
+                  getToken() ? (
+                    <ProblemList id={id} getToken={getToken} />
+                  ) : (
+                    <Navigate to='/login' />
+                  )
                 }
               />
               <Route
                 path='/diagnostic'
-                element={getToken() ? <Diagnostic id={id} getToken={getToken} /> : <Navigate to='/login' />}
+                element={
+                  getToken() && id ? (
+                    <Diagnostic id={id} getToken={getToken} />
+                  ) : (
+                    <Navigate to='/patientInfo' />
+                  )
+                }
               />
+
               <Route
                 path='/pastHistory'
                 element={
@@ -98,7 +99,11 @@ const App = () => {
               <Route
                 path='/eprescription'
                 element={
-                  getToken() ? <Prescription id={id} getToken={getToken}/> : <Navigate to='/login' />
+                  getToken() && id ? (
+                    <Prescription id={id} getToken={getToken} />
+                  ) : (
+                    <Navigate to='/patientInfo' />
+                  )
                 }
               />
               <Route

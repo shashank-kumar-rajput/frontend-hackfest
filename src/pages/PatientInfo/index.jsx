@@ -1,12 +1,9 @@
-import React from "react";
-import ReactTable from "react-table-6";
-import "react-table-6/react-table.css";
-import { useState, useEffect } from "react";
-
-import { Button, PageHeader } from "@innovaccer/design-system";
-import {
-  Link
-} from "react-router-dom";
+import React from 'react';
+import ReactTable from 'react-table-6';
+import 'react-table-6/react-table.css';
+import { useState, useEffect } from 'react';
+import { Button, PageHeader } from '@innovaccer/design-system';
+import { Link } from 'react-router-dom';
 
 const PatientInfo = ({ getToken, setId }) => {
   //for storing 2 API data we have used dataList: to store patientInfo and dataList2 : to store medical summary of particular patient.
@@ -15,10 +12,11 @@ const PatientInfo = ({ getToken, setId }) => {
   //Storing Data for plan of care to show to doctors about next plan of care for a Patient
   const [dataList3, setDataList3] = useState([]);
   const [dataList4, setDataList4] = useState([]);
+
   useEffect(() => {
     const getDetails = () => {
-      fetch("https://backend-django-innovaccer.herokuapp.com/patientInfo", {
-        method: "GET",
+      fetch('https://backend-django-innovaccer.herokuapp.com/patientInfo', {
+        method: 'GET',
         headers: {
           Authorization: `Token ${getToken().token}`,
         },
@@ -27,7 +25,7 @@ const PatientInfo = ({ getToken, setId }) => {
         .then((response) => {
           setDataList(response);
           console.log(getToken().token);
-          console.log("response===", response);
+          console.log('response===', response);
         })
         .catch((error) => console.log(error));
     };
@@ -36,57 +34,72 @@ const PatientInfo = ({ getToken, setId }) => {
       getDetails();
     }
   }, []);
-  //Check Run
-  // var b = dataList2.map((item) => {
-  //   console.log("data2===", item.patient_id);
-  //   return item.patient_id;
-  // });
-  // var c = b[0];
-  // console.log("c===", c);
 
   //Schema 1 for Patient Info: ID, Name, Gender, Age, Details, Prescription link
   const columns = [
     {
       width: 40,
 
+<<<<<<< HEAD
       Header: "ID",
       accessor: "id",
       Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>
+=======
+      Header: 'ID',
+      accessor: 'id',
+>>>>>>> 72ecfd6c9cc02dd627e3f3e08dddaad6a09f70a8
     },
     {
       width: 120,
 
+<<<<<<< HEAD
       Header: "Name",
       accessor: "name",
       Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>
+=======
+      Header: 'Name',
+      accessor: 'name',
+>>>>>>> 72ecfd6c9cc02dd627e3f3e08dddaad6a09f70a8
     },
 
     {
       width: 65,
 
+<<<<<<< HEAD
       Header: "Gender",
       accessor: "gender",
       Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>
+=======
+      Header: 'Gender',
+      accessor: 'gender',
+>>>>>>> 72ecfd6c9cc02dd627e3f3e08dddaad6a09f70a8
     },
     {
       width: 40,
 
+<<<<<<< HEAD
       Header: "Age",
       accessor: "age",
       Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>
+=======
+      Header: 'Age',
+      accessor: 'age',
+>>>>>>> 72ecfd6c9cc02dd627e3f3e08dddaad6a09f70a8
     },
     {
       width: 67,
 
-      Header: "Details",
-      accessor: "id",
+      Header: 'Details',
+      accessor: 'id',
       Cell: (v) => (
         
         <Button
-          appearance="primary"
-          aria-label="Submit your response"
-          size="regular"
-          onClick={() => handleDetailClick(v.value)} //getting medical summary based on id of patient
+          appearance='primary'
+          aria-label='Submit your response'
+          size='regular'
+          onClick={() => {
+            handleDetailClick(v.value);
+          }} //getting medical summary based on id of patient
         >
           Details
         </Button>
@@ -95,17 +108,16 @@ const PatientInfo = ({ getToken, setId }) => {
     {
       width: 110,
 
-      Header: "Prescription",
-      accessor: "id",
+      Header: 'Prescription',
+      accessor: 'id',
 
       Cell: (v) => (
         <Link
-          className="btn btn-primary"
+          className='btn btn-primary'
           onClick={() => setId(v.value)}
           to={{
-            pathname: "/eprescription",
-          }}
-        >
+            pathname: '/eprescription',
+          }}>
           Prescription
         </Link>
       ),
@@ -113,35 +125,33 @@ const PatientInfo = ({ getToken, setId }) => {
     {
       width: 160,
 
-      Header: "Medication Summary",
-      accessor: "id",
+      Header: 'Medication Summary',
+      accessor: 'id',
 
       Cell: (v) => (
         <Link
-          className="btn btn-primary"
+          className='btn btn-primary'
           onClick={() => setId(v.value)}
           to={{
-            pathname: "/medication",
-          }}
-        >
-          Medical Details Add
+            pathname: '/medication',
+          }}>
+          Add Medical Details
         </Link>
       ),
     },
     {
       width: 130,
 
-      Header: "Problem List ",
-      accessor: "id",
+      Header: 'Problem List ',
+      accessor: 'id',
 
       Cell: (v) => (
         <Link
-          className="btn btn-primary"
+          className='btn btn-primary'
           onClick={() => setId(v.value)}
           to={{
-            pathname: "/problemList",
-          }}
-        >
+            pathname: '/problemList',
+          }}>
           ProblemList Addition
         </Link>
       ),
@@ -149,36 +159,34 @@ const PatientInfo = ({ getToken, setId }) => {
     {
       width: 140,
 
-      Header: "Diagnostic Result ",
-      accessor: "id",
+      Header: 'Diagnostic Result ',
+      accessor: 'id',
 
       Cell: (v) => (
         <Link
-          className="btn btn-primary"
+          className='btn btn-primary'
           onClick={() => setId(v.value)}
           to={{
-            pathname: "/diagnostic",
-          }}
-        >
-          Diagnostic Add
+            pathname: '/diagnostic',
+          }}>
+          Add Diagnostic
         </Link>
       ),
     },
     {
       width: 150,
 
-      Header: "Plan Of Care ",
-      accessor: "id",
+      Header: 'Plan Of Care ',
+      accessor: 'id',
 
       Cell: (v) => (
         <Link
-          className="btn btn-primary"
+          className='btn btn-primary'
           onClick={() => setId(v.value)}
           to={{
-            pathname: "/planofcare",
-          }}
-        >
-          Care Plan Add
+            pathname: '/planofcare',
+          }}>
+          Add Plan of Care
         </Link>
       ),
       
@@ -192,41 +200,41 @@ const PatientInfo = ({ getToken, setId }) => {
 
   const columns2 = [
     {
-      Header: "ID",
-      accessor: "id",
+      Header: 'ID',
+      accessor: 'id',
     },
     {
-      Header: "Amount",
-      accessor: "amount",
+      Header: 'Amount',
+      accessor: 'amount',
     },
     {
-      Header: "Amount Unit",
-      accessor: "amount_unit",
+      Header: 'Amount Unit',
+      accessor: 'amount_unit',
     },
     {
-      Header: "Description",
-      accessor: "description",
+      Header: 'Description',
+      accessor: 'description',
     },
     {
-      Header: "Form",
-      accessor: "form",
+      Header: 'Form',
+      accessor: 'form',
     },
     {
-      Header: "Medication Item",
-      accessor: "medication_item",
+      Header: 'Medication Item',
+      accessor: 'medication_item',
     },
     {
-      Header: "Expiry",
-      accessor: "expire",
+      Header: 'Expiry',
+      accessor: 'expire',
     },
 
     {
-      Header: "Strength",
-      accessor: "strength_concentration",
+      Header: 'Strength',
+      accessor: 'strength_concentration',
     },
     {
-      Header: "Batch Id",
-      accessor: "batch_id_timing",
+      Header: 'Batch Id',
+      accessor: 'batch_id_timing',
     },
   ];
 
@@ -237,24 +245,24 @@ const PatientInfo = ({ getToken, setId }) => {
 
   const columns3 = [
     {
-      Header: "Care Plan Name",
-      accessor: "carePlanName",
+      Header: 'Care Plan Name',
+      accessor: 'carePlanName',
     },
     {
-      Header: "Description",
-      accessor: "description",
+      Header: 'Description',
+      accessor: 'description',
     },
     {
-      Header: "Reason",
-      accessor: "reason",
+      Header: 'Reason',
+      accessor: 'reason',
     },
     {
-      Header: "Type of Diet",
-      accessor: "type_of_diet",
+      Header: 'Type of Diet',
+      accessor: 'type_of_diet',
     },
     {
-      Header: "Bed Rest",
-      accessor: "bedrest",
+      Header: 'Bed Rest',
+      accessor: 'bedrest',
     },
   ];
 
@@ -264,24 +272,24 @@ const PatientInfo = ({ getToken, setId }) => {
 
   const columns4 = [
     {
-      Header: "Test Name",
-      accessor: "test_name",
+      Header: 'Test Name',
+      accessor: 'test_name',
     },
     {
-      Header: "Type",
-      accessor: "type",
+      Header: 'Type',
+      accessor: 'type',
     },
     {
-      Header: "Method",
-      accessor: "method_of_diagnosis",
+      Header: 'Method',
+      accessor: 'method_of_diagnosis',
     },
     {
-      Header: "Body Site",
-      accessor: "body_site",
+      Header: 'Body Site',
+      accessor: 'body_site',
     },
     {
-      Header: "Test Result",
-      accessor: "test_result",
+      Header: 'Test Result',
+      accessor: 'test_result',
     },
   ];
 
@@ -292,7 +300,7 @@ const PatientInfo = ({ getToken, setId }) => {
     
     
     */
-    console.log("Redirect");
+    console.log('Redirect');
   };
   /*
 Getting API data from MedicalSummary for each ID number
@@ -300,12 +308,11 @@ Storing the response in DataList2
 
 */
   const handleDetailClick = (id) => {
-    console.log("id===", id);
     Promise.all([
       fetch(
         `https://backend-django-innovaccer.herokuapp.com/medicalSummary/${id}`,
         {
-          method: "GET",
+          method: 'GET',
           headers: {
             Authorization: `Token ${getToken().token}`,
           },
@@ -319,7 +326,7 @@ Storing the response in DataList2
       fetch(
         `https://backend-django-innovaccer.herokuapp.com/diagnosticResult/${id}`,
         {
-          method: "GET",
+          method: 'GET',
           headers: {
             Authorization: `Token ${getToken().token}`,
           },
@@ -331,7 +338,7 @@ Storing the response in DataList2
           console.log(response2);
         }),
       fetch(`https://backend-django-innovaccer.herokuapp.com/planCare/${id}`, {
-        method: "GET",
+        method: 'GET',
         headers: {
           Authorization: `Token ${getToken().token}`,
         },
@@ -351,17 +358,16 @@ Storing the response in DataList2
 
     */
     <>
-      <PageHeader title="Patient Information" separator={false} />
-      <h1></h1>
+      <PageHeader title='Patient Information' separator={false} />
       <ReactTable
         showMenu={true}
         withHeader={true}
-        filterPosition="HEADER"
+        filterPosition='HEADER'
         headerOptions={{
           withSearch: true,
         }}
         withPagination={true}
-        paginationType="basic"
+        paginationType='basic'
         pageSize={4}
         onPageChange={(newPage) => console.log(`on-page-change:- ${newPage}`)}
         SubComponent={true}
@@ -371,7 +377,7 @@ Storing the response in DataList2
           {
             return (
               <div>
-                <PageHeader title="Medical History:" separator={false} />
+                <PageHeader title='Medical History:' separator={false} />
                 <ReactTable
                   data={dataList2} //Nested Table
                   columns={columns2}
@@ -381,7 +387,7 @@ Storing the response in DataList2
                     {
                       return (
                         <>
-                          <PageHeader title="Care Plan:" separator={false} />
+                          <PageHeader title='Care Plan:' separator={false} />
 
                           <ReactTable
                             data={dataList4} //Nested Table
@@ -393,7 +399,7 @@ Storing the response in DataList2
                                 return (
                                   <>
                                     <PageHeader
-                                      title="Diagnostic Reports:"
+                                      title='Diagnostic Reports:'
                                       separator={false}
                                     />
 
