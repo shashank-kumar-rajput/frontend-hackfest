@@ -14,6 +14,7 @@ const Login = ({ setToken, setUser, getToken }) => {
   const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [data, setData] = useState({ username: '', password: '' });
+  const [errorMessage, setErrorMessage] = useState('');
   const { password = '' } = data;
 
   const onActionClick = () => {
@@ -39,12 +40,19 @@ const Login = ({ setToken, setUser, getToken }) => {
     })
       .then((res) => res.json())
       .then((token) => {
-        localStorage.setItem('token', JSON.stringify(token));
-        setToken(JSON.parse(localStorage.getItem('token')));
-        setUser(JSON.parse(localStorage.getItem('token')));
-        navigate('/');
+        if (!token.non_field_errors) {
+          localStorage.setItem('token', JSON.stringify(token));
+          setToken(JSON.parse(localStorage.getItem('token')));
+          setUser(JSON.parse(localStorage.getItem('token')));
+          navigate('/');
+        } else {
+          throw new Error('Not a valid token');
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setErrorMessage('Not a valid credentials');
+        console.log(err);
+      });
   };
 
   return (
@@ -82,7 +90,7 @@ const Login = ({ setToken, setUser, getToken }) => {
                 />
               }
             />
-            {/* <Link to='/register'>Not a user? register</Link> */}
+            <Link to='/register'>Not a user? register</Link>
 
             <Button
               className='mt-5'
@@ -92,6 +100,7 @@ const Login = ({ setToken, setUser, getToken }) => {
               Login
             </Button>
           </form>
+          {errorMessage && <p className='err-msg'>{errorMessage}</p>}
         </Card>
       </div>
     </div>
