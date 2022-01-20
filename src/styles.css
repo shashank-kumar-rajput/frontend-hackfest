@@ -12,6 +12,8 @@
   --submit-hover-color: #656865;
   --start-color: #7928ca;
   --end-color: #ff0080;
+  --error-message-color: #dc2626;
+  --error-message-bg-color: #fee2e2;
 }
 
 * {
