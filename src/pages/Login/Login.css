@@ -13,9 +13,9 @@
 .err-msg {
   font-weight: bold;
   padding: 0.5rem 1rem;
-  color: #dc2626;
-  background-color: #fee2e2;
   margin-top: 1rem;
-  border: 1px solid #dc2626;
+  color: var(--error-message-color);
+  background-color: var(--error-message-bg-color);
+  border: 1px solid var(--error-message-color);
   border-radius: 4px;
 }
