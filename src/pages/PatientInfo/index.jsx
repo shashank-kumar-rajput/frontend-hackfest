@@ -39,7 +39,7 @@ const PatientInfo = ({ getToken, setId }) => {
   //Schema 1 for Patient Info: ID, Name, Gender, Age, Details, Prescription link
   const columns = [
     {
-      width: 40,
+      // width: 40,
 
       Header: 'ID',
       accessor: 'id',
@@ -69,6 +69,7 @@ const PatientInfo = ({ getToken, setId }) => {
       Header: 'Details',
       accessor: 'id',
       Cell: (v) => (
+        
         <Button
           appearance='primary'
           aria-label='Submit your response'
@@ -165,6 +166,7 @@ const PatientInfo = ({ getToken, setId }) => {
           Add Plan of Care
         </Link>
       ),
+      
     },
   ];
 
