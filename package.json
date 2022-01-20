@@ -7,11 +7,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
-    "axios": "^0.24.0",
-=======
     "chai": "^4.3.4",
->>>>>>> 2f3948bc255542e45e8a2efa38e630f883f9e02c
     "mdbreact": "^5.2.0",
     "react": "^18.0.0-rc.0-next-811634762-20220110",
     "react-dom": "^18.0.0-rc.0-next-811634762-20220110",
