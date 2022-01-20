@@ -9,6 +9,7 @@ const PatientInfo = ({ getToken, setId }) => {
   //for storing 2 API data we have used dataList: to store patientInfo and dataList2 : to store medical summary of particular patient.
   const [dataList, setDataList] = useState([]);
   const [dataList2, setDataList2] = useState([]);
+
   //Storing Data for plan of care to show to doctors about next plan of care for a Patient
   const [dataList3, setDataList3] = useState([]);
   const [dataList4, setDataList4] = useState([]);
