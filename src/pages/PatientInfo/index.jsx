@@ -38,53 +38,29 @@ const PatientInfo = ({ getToken, setId }) => {
   //Schema 1 for Patient Info: ID, Name, Gender, Age, Details, Prescription link
   const columns = [
     {
-      width: 40,
+      // width: 40,
 
-<<<<<<< HEAD
-      Header: "ID",
-      accessor: "id",
-      Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>
-=======
       Header: 'ID',
       accessor: 'id',
->>>>>>> 72ecfd6c9cc02dd627e3f3e08dddaad6a09f70a8
     },
     {
       width: 120,
 
-<<<<<<< HEAD
-      Header: "Name",
-      accessor: "name",
-      Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>
-=======
       Header: 'Name',
       accessor: 'name',
->>>>>>> 72ecfd6c9cc02dd627e3f3e08dddaad6a09f70a8
     },
 
     {
       width: 65,
 
-<<<<<<< HEAD
-      Header: "Gender",
-      accessor: "gender",
-      Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>
-=======
       Header: 'Gender',
       accessor: 'gender',
->>>>>>> 72ecfd6c9cc02dd627e3f3e08dddaad6a09f70a8
     },
     {
       width: 40,
 
-<<<<<<< HEAD
-      Header: "Age",
-      accessor: "age",
-      Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div>
-=======
       Header: 'Age',
       accessor: 'age',
->>>>>>> 72ecfd6c9cc02dd627e3f3e08dddaad6a09f70a8
     },
     {
       width: 67,
