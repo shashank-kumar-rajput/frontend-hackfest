@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactTable from 'react-table-6';
-import 'react-table-6/react-table.css';
 import { useState, useEffect } from 'react';
 import { Button, PageHeader } from '@innovaccer/design-system';
 import { Link } from 'react-router-dom';
+import 'react-table-6/react-table.css';
 
 const PatientInfo = ({ getToken, setId }) => {
   //for storing 2 API data we have used dataList: to store patientInfo and dataList2 : to store medical summary of particular patient.
