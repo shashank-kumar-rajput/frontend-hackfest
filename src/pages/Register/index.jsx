@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import '@innovaccer/design-system/css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   Card,
   Heading,
@@ -8,14 +7,32 @@ import {
   Input,
   Icon,
   Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Text,
+  ModalDescription,
+  ModalFooter,
+  Spinner,
 } from '@innovaccer/design-system';
+import '@innovaccer/design-system/css';
 import './Register.css';
 
 const Register = () => {
+  const success = 'User registration successfull';
+  const failed = 'Please register yourself';
+  const navigate = useNavigate();
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [data, setData] = useState({ username: '', password: '' });
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [registerStatus, setRegisterStatus] = useState(false);
+  const [open, setOpen] = useState(false);
   const { password = '' } = data;
+  const dimension = 'medium';
+
+  const onClose = () => {
+    setOpen(!open);
+  };
 
   const onActionClick = () => {
     setPasswordVisible(!passwordVisible);
@@ -40,22 +57,24 @@ const Register = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    const { username = '', password = '' } = data;
-    console.log(`email: ${username}, password: ${password}`);
 
     // call to backend
     fetch('https://backend-django-innovaccer.herokuapp.com/register', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         username: data.username,
-        password: data.password,
-        confirmPassword: confirmPassword,
+        password1: data.password,
+        password2: confirmPassword,
       }),
     })
       .then((response) => response.json())
-      .then((response) => console.log(response))
-      .catch((error) => console.log(error));
+      .then((status) =>
+        status === 'true' ? setRegisterStatus(true) : setRegisterStatus(false)
+      )
+      .catch((error) => setRegisterStatus(false));
   };
 
   return (
@@ -106,6 +125,7 @@ const Register = () => {
             />
             <Link to='/login'>Already a user ?</Link>
             <Button
+              onClick={() => setOpen(true)}
               className='mt-5'
               appearance='primary'
               expanded={true}
@@ -115,6 +135,32 @@ const Register = () => {
           </form>
         </Card>
       </div>
+      <Modal open={open} dimension={dimension} backdropClose={onClose}>
+        <ModalHeader onClose={onClose} heading='User registration status:' />
+        <ModalBody>
+          <Text></Text>
+          <ModalDescription title={registerStatus ? success : failed} />
+        </ModalBody>
+        {!registerStatus ? (
+          <div className='mr-2 center-loader'>
+            <div className='h-10'>
+              <Spinner size='large' />
+            </div>
+          </div>
+        ) : (
+          <ModalFooter open={open}>
+            <Button appearance='basic' onClick={() => navigate('/')}>
+              Home
+            </Button>
+            <Button
+              appearance='primary'
+              className='ml-4'
+              onClick={() => navigate('/login')}>
+              Login
+            </Button>
+          </ModalFooter>
+        )}
+      </Modal>
     </div>
   );
 };
