@@ -7,7 +7,11 @@ import {
   Input,
   Button,
   Dropdown,
+  Row,
+  Column,
+  Message,
 } from '@innovaccer/design-system';
+
 
 const PatientForm = () => {
   const [formData, setFormData] = useState({
@@ -15,9 +19,16 @@ const PatientForm = () => {
     age: 0,
     gender: '',
   });
+  const [invalid, setInvalid] = useState(false);
+  const [valid, setValid] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (formData.name === '' || formData.age === '0' || formData.age === '' || formData.gender === '') {
+      setInvalid(true);
+      setValid(false)
+    } 
+    else {
     fetch('https://backend-django-innovaccer.herokuapp.com/addPatientInfo', {
       method: 'POST',
       headers: {
@@ -29,9 +40,10 @@ const PatientForm = () => {
       body: JSON.stringify({ ...formData }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res), alert("Submitted Successfully"))
+      .then((res) => console.log(res), setInvalid(false), setValid(true))
       .catch((err) => console.log(err));
   };
+}
 
   return (
     <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
@@ -83,7 +95,24 @@ const PatientForm = () => {
                 />
               </div>
             </div>
-
+            {invalid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="alert" description="invalid details" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
+            {valid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="success" description="Submitted Successfully" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
             <Button
               appearance='secondary'
               type='submit'
