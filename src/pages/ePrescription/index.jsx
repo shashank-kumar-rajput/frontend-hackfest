@@ -7,6 +7,9 @@ import {
   Input,
   Button,
   Textarea,
+  Row,
+  Column,
+  Message,
 } from "@innovaccer/design-system";
 import "./ePrescription.css";
 
@@ -24,9 +27,19 @@ const Prescription = ({ getToken,id }) => {
     max_amount_dose_unit: "",
     comments: "",
   });
+  const [invalid, setInvalid] = useState(false);
+  const [valid, setValid] = useState(false);
 
   const handleSubmit = (e) => {
-    console.log(formData);
+    e.preventDefault();
+    if (formData.medication_item === '' || formData.substance_name === '' || formData.form === '' 
+    || formData.strength === '' || formData.strength_unit === '' || formData.route === '' 
+    || formData.dosage_instructions === '' || formData.duration === '' || formData.max_amount === ''
+    || formData.max_amount_dose_unit === '') {
+      setInvalid(true);
+      setValid(false)
+    } 
+    else {
     fetch(
       `https://backend-django-innovaccer.herokuapp.com/addOnePrescription/${id}`,
       {
@@ -42,6 +55,7 @@ const Prescription = ({ getToken,id }) => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
+}
  
   return (
     <div className="d-flex flex-column bg-secondary-lightest vh-100 pb-6">
@@ -218,6 +232,24 @@ const Prescription = ({ getToken,id }) => {
             <Button appearance="secondary" type="submit">
               Submit
             </Button>
+            {invalid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="alert" description="invalid details" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
+            {valid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="success" description="Submitted Successfully" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
           </form>
         </Card>
       </div>

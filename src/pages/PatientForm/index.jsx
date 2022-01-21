@@ -24,7 +24,7 @@ const PatientForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.name === '' || formData.age === '0' || formData.age === '' || formData.gender === '') {
+    if (formData.name === '' || formData.age === '0' || formData.age > 150 || formData.age === '' || formData.gender === '') {
       setInvalid(true);
       setValid(false)
     } 
@@ -40,7 +40,7 @@ const PatientForm = () => {
       body: JSON.stringify({ ...formData }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res), setInvalid(false), setValid(true))
+      .then((res) => console.log(res), setInvalid(false), setValid(true, 5))
       .catch((err) => console.log(err));
   };
 }
@@ -69,7 +69,7 @@ const PatientForm = () => {
                 <Label withInput={true}>Age</Label>
                 <Input
                   name='age'
-                  type='text'
+                  type='number'
                   placeholder='age of the patient'
                   autoComplete={'on'}
                   onSelect={(e) =>
@@ -95,6 +95,12 @@ const PatientForm = () => {
                 />
               </div>
             </div>
+            <Button
+              appearance='secondary'
+              type='submit'
+              className='submmit-btn'>
+              Submit
+            </Button>
             {invalid ?
               <Card className='px-4 py-4'>
               <Row>
@@ -113,12 +119,6 @@ const PatientForm = () => {
               </Row>
               </Card>
             : null}
-            <Button
-              appearance='secondary'
-              type='submit'
-              className='submmit-btn'>
-              Submit
-            </Button>
           </form>
         </Card>
       </div>

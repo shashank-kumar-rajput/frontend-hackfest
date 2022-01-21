@@ -8,6 +8,9 @@ import {
   Button,
   DatePicker,
   Dropdown,
+  Row,
+  Column,
+  Message,
 } from '@innovaccer/design-system';
 import './ProblemList.css';
 
@@ -20,10 +23,19 @@ const ProblemList = ({getToken,id}) => {
     diagnosticCertainity: '',
     patient_id:'',
   });
+  const [invalid, setInvalid] = useState(false);
+  const [valid, setValid] = useState(false);
+
   formData.patient_id={id}
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (formData.diagnosisName === '' || formData.bodySite === '0' || formData.dateOfOnset === '' 
+    || formData.severity === '' || formData.diagnosticCertainity === '') {
+      setInvalid(true);
+      setValid(false)
+    } 
+    else {
     fetch(`https://backend-django-innovaccer.herokuapp.com/addOneProblemList/${id}`, {
       method: 'POST',
       headers: { 
@@ -39,6 +51,7 @@ const ProblemList = ({getToken,id}) => {
     // console.log({ ...formData });
     // return false;
   };
+}
   console.log("id===",id);
   return (
     <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
@@ -147,6 +160,24 @@ const ProblemList = ({getToken,id}) => {
               type='submit'>
               Submit
             </Button>
+            {invalid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="alert" description="invalid details" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
+            {valid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="success" description="Submitted Successfully" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
           </form>
         </Card>
       </div>
