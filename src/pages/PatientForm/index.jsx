@@ -24,7 +24,7 @@ const PatientForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.name === '' || formData.age === '0' || formData.age > 150 || formData.age === '' || formData.gender === '') {
+    if (formData.name === '' || formData.age === '0'  || formData.age === '' || formData.gender === '') {
       setInvalid(true);
       setValid(false)
     } 
@@ -69,7 +69,7 @@ const PatientForm = () => {
                 <Label withInput={true}>Age</Label>
                 <Input
                   name='age'
-                  type='number'
+                  type='text'
                   placeholder='age of the patient'
                   autoComplete={'on'}
                   onSelect={(e) =>
