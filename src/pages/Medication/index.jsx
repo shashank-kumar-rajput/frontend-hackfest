@@ -38,7 +38,7 @@ const Medication = ({ getToken, id }) => {
   };
 
   const handleSubmit = (e) => {
-    console.log(formData);
+    // console.log(formData);
 
     e.preventDefault();
     fetch(
@@ -69,7 +69,7 @@ const Medication = ({ getToken, id }) => {
                 <Input
                   name='Medication Item'
                   type='text'
-                  placeholder='Name of Medicine'
+                  placeholder='name of medicine'
                   icon='add_box'
                   autoComplete={'on'}
                   onChange={(e) => onChange(e.target.value, 'medication_item')}
@@ -80,7 +80,7 @@ const Medication = ({ getToken, id }) => {
                 <Input
                   name='form'
                   type='text'
-                  placeholder='type of medication i.e Tablet/cream/infusion'
+                  placeholder='type of medication i.e tablet or cream or infusion'
                   autoComplete={'on'}
                   onSelect={(e) => onChange(e.target.value, 'form')}
                 />
@@ -90,7 +90,7 @@ const Medication = ({ getToken, id }) => {
                 <Input
                   name='Concentration'
                   type='text'
-                  placeholder='Strength of Dosage '
+                  placeholder='strength of dosage'
                   autoComplete={'off'}
                   onChange={(e) =>
                     onChange(e.target.value, 'strength_concentration')
@@ -102,7 +102,7 @@ const Medication = ({ getToken, id }) => {
                 <Input
                   name='Presentation'
                   type='Number'
-                  placeholder='Strength of Dosage'
+                  placeholder='presentation'
                   autoComplete={'off'}
                   onChange={(e) => onChange(e.target.value, 'presentation')}
                 />
@@ -112,6 +112,7 @@ const Medication = ({ getToken, id }) => {
                 style={{ width: 'var(--spacing-9)' }}>
                 <Label withInput={true}>Expiry Date</Label>
                 <DatePicker
+                  data-testid='currentDate'
                   withInput={true}
                   onDateChange={(currentDate) => {
                     onChange(currentDate, 'expire');
@@ -149,7 +150,7 @@ const Medication = ({ getToken, id }) => {
                 <Input
                   name='Manufacturer'
                   type='text'
-                  placeholder='Manufacturer'
+                  placeholder='manufacturer'
                   autoComplete={'off'}
                   onChange={(e) => onChange(e.target.value, 'manufacturer')}
                 />
@@ -159,7 +160,7 @@ const Medication = ({ getToken, id }) => {
                 <Input
                   name='Amount'
                   type='Number'
-                  placeholder='Amount of Dosage'
+                  placeholder='amount of dosage'
                   autoComplete={'off'}
                   onChange={(e) => onChange(e.target.value, 'amount')}
                 />
@@ -170,6 +171,7 @@ const Medication = ({ getToken, id }) => {
                 style={{ width: 'var(--spacing-9)' }}>
                 <Label withInput={true}>Amount Unit</Label>
                 <Dropdown
+                  data-testid='dropdown'
                   options={[
                     { label: 'mg', value: 'mg' },
                     { label: 'ml', value: 'ml' },
@@ -177,7 +179,7 @@ const Medication = ({ getToken, id }) => {
                     { label: 'Others', value: 'Others' },
                   ]}
                   onChange={(option) => onChange(option, 'amount_unit')}
-                  searchPlaceholder='Amount Unit'
+                  searchPlaceholder='amount unit'
                   withSearch={true}
                 />
               </div>
@@ -191,7 +193,7 @@ const Medication = ({ getToken, id }) => {
                 <Input
                   name='Description'
                   type='text'
-                  placeholder='Unit in mg/ml/tablet'
+                  placeholder='unit in mg or ml or tablet'
                   autocomplete={'off'}
                   onChange={(e) => onChange(e.target.value, 'descriptionUnit')}
                 />
@@ -201,7 +203,7 @@ const Medication = ({ getToken, id }) => {
                 <Input
                   name='Dosage'
                   type='text'
-                  placeholder='1 times a Day/hour/week'
+                  placeholder='1 times a day or hour or week'
                   autocomplete={'off'}
                   onChange={(e) => onChange(e.target.value, 'frequency')}
                 />
@@ -212,7 +214,7 @@ const Medication = ({ getToken, id }) => {
                 <Input
                   name='Route'
                   type='text'
-                  placeholder='Method of Dosage:infusion/oral'
+                  placeholder='method of dosage: infusion or oral'
                   autocomplete={'off'}
                   onChange={(e) => onChange(e.target.value, 'route')}
                 />
@@ -228,7 +230,7 @@ const Medication = ({ getToken, id }) => {
                   className='w-200'
                   id='description'
                   name='description'
-                  placeholder='Enter the method prescribed by doctor for medication'
+                  placeholder='enter the method prescribed'
                   onChange={(e) => onChange(e.target.value, 'description')}
                 />
               </div>
