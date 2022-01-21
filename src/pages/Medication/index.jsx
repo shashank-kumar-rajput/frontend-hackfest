@@ -9,6 +9,9 @@ import {
   DatePicker,
   Dropdown,
   Textarea,
+  Row,
+  Column,
+  Message,
 } from '@innovaccer/design-system';
 import './Medication.css';
 
@@ -29,6 +32,9 @@ const Medication = ({ getToken, id }) => {
     route: '',
     description: '',
   });
+  const [invalid, setInvalid] = useState(false);
+  const [valid, setValid] = useState(false);
+
 
   const onChange = (value, name) => {
     const updatedData = { ...formData, [name]: value };
@@ -41,21 +47,26 @@ const Medication = ({ getToken, id }) => {
     console.log(formData);
 
     e.preventDefault();
-    fetch(
-      `https://backend-django-innovaccer.herokuapp.com/addOneRecord/${id}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Token ${getToken().token}`,
-        },
-        body: JSON.stringify({ ...formData }),
-      }
-    )
+    if (formData.medication_item === '' || formData.form === '0' || formData.strength_concentration === ''
+     || formData.presentation === '' || formData.manufacturer === '' || formData.amount === '' 
+     || formData.amount_unit === '' || formData.frequency === '' || formData.route === '') {
+      setInvalid(true);
+      setValid(false)
+    } 
+    else {
+    fetch(`https://backend-django-innovaccer.herokuapp.com/addOneRecord/${id}`, {
+      method: 'POST',
+      headers: { 
+      'Content-Type': 'application/json',
+      Authorization: `Token ${getToken().token}`,
+     },
+      body: JSON.stringify({ ...formData }),
+    })
       .then((res) => res.json())
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
+}
 
   return (
     <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
@@ -241,6 +252,24 @@ const Medication = ({ getToken, id }) => {
               className='submmit-btn'>
               Submit
             </Button>
+            {invalid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="alert" description="invalid details" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
+            {valid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="success" description="Submitted Successfully" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
           </form>
         </Card>
       </div>

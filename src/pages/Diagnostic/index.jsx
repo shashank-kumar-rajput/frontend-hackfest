@@ -6,7 +6,9 @@ import {
   Label,
   Input,
   Button,
-  Toast,
+  Row,
+  Column,
+  Message,
 } from '@innovaccer/design-system';
 import './Diagnostic.css';
 
@@ -20,9 +22,18 @@ const Diagnostic = ({getToken,id}) => {
     patient_id: '',
   });
 
+  const [invalid, setInvalid] = useState(false);
+  const [valid, setValid] = useState(false);
+
   formData.patient_id={id}
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (formData.test_name === '' || formData.type === '' || formData.method_of_diagnosis === ''
+     || formData.body_site === '' || formData.test_result === '') {
+      setInvalid(true);
+      setValid(false)
+    } 
+    else {
     fetch(`https://backend-django-innovaccer.herokuapp.com/addOneDignosticResult/${id}`, {
       method: 'POST',
       headers: { 
@@ -36,6 +47,7 @@ const Diagnostic = ({getToken,id}) => {
       .then((res) => console.log(res), alert("Submitted Successfully"))
       .catch((err) => console.log(err));
   };
+}
 
   return (
     <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
@@ -126,6 +138,24 @@ const Diagnostic = ({getToken,id}) => {
               type='submit'>
               Submit
             </Button>
+            {invalid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="alert" description="invalid details" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
+            {valid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="success" description="Submitted Successfully" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
           </form>
         </Card>
       </div>

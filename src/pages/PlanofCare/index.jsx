@@ -6,6 +6,9 @@ import {
   Label,
   Input,
   Button,
+  Row,
+  Column,
+  Message,
 } from '@innovaccer/design-system';
 import './PlanofCare.css';
 
@@ -18,10 +21,18 @@ const PlanofCare = ({getToken,id}) => {
     bedrest: '',
     patient_id:''
   });
+  const [invalid, setInvalid] = useState(false);
+  const [valid, setValid] = useState(false);
   formData.patient_id={id}
   const handleSubmit = (e) => {
     
     e.preventDefault();
+    if (formData.carePlanName === '' || formData.reason === '' || formData.type_of_diet === '' 
+    || formData.bedrest === '' || formData.bedrest === '0') {
+      setInvalid(true);
+      setValid(false)
+    } 
+    else {
     fetch(`https://backend-django-innovaccer.herokuapp.com/addOnePlanCare/${id}`, {
       method: 'POST',
       headers: { 
@@ -34,6 +45,7 @@ const PlanofCare = ({getToken,id}) => {
       .then((res) => console.log(res), alert("Submitted Successfully"))
       .catch((err) => console.log(err));
   };
+  }
 
   return (
     <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
@@ -107,6 +119,24 @@ const PlanofCare = ({getToken,id}) => {
             <Button appearance='secondary' type='submit' className='submmit-btn'>
               Submit
             </Button>
+            {invalid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="alert" description="invalid details" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
+            {valid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="success" description="Submitted Successfully" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
           </form>
         </Card>
       </div>

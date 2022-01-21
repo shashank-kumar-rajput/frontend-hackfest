@@ -9,6 +9,9 @@ import {
   Button,
   DatePicker,
   Dropdown,
+  Row,
+  Column,
+  Message,
 } from '@innovaccer/design-system';
 
 const PastHistory = () => {
@@ -22,9 +25,17 @@ const PastHistory = () => {
     resolutionPhase: '',
     occurance: '',
   });
+  const [invalid, setInvalid] = useState(false);
+  const [valid, setValid] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if (formData.diagnosisName === '' || formData.bodySite === '' || formData.dateOfOnSet === '' || formData.severity === '' 
+    || formData.diagnosticCertainty === '' || formData.active === '' || formData.resolutionPhase === '' || formData.occurance === '') {
+      setInvalid(true);
+      setValid(false)
+    } 
+    else {
     // fetch('https://backend-django-innovaccer.herokuapp.com/addOneRecord', {
     //   method: 'POST',
     //   headers: { 'Content-Type': 'application/json' },
@@ -35,6 +46,7 @@ const PastHistory = () => {
     //   .catch((err) => console.log(err));
     console.log(formData);
   };
+}
 
   return (
     <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
@@ -195,6 +207,24 @@ const PastHistory = () => {
               type='submit'>
               Submit
             </Button>
+            {invalid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="alert" description="invalid details" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
+            {valid ?
+              <Card className='px-4 py-4'>
+              <Row>
+                <Column size="4">
+                  <Message appearance="success" description="Submitted Successfully" />
+                </Column>
+              </Row>
+              </Card>
+            : null}
           </form>
         </Card>
       </div>
