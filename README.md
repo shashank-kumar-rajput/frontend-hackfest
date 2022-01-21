@@ -4,6 +4,8 @@
 
 Deployment [preview](https://inrecord.netlify.app/).
 
+### Used [Innovaccer's Masala Design](https://www.npmjs.com/package/@innovaccer/design-system) library for developing frontend.
+ 
 ### To run locally:
 
 ```
