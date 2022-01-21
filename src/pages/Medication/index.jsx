@@ -12,7 +12,8 @@ import {
 } from '@innovaccer/design-system';
 import './Medication.css';
 
-const Medication = ({getToken,id}) => {
+const Medication = ({ getToken, id }) => {
+  const [buttonStatus, setButtonStatus] = useState(true);
   const [formData, setFormData] = useState({
     medication_item: '',
     form: '',
@@ -29,22 +30,33 @@ const Medication = ({getToken,id}) => {
     description: '',
   });
 
+  const onChange = (value, name) => {
+    const updatedData = { ...formData, [name]: value };
+
+    setFormData(updatedData);
+    setButtonStatus(Object.keys(updatedData).every((key) => !updatedData[key]));
+  };
+
   const handleSubmit = (e) => {
+    console.log(formData);
+
     e.preventDefault();
-    fetch(`https://backend-django-innovaccer.herokuapp.com/addOneRecord/${id}`, {
-      method: 'POST',
-      headers: { 
-      'Content-Type': 'application/json',
-      Authorization: `Token ${getToken().token}`,
-     },
-      body: JSON.stringify({ ...formData }),
-    })
+    fetch(
+      `https://backend-django-innovaccer.herokuapp.com/addOneRecord/${id}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Token ${getToken().token}`,
+        },
+        body: JSON.stringify({ ...formData }),
+      }
+    )
       .then((res) => res.json())
-      .then((res) => console.log(res), alert("Submitted Successfully"))
+      .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
 
-  console.log(formData);
   return (
     <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
       <PageHeader title='Medical Details' separator={true} />
@@ -60,9 +72,7 @@ const Medication = ({getToken,id}) => {
                   placeholder='Name of Medicine'
                   icon='add_box'
                   autoComplete={'on'}
-                  onChange={(e) =>
-                    setFormData({ ...formData, medication_item: e.target.value })
-                  }
+                  onChange={(e) => onChange(e.target.value, 'medication_item')}
                 />
               </div>
               <div className='mr-12 mb-10'>
@@ -72,9 +82,7 @@ const Medication = ({getToken,id}) => {
                   type='text'
                   placeholder='type of medication i.e Tablet/cream/infusion'
                   autoComplete={'on'}
-                  onSelect={(e) =>
-                    setFormData({ ...formData, form: e.target.value })
-                  }
+                  onSelect={(e) => onChange(e.target.value, 'form')}
                 />
               </div>
               <div className='mr-12 mb-10'>
@@ -85,7 +93,7 @@ const Medication = ({getToken,id}) => {
                   placeholder='Strength of Dosage '
                   autoComplete={'off'}
                   onChange={(e) =>
-                    setFormData({ ...formData, strength_concentration: e.target.value })
+                    onChange(e.target.value, 'strength_concentration')
                   }
                 />
               </div>
@@ -96,9 +104,7 @@ const Medication = ({getToken,id}) => {
                   type='Number'
                   placeholder='Strength of Dosage'
                   autoComplete={'off'}
-                  onChange={(e) =>
-                    setFormData({ ...formData, presentation: e.target.value })
-                  }
+                  onChange={(e) => onChange(e.target.value, 'presentation')}
                 />
               </div>
               <div
@@ -108,8 +114,7 @@ const Medication = ({getToken,id}) => {
                 <DatePicker
                   withInput={true}
                   onDateChange={(currentDate) => {
-                    console.log(currentDate);
-                    setFormData({ ...formData, expire: currentDate });
+                    onChange(currentDate, 'expire');
                   }}
                   inputOptions={{
                     placeholder: 'MM/DD/YYYY',
@@ -136,9 +141,7 @@ const Medication = ({getToken,id}) => {
                   type='text'
                   placeholder='BI0000'
                   autoComplete={'off'}
-                  onChange={(e) =>
-                    setFormData({ ...formData, batch_id_timing: e.target.value })
-                  }
+                  onChange={(e) => onChange(e.target.value, 'batch_id_timing')}
                 />
               </div>
               <div className='mr-12 mb-10'>
@@ -148,9 +151,7 @@ const Medication = ({getToken,id}) => {
                   type='text'
                   placeholder='Manufacturer'
                   autoComplete={'off'}
-                  onChange={(e) =>
-                    setFormData({ ...formData, manufacturer: e.target.value })
-                  }
+                  onChange={(e) => onChange(e.target.value, 'manufacturer')}
                 />
               </div>
               <div className='mr-12 mb-10'>
@@ -160,9 +161,7 @@ const Medication = ({getToken,id}) => {
                   type='Number'
                   placeholder='Amount of Dosage'
                   autoComplete={'off'}
-                  onChange={(e) =>
-                    setFormData({ ...formData, amount: e.target.value })
-                  }
+                  onChange={(e) => onChange(e.target.value, 'amount')}
                 />
               </div>
 
@@ -177,9 +176,7 @@ const Medication = ({getToken,id}) => {
                     { label: 'UI', value: 'UI' },
                     { label: 'Others', value: 'Others' },
                   ]}
-                  onChange={(option) =>
-                    setFormData({ ...formData, amount_unit: option })
-                  }
+                  onChange={(option) => onChange(option, 'amount_unit')}
                   searchPlaceholder='Amount Unit'
                   withSearch={true}
                 />
@@ -196,12 +193,7 @@ const Medication = ({getToken,id}) => {
                   type='text'
                   placeholder='Unit in mg/ml/tablet'
                   autocomplete={'off'}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      descriptionUnit: e.target.value,
-                    })
-                  }
+                  onChange={(e) => onChange(e.target.value, 'descriptionUnit')}
                 />
               </div>
               <div className='mr-12 mb-10'>
@@ -211,9 +203,7 @@ const Medication = ({getToken,id}) => {
                   type='text'
                   placeholder='1 times a Day/hour/week'
                   autocomplete={'off'}
-                  onChange={(e) =>
-                    setFormData({ ...formData, frequency: e.target.value })
-                  }
+                  onChange={(e) => onChange(e.target.value, 'frequency')}
                 />
               </div>
 
@@ -224,9 +214,7 @@ const Medication = ({getToken,id}) => {
                   type='text'
                   placeholder='Method of Dosage:infusion/oral'
                   autocomplete={'off'}
-                  onChange={(e) =>
-                    setFormData({ ...formData, route: e.target.value })
-                  }
+                  onChange={(e) => onChange(e.target.value, 'route')}
                 />
               </div>
 
@@ -241,14 +229,13 @@ const Medication = ({getToken,id}) => {
                   id='description'
                   name='description'
                   placeholder='Enter the method prescribed by doctor for medication'
-                  onChange={(e) =>
-                    setFormData({ ...formData, description: e.target.value })
-                  }
+                  onChange={(e) => onChange(e.target.value, 'description')}
                 />
               </div>
             </div>
 
             <Button
+              disabled={buttonStatus}
               appearance='secondary'
               type='submit'
               className='submmit-btn'>
