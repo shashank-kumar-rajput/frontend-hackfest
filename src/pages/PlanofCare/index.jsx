@@ -42,7 +42,7 @@ const PlanofCare = ({getToken,id}) => {
       body: JSON.stringify({ ...formData }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res), alert("Submitted Successfully"))
+      .then((res) => console.log(res), setInvalid(false), setValid(true, 5))
       .catch((err) => console.log(err));
   };
   }

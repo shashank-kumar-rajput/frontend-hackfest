@@ -24,7 +24,7 @@ const PatientForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.name === '' || formData.age === '0'  || formData.age === '' || formData.gender === '') {
+    if (formData.name === '' || formData.age === '0'  || formData.age === '' || formData.age === 0 || formData.gender === '') {
       setInvalid(true);
       setValid(false)
     } 
