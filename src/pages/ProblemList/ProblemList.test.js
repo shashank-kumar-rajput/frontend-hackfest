@@ -13,10 +13,6 @@ test('check form is render on screen', async () => {
 
   render(<ProblemList getToken={getToken} id={1} />);
 
- 
-
-  // expect(await screen.getByText(/Submit/i).closest('button')).toBeDisabled();
-
   userEvent.type(screen.getByPlaceholderText('Name of Diagnosis'), 'rt-pcr');
   expect(screen.getByPlaceholderText('Name of Diagnosis')).toHaveValue('rt-pcr');
 

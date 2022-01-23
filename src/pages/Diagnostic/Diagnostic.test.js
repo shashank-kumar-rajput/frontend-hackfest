@@ -40,7 +40,7 @@ test('check form is render on screen', async () => {
   expect(screen.getByPlaceholderText('Site in the body')).toHaveValue('Mouth');
 
   // test result
-  userEvent.type(screen.getByPlaceholderText('Result of Diagnosis'), 'negative');
+  userEvent.type(screen.getByPlaceholderText('Result of Diagnosis'), 'positive');
   expect(screen.getByPlaceholderText('Result of Diagnosis')).toHaveValue('negative');
 
   
