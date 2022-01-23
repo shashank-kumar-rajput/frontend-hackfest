@@ -59,7 +59,7 @@ const Register = () => {
     event.preventDefault();
 
     // call to backend
-    fetch('https://backend-django-innovaccer.herokuapp.com/register', {
+    fetch('http://44.202.138.87:8000/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

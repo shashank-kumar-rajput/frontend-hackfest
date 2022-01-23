@@ -33,7 +33,7 @@ const Login = ({ setToken, setUser, getToken }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    fetch('https://backend-django-innovaccer.herokuapp.com/api-token-auth/', {
+    fetch('http://44.202.138.87:8000/api-token-auth/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...data }),

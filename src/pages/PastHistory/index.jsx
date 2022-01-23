@@ -36,14 +36,14 @@ const PastHistory = () => {
       setValid(false)
     } 
     else {
-    // fetch('https://backend-django-innovaccer.herokuapp.com/addOneRecord', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(currentData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((res) => console.log(res), setInvalid(false), setValid(true, 5))
-    //   .catch((err) => console.log(err));
+    fetch('http://44.202.138.87:8000/addOneIllnessRecord ', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({...formData}),
+    })
+      .then((res) => res.json())
+      .then((res) => console.log(res), setInvalid(false), setValid(true, 5))
+      .catch((err) => console.log(err));
     console.log(formData);
   };
 }
@@ -112,6 +112,7 @@ const PastHistory = () => {
               <div
                 className='mr-12 mb-10'
                 style={{ width: 'var(--spacing-9)' }}>
+                
                 <Label withInput={true}>Severity</Label>
                 <Dropdown
                   options={[
@@ -208,7 +209,7 @@ const PastHistory = () => {
               Submit
             </Button>
             {invalid ?
-              <Card className='px-4 py-4'>
+              <Card className='px-0 py-6'>
               <Row>
                 <Column size="4">
                   <Message appearance="alert" description="invalid details" />
@@ -217,7 +218,7 @@ const PastHistory = () => {
               </Card>
             : null}
             {valid ?
-              <Card className='px-4 py-4'>
+              <Card className='px-0 py-6'>
               <Row>
                 <Column size="4">
                   <Message appearance="success" description="Submitted Successfully" />
