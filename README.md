@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5fc36cb3-a275-4b6b-ad1c-2bc91ab5fe14/deploy-status)](https://app.netlify.com/sites/stupefied-carson-d002e9/deploys)
 
-Deployment [preview](https://inrecord.netlify.app/).
+Deployment [preview](http://18.222.121.121:3000/).
 
 ### Used [Innovaccer's Masala Design](https://www.npmjs.com/package/@innovaccer/design-system) library for developing frontend.
  
