@@ -16,7 +16,7 @@ const PatientInfo = ({ getToken, setId }) => {
 
   useEffect(() => {
     const getDetails = () => {
-      fetch('https://backend-django-innovaccer.herokuapp.com/patientInfo', {
+      fetch('http://44.202.138.87:8000/patientInfo', {
         method: 'GET',
         headers: {
           Authorization: `Token ${getToken().token}`,

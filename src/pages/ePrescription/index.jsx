@@ -41,7 +41,7 @@ const Prescription = ({ getToken,id }) => {
     } 
     else {
     fetch(
-      `https://backend-django-innovaccer.herokuapp.com/addOnePrescription/${id}`,
+      `http://44.202.138.87:8000/addOnePrescription/${id}`,
       {
         method: "POST",
         headers: {
@@ -233,7 +233,7 @@ const Prescription = ({ getToken,id }) => {
               Submit
             </Button>
             {invalid ?
-              <Card className='px-4 py-4'>
+              <Card className='px-0 py-6'>
               <Row>
                 <Column size="4">
                   <Message appearance="alert" description="invalid details" />
@@ -242,7 +242,7 @@ const Prescription = ({ getToken,id }) => {
               </Card>
             : null}
             {valid ?
-              <Card className='px-4 py-4'>
+              <Card className='px-0 py-6'>
               <Row>
                 <Column size="4">
                   <Message appearance="success" description="Submitted Successfully" />
