@@ -59,7 +59,7 @@ const Register = () => {
     event.preventDefault();
 
     // call to backend
-    fetch('http://44.202.138.87:8000/register', {
+    fetch('http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -34,7 +34,7 @@ const Diagnostic = ({getToken,id}) => {
       setValid(false)
     } 
     else {
-    fetch(`http://44.202.138.87:8000/addOneDignosticResult/${id}`, {
+    fetch(`http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/addOneDignosticResult/${id}`, {
       method: 'POST',
       headers: { 
       'Content-Type': 'application/json',
