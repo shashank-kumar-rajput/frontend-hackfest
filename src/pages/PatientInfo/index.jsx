@@ -16,17 +16,19 @@ const PatientInfo = ({ getToken, setId }) => {
 
   useEffect(() => {
     const getDetails = () => {
-      fetch('http://44.202.138.87:8000/patientInfo', {
-        method: 'GET',
-        headers: {
-          Authorization: `Token ${getToken().token}`,
-        },
-      })
+      fetch(
+        'http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/patientInfo',
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Token ${getToken().token}`,
+          },
+        }
+      )
         .then((response) => response.json())
         .then((response) => {
           setDataList(response);
           console.log(getToken().token);
-          console.log('response===', response);
         })
         .catch((error) => console.log(error));
     };
@@ -134,7 +136,6 @@ const PatientInfo = ({ getToken, setId }) => {
     },
     {
       width: 140,
-
       Header: 'Diagnostic Result ',
       accessor: 'id',
 
@@ -268,24 +269,13 @@ const PatientInfo = ({ getToken, setId }) => {
     },
   ];
 
-  const handlePrescriptionClick = (id) => {
-    /* 
-     Linking need to be done to redirect to ePrescription
-    
-    
-    
-    */
-    console.log('Redirect');
-  };
-  /*
-Getting API data from MedicalSummary for each ID number
-Storing the response in DataList2 
+  // TODO: Getting API data from MedicalSummary for each ID number
+  //       Storing the response in DataList2
 
-*/
   const handleDetailClick = (id) => {
     Promise.all([
       fetch(
-        `https://backend-django-innovaccer.herokuapp.com/medicalSummary/${id}`,
+        `http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/medicalSummary/${id}`,
         {
           method: 'GET',
           headers: {
@@ -299,7 +289,7 @@ Storing the response in DataList2
           console.log(response1);
         }),
       fetch(
-        `https://backend-django-innovaccer.herokuapp.com/diagnosticResult/${id}`,
+        `http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/diagnosticResult/${id}`,
         {
           method: 'GET',
           headers: {
@@ -313,7 +303,7 @@ Storing the response in DataList2
           console.log(response2);
         }),
       fetch(
-        `http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/${id}`,
+        `http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/planCare/${id}`,
         {
           method: 'GET',
           headers: {
