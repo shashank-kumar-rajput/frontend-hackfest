@@ -36,7 +36,7 @@ const ProblemList = ({getToken,id}) => {
       setValid(false)
     } 
     else {
-    fetch(`http://44.202.138.87:8000/addOneProblemList/${id}`, {
+    fetch(`http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/addOneProblemList/${id}`, {
       method: 'POST',
       headers: { 
       'Content-Type': 'application/json',
