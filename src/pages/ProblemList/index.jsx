@@ -30,8 +30,8 @@ const ProblemList = ({getToken,id}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.diagnosisName === '' || formData.bodySite === '0' || formData.dateOfOnset === '' 
-    || formData.severity === '' || formData.diagnosticCertainity === '') {
+    if (formData.diagnosisName === '' || formData.bodySite === '0' || formData.dateOfOnset === '' ||
+     formData.dateOfOnset === null  || formData.severity === '' || formData.diagnosticCertainity === '') {
       setInvalid(true);
       setValid(false)
     } 
@@ -45,7 +45,7 @@ const ProblemList = ({getToken,id}) => {
       body: JSON.stringify({ ...formData }),
     })
       .then((res) => res.json())
-      .then((res) => console.log(res), alert("Submitted Successfully"))
+      .then((res) => console.log(res), setInvalid(false), setValid(true, 5))
       .catch((err) => console.log(err));
     // e.preventDefault();
     // console.log({ ...formData });
