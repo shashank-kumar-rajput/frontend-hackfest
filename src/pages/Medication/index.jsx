@@ -34,6 +34,12 @@ const Medication = ({ getToken, id }) => {
   });
   const [invalid, setInvalid] = useState(false);
   const [valid, setValid] = useState(false);
+  // const options=[
+  //   { label: 'mg', value: 'mg' },
+  //   { label: 'ml', value: 'ml' },
+  //   { label: 'UI', value: 'UI' },
+  //   { label: 'Others', value: 'Others' },
+  // ]
 
 
   const onChange = (value, name) => {
@@ -119,6 +125,7 @@ const Medication = ({ getToken, id }) => {
                 />
               </div>
               <div
+          
                 className='mr-12 mb-10'
                 style={{ width: 'var(--spacing-9)' }}>
                 <Label withInput={true}>Expiry Date</Label>
@@ -182,7 +189,7 @@ const Medication = ({ getToken, id }) => {
                 style={{ width: 'var(--spacing-9)' }}>
                 <Label withInput={true}>Amount Unit</Label>
                 <Dropdown
-                  data-testid='dropdown'
+                  role='dropdown'
                   options={[
                     { label: 'mg', value: 'mg' },
                     { label: 'ml', value: 'ml' },
@@ -193,6 +200,19 @@ const Medication = ({ getToken, id }) => {
                   searchPlaceholder='amount unit'
                   withSearch={true}
                 />
+                 {/* <select role="select" onChange={(option) => onChange(option, 'amount_unit')}
+                  searchPlaceholder='amount unit'
+                  withSearch={true} >
+        <option role="option" value="">
+          Amount Unit
+        </option>
+        {options.map(option => (
+          <option key={option.label} role="option" value={option.value}>
+            {option.label}
+          </option>
+        ))}
+        
+      </select> */}
               </div>
             </div>
             <div className='mr-12 mb-4'>
