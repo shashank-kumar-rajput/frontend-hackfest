@@ -33,7 +33,7 @@ const Login = ({ setToken, setUser, getToken }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    fetch('http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/api-token-auth/', {
+    fetch('http://44.202.138.87:8000/api-token-auth/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...data }),
