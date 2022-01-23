@@ -16,7 +16,7 @@ const PatientInfo = ({ getToken, setId }) => {
 
   useEffect(() => {
     const getDetails = () => {
-      fetch('https://backend-django-innovaccer.herokuapp.com/patientInfo', {
+      fetch('http://44.202.138.87:8000/patientInfo', {
         method: 'GET',
         headers: {
           Authorization: `Token ${getToken().token}`,
@@ -69,7 +69,6 @@ const PatientInfo = ({ getToken, setId }) => {
       Header: 'Details',
       accessor: 'id',
       Cell: (v) => (
-        
         <Button
           appearance='primary'
           aria-label='Submit your response'
@@ -166,7 +165,6 @@ const PatientInfo = ({ getToken, setId }) => {
           Add Plan of Care
         </Link>
       ),
-      
     },
   ];
 
@@ -314,12 +312,15 @@ Storing the response in DataList2
           setDataList3(response2);
           console.log(response2);
         }),
-      fetch(`https://backend-django-innovaccer.herokuapp.com/planCare/${id}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Token ${getToken().token}`,
-        },
-      })
+      fetch(
+        `http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/${id}`,
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Token ${getToken().token}`,
+          },
+        }
+      )
         .then((response3) => response3.json())
         .then((response3) => {
           setDataList4(response3);

@@ -29,7 +29,7 @@ const PatientForm = () => {
       setValid(false)
     } 
     else {
-    fetch('https://backend-django-innovaccer.herokuapp.com/addPatientInfo', {
+    fetch('http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/addPatientInfo', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ const PatientForm = () => {
               Submit
             </Button>
             {invalid ?
-              <Card className='px-4 py-4'>
+              <Card className='px-0 py-6'>
               <Row>
                 <Column size="4">
                   <Message appearance="alert" description="invalid details" />
@@ -111,7 +111,7 @@ const PatientForm = () => {
               </Card>
             : null}
             {valid ?
-              <Card className='px-4 py-4'>
+              <Card className='px-0 py-6'>
               <Row>
                 <Column size="4">
                   <Message appearance="success" description="Submitted Successfully" />

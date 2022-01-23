@@ -34,7 +34,7 @@ const Diagnostic = ({getToken,id}) => {
       setValid(false)
     } 
     else {
-    fetch(`https://backend-django-innovaccer.herokuapp.com/addOneDignosticResult/${id}`, {
+    fetch(`http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/addOneDignosticResult/${id}`, {
       method: 'POST',
       headers: { 
       'Content-Type': 'application/json',
@@ -139,7 +139,7 @@ const Diagnostic = ({getToken,id}) => {
               Submit
             </Button>
             {invalid ?
-              <Card className='px-4 py-4'>
+              <Card className='px-0 py-6'>
               <Row>
                 <Column size="4">
                   <Message appearance="alert" description="invalid details" />
@@ -148,7 +148,7 @@ const Diagnostic = ({getToken,id}) => {
               </Card>
             : null}
             {valid ?
-              <Card className='px-4 py-4'>
+              <Card className='px-0 py-6'>
               <Row>
                 <Column size="4">
                   <Message appearance="success" description="Submitted Successfully" />

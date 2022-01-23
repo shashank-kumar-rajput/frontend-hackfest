@@ -36,7 +36,7 @@ const ProblemList = ({getToken,id}) => {
       setValid(false)
     } 
     else {
-    fetch(`https://backend-django-innovaccer.herokuapp.com/addOneProblemList/${id}`, {
+    fetch(`http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/addOneProblemList/${id}`, {
       method: 'POST',
       headers: { 
       'Content-Type': 'application/json',
@@ -161,7 +161,7 @@ const ProblemList = ({getToken,id}) => {
               Submit
             </Button>
             {invalid ?
-              <Card className='px-4 py-4'>
+              <Card className='px-0 py-6'>
               <Row>
                 <Column size="4">
                   <Message appearance="alert" description="invalid details" />
@@ -170,7 +170,7 @@ const ProblemList = ({getToken,id}) => {
               </Card>
             : null}
             {valid ?
-              <Card className='px-4 py-4'>
+              <Card className='px-0 py-6'>
               <Row>
                 <Column size="4">
                   <Message appearance="success" description="Submitted Successfully" />
