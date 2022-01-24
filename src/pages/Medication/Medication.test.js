@@ -1,7 +1,7 @@
 import React from 'react';
-import { fireEvent,render, screen, cleanup} from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import Medication from './index';
 
 // mock setup for server
@@ -35,7 +35,6 @@ test('check form is render on screen', async () => {
   render(<Medication getToken={getToken} id={1} />);
 
   //  check for button
-
   expect(await screen.getByText(/Submit/i).closest('button')).toBeDisabled();
 
   // medication
@@ -61,32 +60,6 @@ test('check form is render on screen', async () => {
     '10 mg'
   );
 
-  // presentation
-  //   userEvent.keyboard(screen.getByPlaceholderText('presentation'), '1');
-  //   expect(screen.getByPlaceholderText('presentation')).toHaveValue(null);
-
-  //   TODO: datepicker
-  // const startDate = screen.queryByTestId("currentDate");
-  //   fireEvent.mouseDown(startDate);
-  //   fireEvent.change(startDate, { target: { value: "10-12-2020" } });
-  //   fireEvent.click(document.querySelectorAll(".picker-cell-selected")[0]);
- 
-  // const { queryAllByTestId, queryByTestId } = render(<Medication getToken={getToken} id={2}/>);
-
-  //   const datePicker = screen.queryAllByTestId("harshit")[0];
-  //   fireEvent.click(datePicker);
-  //   console.log(datePicker);
-  //   fireEvent.change(element, { target: { value: "Oct 29, 2020" } });
-  //   expect(datePicker.value).toBe("Oct 29, 2020");
-
-  // const { queryByTestId } = render(<Medication getToken={getToken} id={1}/>);
-
-  //   const datePicker = queryByTestId("currentDate");
-  //   fireEvent.click(datePicker);
-  //   console.log(datePicker);
-  //   fireEvent.change(datePicker, { target: { value: "29 Oct, 2020" } });
-  //   expect(datePicker.value).toBe("29 Oct, 2020");
-
   // batchID
   userEvent.type(screen.getByPlaceholderText('BI0000'), '121212');
   expect(screen.getByPlaceholderText('BI0000')).toHaveValue('121212');
@@ -99,22 +72,6 @@ test('check form is render on screen', async () => {
   userEvent.type(screen.getByPlaceholderText('amount of dosage'), '1');
   expect(screen.getByPlaceholderText('amount of dosage')).toHaveValue(1);
 
-  //   // dropdown
-    // userEvent.selectOptions(screen.getByTestId('dropdown'), ['mg']);
-    // expect(screen.getByRole('option', { label: 'mg' }).selected).toBe(true);
-    // const { getByRole } = render(< Medication getToken={getToken} id={1}/>);
-
-    // const dropdown = getByRole('dropdown');
-    // console.log(dropdown)
-
-    // const display = dropdown.children[0];
-
-    // expect(display.textContent).toBe('mg');
-
-    // // console.log(display.textContent);
-
-    // fireEvent.click(dropdown);
-    
   // description unit
   userEvent.type(
     screen.getByPlaceholderText('unit in mg or ml or tablet'),

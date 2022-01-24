@@ -14,45 +14,53 @@ import {
 } from '@innovaccer/design-system';
 import './ProblemList.css';
 
-const ProblemList = ({getToken,id}) => {
+const ProblemList = ({ getToken, id }) => {
   const [formData, setFormData] = useState({
     diagnosisName: '',
     bodySite: '',
-    dateOfOnset:'',
+    dateOfOnset: '',
     severity: '',
     diagnosticCertainity: '',
-    patient_id:'',
+    patient_id: '',
   });
   const [invalid, setInvalid] = useState(false);
   const [valid, setValid] = useState(false);
 
-  formData.patient_id={id}
+  formData.patient_id = { id };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.diagnosisName === '' || formData.bodySite === '0' || formData.dateOfOnset === '' ||
-     formData.dateOfOnset === null  || formData.severity === '' || formData.diagnosticCertainity === '') {
+    if (
+      formData.diagnosisName === '' ||
+      formData.bodySite === '0' ||
+      formData.dateOfOnset === '' ||
+      formData.dateOfOnset === null ||
+      formData.severity === '' ||
+      formData.diagnosticCertainity === ''
+    ) {
       setInvalid(true);
-      setValid(false)
-    } 
-    else {
-    fetch(`http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/addOneProblemList/${id}`, {
-      method: 'POST',
-      headers: { 
-      'Content-Type': 'application/json',
-      Authorization: `Token ${getToken().token}`,
-     },
-      body: JSON.stringify({ ...formData }),
-    })
-      .then((res) => res.json())
-      .then((res) => console.log(res), setInvalid(false), setValid(true, 5))
-      .catch((err) => console.log(err));
-    // e.preventDefault();
-    // console.log({ ...formData });
-    // return false;
+      setValid(false);
+    } else {
+      fetch(
+        `http://groupd-load-balancer-680499434.us-east-1.elb.amazonaws.com/addOneProblemList/${id}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Token ${getToken().token}`,
+          },
+          body: JSON.stringify({ ...formData }),
+        }
+      )
+        .then((res) => res.json())
+        .then((res) => console.log(res), setInvalid(false), setValid(true, 5))
+        .catch((err) => console.log(err));
+      // e.preventDefault();
+      // console.log({ ...formData });
+      // return false;
+    }
   };
-}
-  console.log("id===",id);
+
   return (
     <div className='d-flex flex-column bg-secondary-lightest vh-100 pb-6'>
       <PageHeader title='Problem List' separator={false} />
@@ -151,7 +159,6 @@ const ProblemList = ({getToken,id}) => {
                 />
               </div>
             </div>
-          
 
             <Button
               className='submmit-btn'
@@ -160,24 +167,27 @@ const ProblemList = ({getToken,id}) => {
               type='submit'>
               Submit
             </Button>
-            {invalid ?
+            {invalid ? (
               <Card className='px-0 py-6'>
-              <Row>
-                <Column size="4">
-                  <Message appearance="alert" description="invalid details" />
-                </Column>
-              </Row>
+                <Row>
+                  <Column size='4'>
+                    <Message appearance='alert' description='invalid details' />
+                  </Column>
+                </Row>
               </Card>
-            : null}
-            {valid ?
+            ) : null}
+            {valid ? (
               <Card className='px-0 py-6'>
-              <Row>
-                <Column size="4">
-                  <Message appearance="success" description="Submitted Successfully" />
-                </Column>
-              </Row>
+                <Row>
+                  <Column size='4'>
+                    <Message
+                      appearance='success'
+                      description='Submitted Successfully'
+                    />
+                  </Column>
+                </Row>
               </Card>
-            : null}
+            ) : null}
           </form>
         </Card>
       </div>
