@@ -1,10 +1,8 @@
 import React from 'react';
-import { fireEvent,render, screen, cleanup} from '@testing-library/react';
+import { fireEvent, render, screen, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 import Diagnostic from './index';
-
-
 
 // test
 test('check form is render on screen', async () => {
@@ -17,20 +15,16 @@ test('check form is render on screen', async () => {
   expect(screen.getByPlaceholderText('Name of Test')).toHaveValue('covid');
 
   // type of diagnosis
-  userEvent.type(
-    screen.getByPlaceholderText(
-      'Type of Diagnosis'
-    ),
+  userEvent.type(screen.getByPlaceholderText('Type of Diagnosis'), 'RT-PCR');
+  expect(screen.getByPlaceholderText('Type of Diagnosis')).toHaveValue(
     'RT-PCR'
   );
-  expect(
-    screen.getByPlaceholderText(
-      'Type of Diagnosis'
-    )
-  ).toHaveValue('RT-PCR');
 
   // Method of Diagnosis
-  userEvent.type(screen.getByPlaceholderText('Method of Diagnosis'), 'Inspection');
+  userEvent.type(
+    screen.getByPlaceholderText('Method of Diagnosis'),
+    'Inspection'
+  );
   expect(screen.getByPlaceholderText('Method of Diagnosis')).toHaveValue(
     'Inspection'
   );
@@ -40,9 +34,11 @@ test('check form is render on screen', async () => {
   expect(screen.getByPlaceholderText('Site in the body')).toHaveValue('Mouth');
 
   // test result
-  userEvent.type(screen.getByPlaceholderText('Result of Diagnosis'), 'positive');
-  expect(screen.getByPlaceholderText('Result of Diagnosis')).toHaveValue('negative');
-
-  
- 
+  userEvent.type(
+    screen.getByPlaceholderText('Result of Diagnosis'),
+    'positive'
+  );
+  expect(screen.getByPlaceholderText('Result of Diagnosis')).toHaveValue(
+    'positive'
+  );
 });
