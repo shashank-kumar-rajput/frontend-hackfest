@@ -6,8 +6,6 @@ name: React.js testing CI
 on:
   push:
     branches: [master]
-  pull_request:
-    branches: [master]
 
 jobs:
   build:
@@ -26,4 +24,5 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - run: |
+          npm i
           npm run test
